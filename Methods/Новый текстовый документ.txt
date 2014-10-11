@@ -1,0 +1,105 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int num = 323;		
+		
+		if(isPolindrom(num)) {
+			Console.WriteLine("Число Полиндром!");
+		} else {
+			Console.WriteLine("Число не Полиндром!");
+		}
+
+		Console.ReadLine();
+	}
+	
+	private static bool isPolindrom(int num) {
+		int divider = 10;
+		int currNum = num;
+		int reverted = 0;
+		
+		do
+		{
+			reverted = reverted*divider + currNum%divider;
+			currNum = currNum/divider;
+		} while (currNum%divider != 0);
+		
+		return reverted == num;
+	} 
+	
+}
+
+///////////////////
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		int num = 1215161213;
+		int revertedAnCleaned = revertAndClean(num);
+		
+		Console.WriteLine(revertAndClean(revertedAnCleaned));
+		Console.ReadLine();		
+	}
+	
+	private static int revertAndClean(int num) {
+		int divider = 10;
+		int currNum = num;
+		int reverted = 0;
+		
+		do
+		{
+			if(currNum%divider != 1) {
+				reverted = reverted*divider + currNum%divider;
+			}
+			currNum = currNum/divider;
+		} while (currNum%divider != 0);
+		
+		return reverted;
+	} 
+}
+
+/////////////////////////
+
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		string str = "asaasa asaasa";
+		
+		Console.WriteLine(isSymmetric(str));
+		Console.ReadLine();
+	}
+	
+	public static bool isSymmetric(string str) {
+		bool isSymetric = true;
+		int length = str.Length;
+		
+		if(str.Length == 0 || str.Length == 1) return isSymetric;
+		
+		if(str[0] != str[length-1]) {
+			isSymetric = false;
+		} else {
+			str = str.Remove(str.Length-1,1);
+			str = str.Remove(0,1);
+			isSymmetric(str);
+		}
+
+		
+		return isSymetric;
+	}
+}
+
+
+
+
+
+
+
+
+
