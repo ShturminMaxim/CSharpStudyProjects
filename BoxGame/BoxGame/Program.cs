@@ -9,7 +9,6 @@ namespace BoxGame
 {
     class Program
     {
-        static Random r = new Random();
         static void showCube(int number) 
         {
             string cubeImage = "";
@@ -44,6 +43,8 @@ namespace BoxGame
             return;
         }
         static int getDropedCubeNumber() {
+            //get random number
+            Random r = new Random();
             int number = r.Next(1, 7);
             return number;
         }
