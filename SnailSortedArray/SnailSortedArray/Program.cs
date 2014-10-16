@@ -12,7 +12,7 @@ namespace SnailSortedArray
         {
             int[,] arr = new int[10, 10];
 
-            fillAndShowArrays(int[,] arr);
+            fillAndShowArrays(arr);
         }
 
         static void fillAndShowArrays(int[,] arr) 
@@ -32,6 +32,21 @@ namespace SnailSortedArray
             Console.ReadLine();
 
             return;
+        }
+
+        static void goThrue(int[,] arr)
+        {
+            int startRow = 0;
+            int startElem = 0;
+            int endElem = arr.GetLength(1);
+
+            for (int i = startRow; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    
+                }
+            }
         }
     }
 }
