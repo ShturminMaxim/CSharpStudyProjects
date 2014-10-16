@@ -9,14 +9,13 @@ namespace SnailSortedArray
     class Program
     {
         static int[,] arr = new int[10, 10];
-        static int startRow = 0;
-        static int endRow = arr.GetLength(0);
-        static int startElem = 0;
-        static int endElem = arr.GetLength(1);
+        static int rowOfTheCheckedElem = 0;
+        static int colOfTheCheckedElem = 0;
 
         static void Main(string[] args)
         {
             fillAndShowArrays(arr);
+            goThrue(arr);
         }
 
         static void fillAndShowArrays(int[,] arr) 
@@ -40,48 +39,92 @@ namespace SnailSortedArray
 
         static void goThrue(int[,] arr)
         {
-            int startRow = 0;
-            int endRow = arr.GetLength(0);
-            int startElem = 0;
-            int endElem = arr.GetLength(1);
+            int count = 0;
+            int startDownRow = 0;
+            int endDownRow = arr.GetLength(0) - 1;
 
-            //for (int i = startRow; i < arr.GetLength(0); i++)
-            //{
-            //    for (int j = startElem; j < arr.GetLength(1); j++)
-            //    {
-                    
-            //    }
-            //}
-        }
-        static void compareAndReplace(int num) { 
-            
-        }
-        static void right(int row, int from, int to) {
-            for (int i = from; i <= to; i++)
+            int startUpRow = arr.GetLength(0) - 1;
+            int endUpRow = 0;
+
+            int startRightElem = 0;
+            int endRightElem = arr.GetLength(1)-1;
+
+            int startLeftElem = arr.GetLength(1) - 1;
+            int endLeftElem = 0;
+
+            do
             {
-                compareAndReplace(arr[row, i]);
+                //RIGHT MOVE
+                for (int i = startRightElem; i <= endRightElem; i++)
+                {
+                    compareAndReplace(ref arr[startDownRow, i]);
+                }
+                startDownRow++;
+                endUpRow++;
+
+                //DOWN MOVE
+                for (int i = startDownRow; i <= endDownRow; i++)
+                {
+                    compareAndReplace(ref arr[i, endRightElem]);
+                }
+                endRightElem--;
+
+                //LEfT MOVE
+                for (int i = startLeftElem; i >= endLeftElem; i--)
+                {
+                    compareAndReplace(ref arr[endDownRow, i]);
+                }
+                endDownRow--;
+
+                //UP MOVE
+                for (int i = startUpRow; i >= endUpRow; i--)
+                {
+                    compareAndReplace(ref arr[i, startRightElem]);
+                }
+                startRightElem++;
+            } while (startUpRow > endUpRow && startLeftElem > endLeftElem && startDownRow < endDownRow && startRightElem < endRightElem);
+
+            if (count < arr.GetLength(1) * arr.GetLength(0)) {
+                count++;
+                goThrue(arr);
             }
+
+            Console.ReadLine();
         }
-        static void down(int col, int from, int to)
+        static void compareAndReplace(ref int num)
         {
-            for (int i = from; i <= to; i++)
+            if (num > arr[rowOfTheCheckedElem, colOfTheCheckedElem])
             {
-
+                int backup = arr[rowOfTheCheckedElem, colOfTheCheckedElem];
+                arr[rowOfTheCheckedElem, colOfTheCheckedElem] = num;
+                num = arr[rowOfTheCheckedElem, colOfTheCheckedElem];
             }
+            //Console.Write(num+" ");
         }
-        static void left(int row, int from, int to)
-        {
-            for (int i = from; i <= to; i++)
-            {
+        //static void right(ref int row, ref int from, ref int to) {
+          
+        //}
+        //static void down(int col, int from, int to)
+        //{
+        //    for (int i = from; i <= to; i++)
+        //    {
+        //        compareAndReplace(arr[i, col]);
+        //    }
+        //}
+        //static void left(int row, int from, int to)
+        //{
+        //    for (int i = from; i >= to; i--)
+        //    {
+        //        compareAndReplace(arr[row, i]);
+        //    }
+        //}
+        //static void up(int col, int from, int to)
+        //{
+        //    for (int i = from; i >= to; i--)
+        //    {
+        //        compareAndReplace(arr[i, col]);
+        //    }
 
-            }
-        }
-        static void up(int col, int from, int to)
-        {
-            for (int i = from; i <= to; i++)
-            {
-
-            }
-        }
+        //}
     }
 }
