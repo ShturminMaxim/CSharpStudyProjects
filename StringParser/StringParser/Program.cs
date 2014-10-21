@@ -10,60 +10,107 @@ namespace StringParser
     {
         static void Main(string[] args)
         {
-            string a = "156+(2*2)*12*2+42-(10+20)";
+            Console.WriteLine("Please enter explression (example 15*2)");
+            string mainString= Console.ReadLine();
             int leftBrackets = 0;
             int rightBrackets = 0;
-            a.Replace(" ", "");
-            int mainResult = 0; 
-            
-            //string[] arrExpression = new string[a.Length];
+            mainString.Replace(" ", "");
 
             //count brackets
-            for (int i = 0; i < a.Length; i++)
+            for (int i = 0; i < mainString.Length; i++)
             {
-                if(a[i].ToString() == "(") {
+                if (mainString[i].ToString() == "(")
+                {
                     leftBrackets++;
                 }
-                if (a[i].ToString() == ")")
+                if (mainString[i].ToString() == ")")
                 {
                     rightBrackets++;
                 }
-                //arrExpression[i] = a[i].ToString();
             }
 
             if (leftBrackets != rightBrackets) { 
                 Console.WriteLine("Wrong expression");
             }
 
-
-            //start parsing
             //parse brackets
-            if(a.IndexOf("(") >= 0) {
-                do
-                {
-                  inBrackets(ref a, ref mainResult);  
-                } while (a.IndexOf("(") >= 0);
-                Console.WriteLine("\n Res - " + mainResult);
-            }
-            Console.WriteLine("\n string after brakets - " + a);
-            // parse symbols * / + -
-            count(ref a);
+            // TODO add logic for additional brackets inside brackets
+            CountInBrackets(ref mainString);
+            
+            // parse other expressions with symbols * / + -
+            CountString(ref mainString);
 
-
-            Console.WriteLine("\n Result - " + a);
+            Console.WriteLine("\n Result - " + mainString);
             Console.ReadLine();
         }
 
-        static string getLeftnum(ref string a, int index)
+        static string CountInBrackets(ref string str)
+        {
+            do
+            {
+                int openBracketIndex = str.IndexOf("(");
+                int endBracketIndex = 0;
+                if (openBracketIndex >= 0)
+                {
+                    string expressionInBracket = "";
+                    for (int i = openBracketIndex + 1; i < str.Length; i++)
+                    {
+                        if (str[i].ToString() == ")")
+                        {
+                            endBracketIndex = i;
+                            break;
+                        }
+                        else
+                        {
+                            expressionInBracket += str[i];
+                        }
+                    }
+                    string result = CountString(ref expressionInBracket);
+                    str = str.Substring(0, openBracketIndex) + result + str.Substring(endBracketIndex + 1, str.Length - 1 - (endBracketIndex));
+                }
+            } while (str.IndexOf("(") >= 0);
+            return str;
+        }
+        static string CountString(ref string mainString)
+        {
+            string[] syms = new string[] { "*", "\\", "+", "-" };
+
+            for (int i = 0; i < syms.Length; i++)
+            {
+                string sym = syms[i];
+                if (mainString.IndexOf(sym) >= 0)
+                {
+                   // Console.WriteLine("\n string before {0} - {1}", sym, mainString);
+                    do
+                    {
+                        int symIndex = mainString.IndexOf(sym);
+                        string leftNum = GetLeftnum(ref mainString, symIndex);
+                        int firstNumLengtht = leftNum.Length;
+
+                        string rightNum = GetRightnum(ref mainString, symIndex);
+                        int secondNumLengtht = rightNum.Length;
+
+                        int res = CountSingleExpression(leftNum, mainString[symIndex], rightNum);
+
+                        mainString = mainString.Substring(0, symIndex - firstNumLengtht) + res + mainString.Substring(symIndex + secondNumLengtht + 1, mainString.Length - 1 - (symIndex + secondNumLengtht));
+
+                    } while (mainString.IndexOf(sym) >= 0);
+
+                    //Console.WriteLine("\n string After {0} - {1}", sym, mainString);
+                }
+            }
+            return mainString;
+        }
+        static string GetLeftnum(ref string mainString, int index)
         {
             int number;
             string num = "";
 
             for (int i = index-1; i >= 0; i--)
             {
-                if (int.TryParse(a[i].ToString(), out number))
+                if (int.TryParse(mainString[i].ToString(), out number))
                 {
-                    num = a[i].ToString() + num;
+                    num = mainString[i].ToString() + num;
                 }
                 else {
                     break;
@@ -71,17 +118,16 @@ namespace StringParser
             }
             return num;
         }
-        static string getRightnum(ref string a, int index)
+        static string GetRightnum(ref string mainString, int index)
         {
             int number;
             string num = "";
 
-            bool result;
-            for (int i = index+1; i < a.Length; i++)
+            for (int i = index + 1; i < mainString.Length; i++)
             {
-                if (int.TryParse(a[i].ToString(), out number))
+                if (int.TryParse(mainString[i].ToString(), out number))
                 {
-                    num = num + a[i].ToString();
+                    num = num + mainString[i].ToString();
                 }
                 else
                 {
@@ -90,7 +136,7 @@ namespace StringParser
             }
             return num;
         }
-        static int countExpression(string firstNum, char ExpressionOperantor, string SecondNum)
+        static int CountSingleExpression(string firstNum, char ExpressionOperantor, string SecondNum)
         {
             int result = 0;
 
@@ -111,42 +157,6 @@ namespace StringParser
             }
             return result;
         }
-        static void count(ref string a) {
-            string[] syms = new string[] {"*","\\","+","-"};
-            
-            for (int i = 0; i < syms.Length; i++)
-			{
-			    string sym = syms[i];
-                if (a.IndexOf(sym) >= 0)
-                {
-                    Console.WriteLine("\n string before {0} - {1}",sym, a);
-                    do
-                    {
-                        int symIndex = a.IndexOf(sym);
-                        string leftNum = getLeftnum(ref a, symIndex);
-                        int firstNumLengtht = leftNum.Length;
 
-                        string rightNum = getRightnum(ref a, symIndex);
-                        int secondNumLengtht = rightNum.Length;
- 
-                        int res = countExpression(leftNum, a[symIndex], rightNum);
-
-                        a = a.Substring(0, symIndex - firstNumLengtht) + res + a.Substring(symIndex + secondNumLengtht + 1, a.Length - 1 -(symIndex + secondNumLengtht));
-
-                    } while (a.IndexOf(sym) >= 0);
-
-                    Console.WriteLine("\n string After {0} - {1}",sym, a);
-                }
-			}
-        }
-        static void inBrackets(ref string a, ref int mainResult) {
-            int bracketStartIndex = a.IndexOf("(");
-            int bracketEndIndex = a.IndexOf(")");
-
-
-            int res = countExpression(a[bracketStartIndex + 1].ToString(), a[bracketStartIndex + 2], a[bracketStartIndex + 3].ToString());
-
-            a = a.Substring(0, bracketStartIndex) + res + a.Substring(bracketEndIndex + 1, a.Length - bracketEndIndex-1);
-        }
     }
 }
