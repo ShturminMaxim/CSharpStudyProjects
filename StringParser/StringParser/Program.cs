@@ -73,7 +73,7 @@ namespace StringParser
         }
         static string CountString(ref string mainString)
         {
-            string[] syms = new string[] { "*", "\\", "+", "-" };
+            string[] syms = new string[] { "*", "/", "+", "-" };
 
             for (int i = 0; i < syms.Length; i++)
             {
@@ -148,7 +148,7 @@ namespace StringParser
                 case "*":
                     result = Convert.ToInt32(firstNum) * Convert.ToInt32(SecondNum);
                     break;
-                case "\\":
+                case "/":
                     result = Convert.ToInt32(firstNum) / Convert.ToInt32(SecondNum);
                     break;
                 case "-":
