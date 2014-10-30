@@ -8,165 +8,6 @@ namespace AcademyProject
 {
     class Program
     {
-        class Academy {
-            public List<Group> Groups { private set; get; }
-            private string Name {get; set;}
-            
-            public Academy(string name) {
-                this.Name = name;
-                Groups = new List<Group>();
-            }
-
-            public void AddGroup(Group newGroup) {
-                Groups.Add(newGroup);
-            }
-            
-            public void AddStudentToGroup(Student student, string groupName) {
-                for (int i = 0; i < Groups.Count; i++)
-                {
-                    if (Groups[i].Name == groupName) {
-                        Groups[i].AddStudent(student);
-                    }
-                }
-            }
-            public void RemoveStudentFromGroup(Student student)
-            {
-                for (int i = 0; i < Groups.Count; i++)
-                {
-                    if (Groups[i].Students.Contains(student))
-                    {
-                        Groups[i].RemoveStudent(student);
-                    }
-                }
-            }
-            public void RemoveStudentFromGroup(Student student, string groupName)
-            {
-                for (int i = 0; i < Groups.Count; i++)
-                {
-                    if (Groups[i].Name == groupName && Groups[i].Students.Contains(student))
-                    {
-                        Groups[i].RemoveStudent(student);
-                    }
-                }
-            }
-
-            public string Search(string surname)
-            {
-                List<Student> searchResult = this.SearchStudent(surname);
-                string result = "Найдено " + searchResult.Count + " студентов";
-
-                foreach (var student in searchResult)
-                {
-                    result += "\n" + student.ToString();
-                }
-
-                return result;
-            }
-
-            public List<Student> SearchStudent(string surname) {
-                List<Student> searchList = new List<Student>();
-
-                for (int i = 0; i < Groups.Count; i++)
-                {
-                    for (int j = 0; j < Groups[i].Students.Count; j++)
-                    {
-                        if (Groups[i].Students[j].Surname.ToLower().IndexOf(surname) >= 0) {
-                            searchList.Add(Groups[i].Students[j]);
-                        }
-                    }
-                }
-                return searchList;
-            }
-
-            public void MoveStudentToGroup(Student student, string groupName) {
-                for (int i = 0; i < Groups.Count; i++)
-                {
-                    if (Groups[i].Students.Contains(student))
-                    {
-                        Groups[i].RemoveStudent(student);
-                        this.AddStudentToGroup(student, groupName);
-                    }
-                }
-            }
-
-            public override string ToString()
-            {
-                string academyString = "\n\t Groups in Level Up Academy ";
-
-                foreach (var group in Groups)
-                {
-                    academyString += "\n\t" + group.ToString();
-                }
-                return academyString;
-            }
-        }
-
-        class Group {
-            public List<Student> Students { private set; get; }
-            public string Name { get; private set; }
-
-            public Group(string name) {
-                this.Name = name;
-                Students = new List<Student>();
-            }
-            
-            public void AddStudent(Student student) {
-                Students.Add(student);
-            }
-            public void RemoveStudent(Student student)
-            {
-                Students.Remove(student);
-            }
-
-            public override string ToString()
-            {
-                string groupString = "\n Group - "+ this.Name;
-
-                foreach (var student in Students)
-                {
-                    groupString += "\n\t" + Students.IndexOf(student) + ". " +student.ToString();
-                }
-
-                return groupString;
-            }
-        }
-
-        class Student {
-            public string Name { get; private set; }
-            public string Surname { get; private set; }
-            public string Age { get; private set; }
-            public int Id { get; private set; }
-            public Student(string name, string surname, string age, int id) {
-                this.Name = name;
-                this.Surname = surname;
-                this.Age = age;
-                this.Id = id;
-            }
-            
-            public void setField(string fieldName, string value){
-                switch (fieldName)
-                {
-                    case "name":
-                        this.Name = value;
-                        break;
-                    case "surname":
-                        this.Surname = value;
-                        break;
-                    case "age":
-                        this.Age = value;
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            public override string ToString()
-            {
-                 
-                return string.Format("{0} {1} , {2}лет", this.Name, this.Surname, this.Age);
-            }
-        }
-
         static void Main(string[] args)
         {
             int groupsAmount = 4;
@@ -191,7 +32,7 @@ namespace AcademyProject
             Academy LevelUpAcademy = new Academy("Level Up");
 
 
-
+            //Fill Academy
             for (int i = 1; i <= groupsAmount; i++)
             {
                 Group currGroup = new Group("DotNet 14/"+i);
@@ -203,9 +44,8 @@ namespace AcademyProject
                 }
                 LevelUpAcademy.AddGroup(currGroup);
             }
-
-            //Console.WriteLine(LevelUpAcademy);
  
+            //Interface
             do
             {
                 Console.WriteLine("\n Enter number----------\n 1. Show all Students in Academy \n 2. Start editing groups. \n 3. Поиск студента. \n 0. Exit");
