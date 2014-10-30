@@ -9,7 +9,7 @@ namespace AcademyProject
     class Program
     {
         class Academy {
-            public static List<Group> Groups { private set; get; }
+            public List<Group> Groups { private set; get; }
             private string Name {get; set;}
             
             public Academy(string name) {
@@ -223,31 +223,31 @@ namespace AcademyProject
                             Console.WriteLine("\n Chose Group number 1-" + groupsAmount +"\n 0. to exit");
                             groupchoose = Convert.ToInt32(Console.ReadLine());
                             if (groupchoose - 1 >= 0 && groupchoose - 1 <= 3) {
-                                Console.WriteLine(Academy.Groups[groupchoose - 1]);
+                                Console.WriteLine(LevelUpAcademy.Groups[groupchoose - 1]);
                                 Console.WriteLine("Выберите номер студента");
                                 studentchoose = Convert.ToInt32(Console.ReadLine());
 
                                 if (studentchoose >= 0 && studentchoose < studentsAmout) {
                                     do
                                     {
-                                        Console.WriteLine("\n Вы выбрали "+Academy.Groups[groupchoose - 1].Students[studentchoose]);
+                                        Console.WriteLine("\n Вы выбрали " + LevelUpAcademy.Groups[groupchoose - 1].Students[studentchoose]);
                                         Console.WriteLine("Выберите действие \n1. Выгнать \n2. Перевести в другую группу \n3. Изменить данные студента. \n0. Выход");
                                         choose = Convert.ToInt32(Console.ReadLine());
 
                                         switch (choose)
 	                                    {
                                             case 1:
-                                                LevelUpAcademy.RemoveStudentFromGroup(Academy.Groups[groupchoose - 1].Students[studentchoose]);
-                                                Console.WriteLine("\n Вы выгнали " + Academy.Groups[groupchoose - 1].Students[studentchoose]);
+                                                LevelUpAcademy.RemoveStudentFromGroup(LevelUpAcademy.Groups[groupchoose - 1].Students[studentchoose]);
+                                                Console.WriteLine("\n Вы выгнали " + LevelUpAcademy.Groups[groupchoose - 1].Students[studentchoose]);
                                                 choose = 0;
                                                 break;
                                             case 2:
                                                 Console.WriteLine("Для перевода Студента в другую группу, выберите номер группы 1-{0}\n0. Выход", groupsAmount);
                                                 toGroupchoose = Convert.ToInt32(Console.ReadLine());
 
-                                                LevelUpAcademy.MoveStudentToGroup(Academy.Groups[groupchoose - 1].Students[studentchoose], Academy.Groups[toGroupchoose - 1].Name);
+                                                LevelUpAcademy.MoveStudentToGroup(LevelUpAcademy.Groups[groupchoose - 1].Students[studentchoose], LevelUpAcademy.Groups[toGroupchoose - 1].Name);
 
-                                                Console.WriteLine("Вы перевели Студента в группу {0}, \nДля возврата нажмите любую клавишу.", Academy.Groups[toGroupchoose - 1].Name);
+                                                Console.WriteLine("Вы перевели Студента в группу {0}, \nДля возврата нажмите любую клавишу.", LevelUpAcademy.Groups[toGroupchoose - 1].Name);
                                                 Console.ReadLine();
                                                 choose = 0;
                                                 break;
@@ -263,26 +263,26 @@ namespace AcademyProject
                                                         case 1:
                                                             Console.WriteLine("\nВведите новое имя");
                                                             changeData = Console.ReadLine();
-                                                            Academy.Groups[groupchoose - 1].Students[studentchoose].setField("name", changeData);
+                                                            LevelUpAcademy.Groups[groupchoose - 1].Students[studentchoose].setField("name", changeData);
                                                             changed = true;
                                                             break;
                                                         case 2:
                                                             Console.WriteLine("\nВведите новую фамилию");
                                                             changeData = Console.ReadLine();
-                                                            Academy.Groups[groupchoose - 1].Students[studentchoose].setField("surname",changeData);
+                                                            LevelUpAcademy.Groups[groupchoose - 1].Students[studentchoose].setField("surname", changeData);
                                                             changed = true;
                                                             break;
                                                         case 3:
                                                             Console.WriteLine("\nВведите новый возраст");
                                                             changeData = Console.ReadLine();
-                                                            Academy.Groups[groupchoose - 1].Students[studentchoose].setField("age", changeData);
+                                                            LevelUpAcademy.Groups[groupchoose - 1].Students[studentchoose].setField("age", changeData);
                                                             changed = true;
                                                             break;
                                                         default:
                                                                 break;
 	                                                }
                                                 } while (changed == false);
-                                                Console.WriteLine("\nСпасибо, теперь ваш студент имееет данные -" + Academy.Groups[groupchoose - 1].Students[studentchoose].ToString());
+                                                Console.WriteLine("\nСпасибо, теперь ваш студент имееет данные -" + LevelUpAcademy.Groups[groupchoose - 1].Students[studentchoose].ToString());
                                                 choose = 0;
                                                 break;
 		                                    default:
