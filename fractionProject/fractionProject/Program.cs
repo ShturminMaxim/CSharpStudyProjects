@@ -77,7 +77,7 @@ namespace fractionProject
             }
             
             //privat method
-            private Fraction reduce(Fraction notReducedFraction)
+            public static Fraction reduce(Fraction notReducedFraction)
             {
                 Fraction reducedFraction = notReducedFraction;
 
@@ -107,7 +107,9 @@ namespace fractionProject
                 int reducedNumerator = this.numerator;
                 string result = "";
 
-                if (this.denominator%this.numerator == 0)
+                if (this.numerator == 0) {
+                    result = "0";
+                } else if (this.denominator%this.numerator == 0)
                 {
                     reducedDenumerator = this.denominator / this.numerator;
                     reducedNumerator = 1;
@@ -130,6 +132,58 @@ namespace fractionProject
                 return result;
 
             }
+
+            //operators override
+            public static Fraction operator +(Fraction first, Fraction second)
+            {
+                Fraction result = new Fraction();
+
+                result.numerator = (first.numerator*second.denominator) + (second.numerator*first.denominator);
+                result.denominator = first.denominator*second.denominator;
+
+                return result;
+            }
+            public static Fraction operator -(Fraction first, Fraction second)
+            {
+                Fraction result = new Fraction();
+
+                result.numerator = (first.numerator * second.denominator) - (second.numerator * first.denominator);
+                result.denominator = first.denominator * second.denominator;
+
+                return result;
+            }
+            public static Fraction operator *(Fraction first, Fraction second)
+            {
+                Fraction result = new Fraction();
+
+                result.numerator = first.numerator * second.numerator;
+                result.denominator = first.denominator * second.denominator;
+
+                return result;
+            }
+            public static Fraction operator /(Fraction first, Fraction second)
+            {
+                Fraction result = new Fraction();
+
+                result.numerator = first.numerator * second.denominator;
+                result.denominator = first.denominator * second.numerator;
+
+                return result;
+            }
+
+            public static bool operator ==(Fraction first, Fraction second)
+            {
+                Fraction reducedFirst = reduce(first);
+                Fraction reducedSecond = reduce(second);
+
+                return (reducedFirst.numerator == reducedSecond.numerator) && (reducedFirst.denominator == reducedSecond.denominator);
+            }
+            public static bool operator !=(Fraction first, Fraction second)
+            {
+                return !(first == second);
+            }
+
+
         }
         static void Main(string[] args)
         {
@@ -140,15 +194,22 @@ namespace fractionProject
             Thread.Sleep(300);
             Fraction secondFraction = new Fraction(rnd.Next(1, 20), rnd.Next(10, 20));
 
+            //init fixed frations
+            //Fraction firstFraction = new Fraction(8, 32);
+            //Fraction secondFraction = new Fraction(4, 16);
+
             // do mathematic methods
-            Fraction minusResult = firstFraction.MinusFraction(secondFraction);
-            Fraction plusResult = firstFraction.PlusFraction(secondFraction);
-            Fraction multiplyResult = firstFraction.MultiplyFraction(secondFraction);
-            Fraction divideResult = firstFraction.DivideFraction(secondFraction);
+            Fraction minusResult = firstFraction - secondFraction;
+            Fraction plusResult = firstFraction + secondFraction;
+            Fraction multiplyResult = firstFraction * secondFraction;
+            Fraction divideResult = firstFraction / secondFraction;
 
 
             //show results
-            Console.WriteLine("Fraction {0}\\{1} plus fraction {2}\\{3}. Result = {4}", firstFraction.Num, firstFraction.Denum, secondFraction.Num, secondFraction.Denum , plusResult.ToString());
+            Console.WriteLine("Fractions are equal? {0}", (firstFraction == secondFraction));
+            Console.WriteLine("Fractions are not equal? {0}", (firstFraction != secondFraction));
+
+            Console.WriteLine("\nFraction {0}\\{1} plus fraction {2}\\{3}. Result = {4}", firstFraction.Num, firstFraction.Denum, secondFraction.Num, secondFraction.Denum , plusResult.ToString());
             Console.WriteLine("\nFraction {0}\\{1} minus fraction {2}\\{3}. Result = {4}", firstFraction.Num, firstFraction.Denum, secondFraction.Num, secondFraction.Denum, minusResult.ToString());
             Console.WriteLine("\nFraction {0}\\{1} multiplied by a fraction {2}\\{3}. Result = {4}", firstFraction.Num, firstFraction.Denum, secondFraction.Num, secondFraction.Denum, multiplyResult.ToString());
             Console.WriteLine("\nFraction {0}\\{1} divided by a fraction {2}\\{3}. Result = {4}", firstFraction.Num, firstFraction.Denum, secondFraction.Num, secondFraction.Denum, divideResult.ToString());
