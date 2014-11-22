@@ -10,6 +10,7 @@ namespace InterfaceII
     {
         protected string Name { get; set; }
         protected string Surname { get; set; }
+        protected int Age { get; set; }
 
         public Person(string name, string surname)
         {
