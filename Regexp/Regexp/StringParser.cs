@@ -17,7 +17,7 @@ namespace Regexp
 
         public List<int> Parse(string str) {
             result = new List<int>();
-            string pattern = @"(^|[^\.0-9])(\d+\.\d+)([^\.0-9\+]|$)";
+            string pattern = @"(^|[^\.\d]|\G)(\d+\.\d+)([^\.\d]|$){1}";
             Regex rgx = new Regex(pattern);
 
             MatchCollection res = rgx.Matches(str);
