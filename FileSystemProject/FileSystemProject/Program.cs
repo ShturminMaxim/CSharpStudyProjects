@@ -51,11 +51,12 @@ namespace FileSystemProject
             //Console.WriteLine("Let`s copy folder -" + folderToRename);
 
             //---3-----------
-            string folderToCopy = "D:/Shturmin/my";
-            string folder = "D:/Shturmin/test";
-            Console.WriteLine("Let`s copy folder -" + folderToCopy + " to folder -" + folder);
+            //copy 
+            //string folderToCopy = "D:/Shturmin/my";
+            //string folder = "D:/Shturmin/test";
+            //Console.WriteLine("Let`s copy folder -" + folderToCopy + " to folder -" + folder);
 
-            
+            //not finished. not working code
             //FileSystem.CopyDirectory(folderToCopy, folder, True);
         }
     }
