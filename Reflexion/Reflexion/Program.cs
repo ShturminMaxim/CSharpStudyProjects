@@ -39,9 +39,11 @@ namespace Reflexion
             //Assembly asm = Assembly.LoadFile(@"D:\Shturmin\CSharpStudyProjects\Reflexion\Reflexion\bin\Debug\CarLib.dll");
             //Assembly asm = Assembly.LoadFile(@"D:\Shturmin\CSharpStudyProjects\TestSecretLib\TestSecretLib\bin\Debug\TestSecretLib.dll");
             //Assembly asm = Assembly.LoadFile(@"D:\Shturmin\Trombik.dll");
-            Assembly asm = Assembly.LoadFile(@"D:\Shturmin\Classdll.dll");
-
-            //Console.WriteLine(asm.FullName);
+            //Assembly asm = Assembly.LoadFile(@"D:\Shturmin\Classdll.dll");
+            Assembly asm = Assembly.LoadFile(@"D:\Shturmin\CSharpStudyProjects\ReflectionContinue\ReflectionContinue\bin\Debug\MyAssembly.dll");
+            //Assembly asm = Assembly.LoadFile(@"D:\Shturmin\MyAssembly.dll");
+            
+            Console.WriteLine(asm.FullName);
 
             Type[] t = asm.GetTypes();
 
@@ -60,7 +62,7 @@ namespace Reflexion
                     }
                 }
 
-                //Console.WriteLine(item.Name);
+                Console.WriteLine(item.Name);
                 //var obj = Activator.CreateInstance(item);
                 //foreach (MethodInfo classmethod in item.GetMethods())
                 //{

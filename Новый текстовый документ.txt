@@ -1,0 +1,33 @@
+—борки общего назначени€.
+- должны размещатьс€ в Global assembly cache. 
+- windows/assembly
+- доступны всем.
+
+
+”тилита анализа DLL -> ILDASM
+
+CodeBase - местонахождени€ сборки.
+EntryPoint - возвращает точку входа сборки.
+Evidence - свидетельство сборки.
+CreateInctance - создает экремпл€р заданного типа.
+CreateQualifiedName - 
+getAssembly - получение сборки
+GetName - им€ сборки
+GetModule - получает им€ указанного модул€.
+GetModules - много модулей
+Load - загружает сборку
+LoadFile - загружает содержимое файла сборки.
+LoadFrom -  тоже что и Load
+LoadModule - загружает внутренний модуль этой сборки
+LoadWithPartialName - загружает сборку из глобальной папки
+
+
+
+Activator - главный класс дл€ обеспечени€ позднего св€зывани€.
+—оздает обьект на основе информации о типе.
+
+CreateComInstanceFrom
+CreateInstance
+
+
+ILGenerator
