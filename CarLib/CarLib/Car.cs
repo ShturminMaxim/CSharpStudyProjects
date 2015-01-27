@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car
-{
-    class Car
+class Car
     {              
         public bool iStarted { private set;get;}
         public bool isSeatBeltWeared { private set; get; }
@@ -80,4 +78,3 @@ namespace Car
             return "Car status:\nEngine : " + this.iStarted + "\nTransmission: " + this.Transmission + "\nSpeed : " + this.Speed + "\nFuel :" +this.Fuel;
         }
     }
-}
