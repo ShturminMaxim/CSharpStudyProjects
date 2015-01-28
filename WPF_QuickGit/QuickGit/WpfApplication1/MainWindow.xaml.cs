@@ -51,7 +51,8 @@ namespace WpfApplication1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+            WpfApplication1.Window1 AddRepositoryWindow = new WpfApplication1.Window1();
+            AddRepositoryWindow.Show();
         }
 
         private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
@@ -70,6 +71,7 @@ namespace WpfApplication1
             Dictionary<string, string> reposLocations = new Dictionary<string, string>();
             FileStream fs = new FileStream("config.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
+            //JsonObject user = (JsonObject)JsonObject.Load(responseStream);
             string line = sr.ReadLine();
             while (line != null)
             {
@@ -79,7 +81,7 @@ namespace WpfApplication1
                 string clientName = nameRx.Match(line).ToString().Trim();
 
                 //get RepoLocation from string
-                string locationPattern = @"[^\:]+$";
+                string locationPattern = @"[^\:\s]+$";
                 Regex locRx = new Regex(locationPattern);
                 string repositoriyLocation = locRx.Match(line).ToString().Trim();
 
@@ -97,6 +99,7 @@ namespace WpfApplication1
                 Button resPullBtn = new Button();
                 resPullBtn.Content = "Res and Pull";
                 resPullBtn.Tag = repositoriyLocation;
+                resPullBtn.Click += buttonClick;
 
                 //Append new TextBox to StackPanel
                 GitButtonsContainer.Children.Add(resPullBtn);
@@ -104,23 +107,26 @@ namespace WpfApplication1
                 line = sr.ReadLine();
             }
             #endregion
-
-
         }
 
-        private void GitButtonsContainer_MouseDown(object sender, MouseButtonEventArgs e)
+        static void buttonClick(object sender, EventArgs e)
         {
-            MessageBox.Show("mousedown");
+            MessageBox.Show("mousedown - ");
             //e.ClickCount
             try
             {
                 Button btn = (Button)sender;
-                MessageBox.Show("button");
+                MessageBox.Show("button" + btn.Tag);
             }
             catch (Exception exep)
             {
                 MessageBox.Show(exep.Message);
             }  
+        }
+
+        private void GitButtonsContainer_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -38,15 +38,27 @@ namespace ObjectSerialiseProject
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream("my.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            Human max = new Human(10, "Vasya");
+            Human Petya = new Human(10, "Petya");
+            Human Vasya = new Human(102, "Vasya");
+
+            //bf.Serialize(fs, max2);
             
-            //bf.Serialize(fs, max);
-            
-            Human Den = (Human)bf.Deserialize(fs);
+            //Human Ven = (Human)bf.Deserialize(fs);
+            //Human Sam = (Human)bf.Deserialize(fs);
+
+            //List<Human> humans = new List<Human>(){Petya, Vasya};
+            List<Human> humans = (List<Human>)bf.Deserialize(fs);
+
+            //bf.Serialize(fs, humans);
+
             fs.Close();
 
-            Console.WriteLine(Den);
-            Console.WriteLine(max);
+            foreach (var item in humans)
+            {
+                Console.WriteLine(item.name);
+            }
+            //Console.WriteLine(Ven);
+            //Console.WriteLine(Sam);
         }
     }
 }
