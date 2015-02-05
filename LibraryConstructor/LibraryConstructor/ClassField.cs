@@ -12,6 +12,7 @@ namespace LibraryConstructor
         public string type;
 
         public ClassField() { 
+
         }
     }
 }

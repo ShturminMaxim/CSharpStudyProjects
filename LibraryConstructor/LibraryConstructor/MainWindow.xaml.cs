@@ -150,74 +150,172 @@ namespace LibraryConstructor
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string classname = UserClassName.Text;
-            
+
             // Динамическое создание Сборки с классом
 
             // создаем сборку
             // класс AssemblyName
             // затем AssemblyBilder - аоздает сборку
 
-            AssemblyName an = new AssemblyName("MyAssembly");
-            // версия сборки
-            an.Version = new Version("1.0.0.1");
+            //AssemblyName an = new AssemblyName("MyAssembly");
+            //// версия сборки
+            //an.Version = new Version("1.0.0.1");
 
-            //Конструируется сборка
-            AssemblyBuilder ab = AppDomain.CurrentDomain.DefineDynamicAssembly(an, AssemblyBuilderAccess.RunAndSave);
+            ////Конструируется сборка
+            //AssemblyBuilder ab = AppDomain.CurrentDomain.DefineDynamicAssembly(an, AssemblyBuilderAccess.RunAndSave);
 
-            //создаем модуль для сборки черезх нашу сборку
-            ModuleBuilder mb = ab.DefineDynamicModule("MyModule", "newLibrary.dll");
+            ////создаем модуль для сборки черезх нашу сборку
+            //ModuleBuilder mb = ab.DefineDynamicModule("MyModule", "newLibrary.dll");
 
-            //создаем тип для модуля
-            TypeBuilder tb = mb.DefineType(classname, TypeAttributes.Public);
+            ////создаем тип для модуля
+            //TypeBuilder tb = mb.DefineType(classname, TypeAttributes.Public);
 
-            //Так же создадим аргументы для конструктора
-            Type[] parameters = {};
+            ////Так же создадим аргументы для конструктора
+            //Type[] parameters = { typeof(int) };
 
-            //нужно наполнять тип, изч  чего будет состоять класс.
-            //создадим конструктор и добавим туда код.
-            ConstructorBuilder cb1 = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, parameters);
+            //List<FieldBuilder> fields = new List<FieldBuilder>();
+            ////Создадим поля для класса
+            //for (int i = 0; i < fieldsList.Count; i++)
+            //{
+            //    string currFieldName = fieldsList[i].name;
+            //    string currFieldType = fieldsList[i].type;
+            //    switch (currFieldType)
+            //    {
+            //        case "int":
+            //            fields.Add(tb.DefineField(currFieldName, typeof(int), FieldAttributes.Public));
+            //            break;
+            //        case "string":
+            //            fields.Add(tb.DefineField(currFieldName, typeof(string), FieldAttributes.Public));
+            //            break;
+            //        case "bool":
+            //            fields.Add(tb.DefineField(currFieldName, typeof(bool), FieldAttributes.Public));
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
 
-            //Создадим поля для класса
-            for (int i = 0; i < fieldsList.Count; i++)
-            {
-                string currFieldName = fieldsList[i].name;
-                string currFieldType = fieldsList[i].type;
-                switch (currFieldType)
-                {
-                    case "int":
-                        tb.DefineField(currFieldName, typeof(int), FieldAttributes.Public);
-                        break;
-                    case "string":
-                        tb.DefineField(currFieldName, typeof(string), FieldAttributes.Public);
-                        break;
-                    case "bool":
-                        tb.DefineField(currFieldName, typeof(bool), FieldAttributes.Public);
-                        break;
-                    default:
-                        break;
-                }
-            }
+            ////нужно наполнять тип, изч  чего будет состоять класс.
+            ////создадим конструктор и добавим туда код.
+            //ConstructorBuilder cb1 = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, parameters);
+            ////Добавим код в констурктор через IL генератор
+            //ILGenerator il1 = cb1.GetILGenerator();
 
-            //Добавим код в констурктор через IL генератор
-            ILGenerator il1 = cb1.GetILGenerator();
-            il1.EmitWriteLine("этот текст отобразится в консоли при создании экземпляра класса");
+            //il1.EmitWriteLine("этот текст отобразится в консоли при создании экземпляра класса");
 
-            //Ldarg(вызов аргументов) - получили первый параметр.
-            il1.Emit(OpCodes.Ldarg_0);
+            ////Ldarg(вызов аргументов) - получили первый параметр.
+            //il1.Emit(OpCodes.Ldarg_0);
 
-            //вызов базового контруктора Object-a
-            il1.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
-            il1.Emit(OpCodes.Ldarg_0);
-            il1.Emit(OpCodes.Ldarg_1);
-            //необходимо выполнить завершение для IL конструкции
-            // Ret - return осуществляет выход из конструктора
-            il1.Emit(OpCodes.Ret);
+            ////вызов базового контруктора Object-a
+            //il1.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
+            //il1.Emit(OpCodes.Ldarg_0);
+            //il1.Emit(OpCodes.Ldarg_1);
 
-            //когда тип уже создан, создаем его
-            tb.CreateType();
+            //MethodBuilder mb2 = tb.DefineMethod("showFields", MethodAttributes.Public, typeof(void), null);
+            //ILGenerator ilgen = mb2.GetILGenerator();
 
-            //сохраняем сборку в файл
-            ab.Save("newLibrary.dll");
+            //for (int i = 0; i < fields.Count; i++)
+            //{
+            //    ilgen.EmitWriteLine(fields[i]);
+            //}
+
+            //ilgen.Emit(OpCodes.Ret);
+
+            ////Устанавливаем значение поля
+            ////il1.Emit(OpCodes.Stfld, fb);
+            ////il1.EmitWriteLine(fb);
+
+            ////необходимо выполнить завершение для IL конструкции
+            //// Ret - return осуществляет выход из конструктора
+            //il1.Emit(OpCodes.Ret);
+
+            ////когда тип уже создан, создаем его
+            //tb.CreateType();
+
+            ////сохраняем сборку в файл
+            //ab.Save("newLibrary.dll");
+
+
+            //--------------Workin Gode
+
+            //AssemblyName an = new AssemblyName("MyAssembly");
+            //an.Version = new Version("1.0.0.1");
+
+            //AssemblyBuilder ab = AppDomain.CurrentDomain.DefineDynamicAssembly(an, AssemblyBuilderAccess.RunAndSave);
+
+            //ModuleBuilder mb = ab.DefineDynamicModule("MyModule", "MyAssembly.dll");
+
+            //TypeBuilder tb = mb.DefineType(classname, TypeAttributes.Public);
+
+            //List<FieldBuilder> fb = new List<FieldBuilder>();
+            //fb.Add(tb.DefineField("number", typeof(int), FieldAttributes.Private));
+            //fb.Add(tb.DefineField("str", typeof(string), FieldAttributes.Private));
+
+            //List<FieldBuilder> fields = new List<FieldBuilder>();
+            ////Создадим поля для класса
+            //for (int i = 0; i < fieldsList.Count; i++)
+            //{
+            //    string currFieldName = fieldsList[i].name;
+            //    string currFieldType = fieldsList[i].type;
+            //    switch (currFieldType)
+            //    {
+            //        case "int":
+            //            fields.Add(tb.DefineField(currFieldName, typeof(int), FieldAttributes.Public));
+            //            break;
+            //        case "string":
+            //            fields.Add(tb.DefineField(currFieldName, typeof(string), FieldAttributes.Public));
+            //            break;
+            //        case "bool":
+            //            fields.Add(tb.DefineField(currFieldName, typeof(bool), FieldAttributes.Public));
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+
+
+            //Type[] parametrs = { typeof(int), typeof(string) };
+
+            //ConstructorBuilder cb1 = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, parametrs);
+
+            //ILGenerator il1 = cb1.GetILGenerator();
+            //il1.EmitWriteLine("MyConstructor");
+            //il1.Emit(OpCodes.Ldarg_0);
+            //il1.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
+
+            //for (byte i = 0; i < parametrs.Length; i++)
+            //{
+            //    il1.Emit(OpCodes.Ldarg_0);
+            //    il1.Emit(OpCodes.Ldarg_S, i + 1);
+            //    il1.Emit(OpCodes.Stfld, fb[i]);
+            //    il1.EmitWriteLine(fb[i]);
+
+            //}
+            //il1.Emit(OpCodes.Ret);
+
+            //MethodBuilder mb1 = tb.DefineMethod("Test", MethodAttributes.Public, typeof(void), null);
+            //ILGenerator ilMethod = mb1.GetILGenerator();
+            //for (int i = 0; i < parametrs.Length; i++)
+            //    ilMethod.EmitWriteLine(fb[i]);
+            //ilMethod.Emit(OpCodes.Ret);
+
+            //MethodBuilder mb2 = tb.DefineMethod("ShowFields", MethodAttributes.Public, typeof(void), null);
+            //ILGenerator ilgen = mb2.GetILGenerator();
+
+            //for (int i = 0; i < fields.Count; i++)
+            //{
+            //    ilgen.EmitWriteLine(fields[i]);
+            //}
+
+            //ilgen.Emit(OpCodes.Ret);
+
+
+            //tb.CreateType();
+
+            //ab.Save("MyAssembly.dll");
+
+
+            MessageBox.Show("DLL Created Successfully");
         }
     }
 }
