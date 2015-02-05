@@ -17,7 +17,7 @@
         <TextBlock x:Name="CurrDate" HorizontalAlignment="Left" Margin="38,1,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10"/>
         <TextBlock x:Name="FilterDate" HorizontalAlignment="Left" Margin="110,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
         <Button x:Name="FilterByDate" Content="Filter" HorizontalAlignment="Left" Margin="339,50,0,0" VerticalAlignment="Top" Width="75" Click="FilterByDate_Click"/>
-        <Grid x:Name="AddItemPopUp" Margin="152,94,166,86">
+        <Grid x:Name="AddItemPopUp" Margin="152,94,166,86" Visibility="Hidden">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -25,8 +25,7 @@
                     <GradientStop Color="#FFE8E8E8"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <Border BorderBrush="Black" BorderThickness="2">
-            </Border>
+            <Border BorderBrush="Black" BorderThickness="2"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Date :" VerticalAlignment="Top" Margin="8,8,0,0" FontSize="16"/>
             <TextBlock x:Name="DateForNewTask" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="54,8,0,0" FontSize="16"/>
             <TextBox x:Name="NewTodoText" Height="22" Margin="10,67,10,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyUp="NewTodoText_KeyUp"/>
