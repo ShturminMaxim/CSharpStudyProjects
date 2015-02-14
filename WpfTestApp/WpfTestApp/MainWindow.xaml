@@ -1,0 +1,13 @@
+﻿<Window x:Class="WpfTestApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid x:Name="myGrid">
+        <Image x:Name="imgNext" HorizontalAlignment="Left" Height="44" Margin="375,105,0,0" VerticalAlignment="Top" Width="67"/>
+        <Image x:Name="imgPrev" HorizontalAlignment="Left" Height="68" Margin="22,81,0,0" VerticalAlignment="Top" Width="63"/>
+        <Image x:Name="imgCurrent" HorizontalAlignment="Left" Height="168" Margin="149,30,0,0" VerticalAlignment="Top" Width="196" OpacityMask="White"/>
+        <Button Content="Previous" HorizontalAlignment="Left" Margin="137,255,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Next" HorizontalAlignment="Left" Margin="283,255,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Image x:Name="testImg" HorizontalAlignment="Left" Height="100" Margin="212,210,0,0" VerticalAlignment="Top" Width="100"/>
+    </Grid>
+</Window>
