@@ -50,29 +50,33 @@ namespace Threading
     //    }
     //}
     
+
     class Program
     {
         static void Main(string[] args)
         {
-            Ticker t = new Ticker() { isEnabled = false, delay = 1000, Name = "FirstObject" };
-            Ticker st = new Ticker() { isEnabled = false, delay = 2000, Name = "SecondObject" };
+            //Ticker t = new Ticker() { isEnabled = false, delay = 1000, Name = "FirstObject" };
+            //Ticker st = new Ticker() { isEnabled = false, delay = 2000, Name = "SecondObject" };
 
-            t.TickEvent += t_TickEvent;
-            t.isEnabled = true;
-            st.TickEvent += t_TickEvent;
-            st.isEnabled = true;
+            //t.TickEvent += t_TickEvent;
+            //t.isEnabled = true;
+            //st.TickEvent += t_TickEvent;
+            //st.isEnabled = true;
 
-            Thread thr1 = new Thread(new ThreadStart(t.RunTicker));
-            thr1.Name = "First Tread";
-            thr1.Start();
+            //Thread thr1 = new Thread(new ThreadStart(t.RunTicker));
+            //thr1.Name = "First Tread";
+            //thr1.Start();
 
-            Thread thr2 = new Thread(new ThreadStart(st.RunTicker));
-            thr2.Name = "     Second Tread";
-            thr2.Start();
+            //Thread thr2 = new Thread(new ThreadStart(st.RunTicker));
+            //thr2.Name = "     Second Tread";
+            //thr2.Start();
 
-            Thread.Sleep(5000);
-            t.isEnabled = false;
-            st.isEnabled = false;
+            //Thread.Sleep(5000);
+            //t.isEnabled = false;
+            //st.isEnabled = false;
+
+
+
         }
 
         static void t_TickEvent(object sender, TickArgs args)
