@@ -2,10 +2,11 @@ use [BooksForNet14-2]
 go
 
 --1.Вытащить название учебников, которые издавались не издательством 'BHV', и тираж которых >= 3000 экземпляров.
--- 503
+--
 --Select Books.Name
---FROM Books, Press 
+--FROM Books, Press, Category
 --where (Books.IdPress = Press.Id and Press.Name not LIKE '%BHV%')
+--and (Books.IdCategory = Category.Id and Category.Name = 'Учебники')
 --and Books.Pressrun >= 3000
 
 --2.Вытащить все книги-новинки, цена которых ниже 30р.
@@ -20,7 +21,7 @@ go
 --and Books.IdTheme = Theme.Id
 
 --3.Вытащить все книги, у которых в имени белее четырех слов.
---540-- my 546
+-- my 546  ..... -- Right is 549 
 Select Books.Name
 From Books
 WHERE len(Books.Name)-len(replace(Books.Name,' ',''))>3;
@@ -77,7 +78,7 @@ WHERE len(Books.Name)-len(replace(Books.Name,' ',''))>3;
 --and  (Books.IdCategory = Category.Id and Category.Name = 'Учебники')
 
 --12.Вычитать название учебников, в названии издательств которых ровно 3 слова.
---6
+----6
 --Select DISTINCT Books.Id, Books.Name, Press.Name
 --FROM Books, Press, Category
 --where (Books.IdPress = Press.Id and len(Press.Name)-len(replace(Press.Name,' ',''))=2)
