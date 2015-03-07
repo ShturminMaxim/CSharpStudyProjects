@@ -24,12 +24,12 @@
 --from Books, (select Price as priceColumn from Books) as tempTable
 --where Price = tempTable.priceColumn
 
---select tre.Name, tre.c
---from (select Category.Name, count(Books.Id) as c
---	from Category, Books
---	where Category.Id = Books.IdCategory
---	group by Category.Name) as tre
---where tre.c < 5
+select tre.Name, tre.c
+from (select Categories.Name, count(Books.Id) as c
+	from Categories, Books
+	where Categories.Id = Books.Id_Category
+	group by Categories.Name) as tre
+ where tre.c < 5
 
 --select Name, min(Price)
 --from Books
