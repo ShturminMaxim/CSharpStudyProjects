@@ -136,127 +136,134 @@
 
 --Написать такие триггера:
 --Чтобы при взятии определенной книги, ее кол-во уменьшалось на 1.
-Create trigger book_s_moving
-on S_Cards
-For insert
-as 
-Declare @id int
-Select @id = Id_Book from inserted
 
-Update Books 
-set Quantity = Quantity - 1
-where Books.Id = @id
+use library
+
+go
+
+--alter trigger book_s_moving
+--on S_Cards
+--For insert
+--as 
+--Declare @id int
+--Select @id = Id_Book from inserted
+
+--Update Books 
+--set Quantity = Quantity - 1
+--where Books.Id = @id
+
 -------------------------------------------
-Create trigger book_t_moving
-on T_Cards
-For insert
-as 
-Declare @id int
-Select @id = Id_Book from inserted
+--alter trigger book_t_moving
+--on T_Cards
+--For insert
+--as 
+--Declare @id int
+--Select @id = Id_Book from inserted
 
-Update Books 
-set Quantity = Quantity - 1
-where Books.Id = @id
+--Update Books 
+--set Quantity = Quantity - 1
+--where Books.Id = @id
 
 
 --Чтобы при возврате определенной книги, ее кол-во увеличивалось на 1.
-alter trigger book_back
-on S_Cards
-For insert
-as 
-Declare @id int
-Declare @datein date
-Select @id = Id_Book from inserted
-Select @datein = DateIn from inserted
+--alter trigger book_back
+--on S_Cards
+--For insert
+--as 
+--Declare @id int
+--Declare @datein date
+--Select @id = Id_Book from inserted
+--Select @datein = DateIn from inserted
 
-if @datein is not null
-	Update Books 
-	set Quantity = Quantity + 1
-	where Books.Id = @id
+--if @datein is not null
+--	Update Books 
+--	set Quantity = Quantity + 1
+--	where Books.Id = @id
+---------------------------
+--alter trigger book_t_back
+--on T_Cards
+--For insert
+--as 
+--Declare @id int
+--Declare @datein date
+--Select @id = Id_Book from inserted
+--Select @datein = DateIn from inserted
 
-Create trigger book_t_back
-on T_Cards
-For insert
-as 
-Declare @id int
-Declare @datein date
-Select @id = Id_Book from inserted
-Select @datein = DateIn from inserted
-
-if @datein is not null
-	Update Books 
-	set Quantity = Quantity + 1
-	where Books.Id = @id
+--if @datein is not null
+--	Update Books 
+--	set Quantity = Quantity + 1
+--	where Books.Id = @id
 
 --Чтобы нельзя было выдать книгу, которой уже нет в библиотеке (по кол-ву).
-Create trigger book_s_check
-on S_Cards
-For insert
-as 
-Declare @id int
-Declare @amount int
-Select @id = Id_Book from inserted
+--Create trigger book_s_check
+--on S_Cards
+--For insert
+--as 
+--Declare @id int
+--Declare @amount int
+--Select @id = Id_Book from inserted
 
-Select @amount = Quantity from Books
-where Books.Id = @id
+--Select @amount = Quantity from Books
+--where Books.Id = @id
 
-if @amount > 0
-	Update Books 
-	set Quantity = Quantity - 1
-	where Books.Id = @id
-else
-	raiserror('we dont have this book anymore',0,1)
+--if @amount > 0
+--	Update Books 
+--	set Quantity = Quantity - 1
+--	where Books.Id = @id
+--else
+--	raiserror('we dont have this book anymore',0,1)
 
 --------------------
-Create trigger book_t_check
-on T_Cards
-For insert
-as 
-Declare @id int
-Declare @amount int
-Select @id = Id_Book from inserted
+--alter trigger book_t_check
+--on T_Cards
+--For insert
+--as 
+--Declare @id int
+--Declare @amount int
+--Select @id = Id_Book from inserted
 
-Select @amount = Quantity from Books
-where Books.Id = @id
+--Select @amount = Quantity from Books
+--where Books.Id = @id
 
-if @amount > 0
-	Update Books 
-	set Quantity = Quantity - 1
-	where Books.Id = @id
-else
-	raiserror('we dont have this book anymore',0,1)
-
---Чтобы нельзя было выдать более трех книг одному студенту.
-Create trigger student_check
-on S_Cards
-For insert
-as 
-Declare @studentId int
-Declare @amount int
-
-Select @studentId = Id_Student from inserted
-set  @amount = (Select count(Id) from S_Cards
-where S_Cards.Id_Student = @studentId)
-
-if @amount > 3
-	raiserror('too many books for one student',0,1)
+--if @amount > 0
+--	Update Books 
+--	set Quantity = Quantity - 1
+--	where Books.Id = @id
+--else
+--	raiserror('we dont have this book anymore',0,1)
 
 
---Чтобы при удалении книги, данные о ней копировались в таблицу Удаленные.
-create trigger book_delete
-on Books
-after delete
-as
-insert into RemovedBooks
-select * from deleted
+-------Чтобы нельзя было выдать более трех книг одному студенту.
+--alter trigger student_check
+--on S_Cards
+--For insert
+--as 
+--Declare @studentId int
+--Declare @amount int
 
---Если книга добавляется в базу, она должна быть удалена из таблицы Удаленные.
-Create trigger book_undeleting
-on Books
-For insert
-as 
-Declare @id int
-Select @id = Id from inserted
+--Select @studentId = Id_Student from inserted
+--set  @amount = (Select count(Id) from S_Cards
+--where S_Cards.Id_Student = @studentId)
 
-delete from RemovedBooks
-where Id = @id
+--if @amount > 3
+--	raiserror('too many books for one student',0,1)
+
+
+-------Чтобы при удалении книги, данные о ней копировались в таблицу Удаленные.
+--alter trigger book_delete
+--on Books
+--after delete
+--as
+--insert into RemovedBooks
+--select * from deleted
+
+-----Если книга добавляется в базу, она должна быть удалена из таблицы Удаленные.
+--alter trigger book_undeleting
+--on Books
+--For insert
+--as 
+--Declare @id int
+--Select @id = Id from inserted
+
+--delete from RemovedBooks
+--where Id = @id
