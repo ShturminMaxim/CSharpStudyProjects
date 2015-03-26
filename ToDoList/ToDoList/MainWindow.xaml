@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Todo List Application" Height="350" Width="525" MinWidth="500" MinHeight="300" BorderThickness="0" Background="#FFE8E8E8" WindowStartupLocation="CenterScreen" Closing="Window_Closing" MouseDown="Grid_MouseDown">
     <Grid>
-        <Button Content="+" Margin="0,50,10,0" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Right" Width="80"/>
+        <Button Content="Add task" Margin="0,50,10,0" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Right" Width="80"/>
         <Grid x:Name="ToDoList" Margin="10,75,10,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

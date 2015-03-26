@@ -22,8 +22,18 @@ namespace ToDoList
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Create dataBase connection
+        /// </summary>
+        todoDB db = new todoDB();
+
+        /// <summary>
+        /// @List todoItems - Totlist in App window
+        /// @Sate chosenFilterDate - date in DateSelector in App window
+        /// </summary>
         List<TodoItem> todoItems = new List<TodoItem>();
         DateTime chosenFilterDate = DateTime.Today; 
+
 
         public MainWindow()
         {
@@ -31,50 +41,49 @@ namespace ToDoList
             downloadData();
             showCurrentDate();
         }
+
+        /// <summary>
+        /// show curr date in App window
+        /// </summary>
         private void showCurrentDate() {
             string todayDate = DateTime.Today.ToString("d");
             CurrDate.Text = todayDate;
             updateDates(todayDate);
         }
+
+        /// <summary>
+        /// Download data from DB to List and Update list in App window
+        /// </summary>
         private void downloadData() {
-            FileStream fs = new FileStream("todos.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
             try
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                todoItems = (List<TodoItem>)bf.Deserialize(fs);
-                fs.Close();
+                todoItems = db.TodoItems.ToList();
                 updateList();
             }
             catch (Exception ex)
             {
-                fs.Close();
-                //MessageBox.Show(ex.Message);
-            }
-        }
-        private void saveData() {
-            try
-            {
-                FileStream fs = new FileStream("todos.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                BinaryFormatter bf = new BinaryFormatter();
 
-                bf.Serialize(fs, todoItems);
-                fs.Close();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
             }
         }
 
+        /// <summary>
+        /// Add TODO item to DB
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (AddItemPopUp.IsVisible)
                 AddItemPopUp.Visibility = System.Windows.Visibility.Hidden;
             else
                 AddItemPopUp.Visibility = System.Windows.Visibility.Visible;
-            //addElem();
         }
+
+        /// <summary>
+        /// Add Elem by Press on Enter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewTodoText_KeyUp(object sender, KeyEventArgs e)
         {       
             if (e.Key == Key.Enter)
@@ -83,12 +92,19 @@ namespace ToDoList
             }        
         }
 
+        /// <summary>
+        /// Main Add Elem to DB
+        /// </summary>
         private void addElem(){
             string newTodoText = NewTodoText.Text;
             if (newTodoText.Length > 0)
             {
-                int id = todoItems.Count();
-                TodoItem newTodo = new TodoItem(newTodoText, id, chosenFilterDate);
+                //int id = todoItems.Count();
+                TodoItem newTodo = new TodoItem() { TodoName = newTodoText, IsDone = false , CreationDate = chosenFilterDate };
+                db.TodoItems.Add(newTodo);
+                db.SaveChanges();
+
+                //newTodo.Id = todoItems.Count();
                 todoItems.Add(newTodo);
                 NewTodoText.Text = "";
             }
@@ -96,6 +112,9 @@ namespace ToDoList
             AddItemPopUp.Visibility = System.Windows.Visibility.Hidden;
         }
 
+        /// <summary>
+        /// Update List in App window
+        /// </summary>
         private void updateList() {
             ToDoList.Children.Clear();
             int position = 0;
@@ -126,9 +145,13 @@ namespace ToDoList
                 }
 
             }
-            //saveData();
         }
 
+        /// <summary>
+        /// dell item From table and Update List in App window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void delElem(object sender, RoutedEventArgs e)
         {
             try
@@ -139,6 +162,9 @@ namespace ToDoList
                 {
                     if(todoItems[i].Id == itemId) {
                         todoItems.Remove(todoItems[i]);
+                        TodoItem todo = db.TodoItems.Where(b => b.Id == itemId).Single();
+                        db.TodoItems.Remove(todo);
+                        db.SaveChanges();
                         updateList();
                         break;
                     }
@@ -155,7 +181,6 @@ namespace ToDoList
         {
           //  MessageBox.Show("tete");
         }
-
         private void CalendarDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime dt = DateTime.Today;
@@ -185,7 +210,7 @@ namespace ToDoList
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            saveData();
+            
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -193,7 +218,6 @@ namespace ToDoList
             CalendarDate.Visibility = System.Windows.Visibility.Hidden;
             AddItemPopUp.Visibility = System.Windows.Visibility.Hidden;
         }
-
         private void AddElemBtn_Click(object sender, RoutedEventArgs e)
         {
             addElem();
