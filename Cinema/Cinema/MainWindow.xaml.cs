@@ -29,12 +29,11 @@ namespace Cinema
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("dsd");
             //Create dummy data for DB
-            db.addHallType(10, 10);
+            //db.addHallType(10, 10);
             //db.addHallType(20, 20);
 
-            //db.addHall("Green" , 1);
+            //db.addHall("Green", 1);
             //db.addHall("Red", 2);
 
             //db.addMovie("Invisible Slava");
@@ -42,35 +41,39 @@ namespace Cinema
             //db.addMovie("Roman Atacs");
             //db.addMovie("Clever Nazar");
 
-            //db.createSession(1, 1);
-            //db.createSession(2, 1);
-            //db.createSession(3, 2);
-            //db.createSession(4, 2);
-            try
-            {
-                var hallView = db.HallTypes.Count();
-                MessageBox.Show(hallView.ToString());
-            }
-            catch (Exception ex)
-            {
-                
-                //throw;
-            }
+            //db.createSession(1, 1, 10);
+            //db.createSession(2, 1, 15);
+            //db.createSession(3, 2, 12);
+            //db.createSession(4, 2, 11);
 
 
-
-
-            showPlaces(new int[10, 10]);
-            
-            //MoviesList.
+            //var hallView = db.HallTypes.Count();
+            movieSelectorInit();
+            sessionsInit(1);
         }
 
         private void MoviesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+            //showPlaces(new int[10, 10]);
 
+            //MoviesList.
         }
 
-        private void showPlaces(int[,] View)
+        /// <summary>
+        /// fill Movie ComboBox
+        /// </summary>
+        private void movieSelectorInit(){
+            movieSelect.Items.Clear();
+
+            foreach (var movie in db.Movies)
+			{
+                movieSelect.Items.Add(movie.Name);
+			}
+            
+        }
+
+        private void showPlaces(object sender, RoutedEventArgs e)
         {
             var places = new int[10,10];
             for (int i = 0; i < places.GetLength(0); i++)
@@ -92,6 +95,55 @@ namespace Cinema
 
             //placesGrid
             
+        }
+
+        private void sessionsInit(int movieId) {
+            sessionList.Children.Clear();
+            int position = 0;
+            foreach (var item in db.Sessions.Where(t => t.MovieId == movieId))
+            {
+
+                TextBlock textBlock = new TextBlock() { 
+                      Text = "Movie: " + db.Movies.Where(f=>f.Id == movieId).Single().Name+ ", Hall: " + "Price: ",
+                      Margin = new Thickness(0, position, 0, 0)
+                };
+
+                Button delBtn = new Button() { 
+                    Tag = item.Id,
+                    Height = 22,
+                    Width = 80,
+                    Content = "del",
+                    HorizontalAlignment = System.Windows.HorizontalAlignment.Right,
+                    VerticalAlignment = System.Windows.VerticalAlignment.Top,
+                    Margin = new Thickness(0, position, 0, 0)
+                                    
+                };
+                
+                delBtn.Click += showPlaces;
+
+                sessionList.Children.Add(textBlock);
+                sessionList.Children.Add(delBtn);
+
+                position += 24;
+
+            }
+
+            //Label session = new Label() { 
+            //    Tag = "1", 
+            //    Content = "Movie: " + "Hall: " + "Price: ",
+            //    Height = 22,
+            //    Margin = new Thickness(0, position, 0, 0),
+            //};
+            
+
+            //sessionList.Children.Add(session);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //ComboBoxItem item = (ComboBoxItem)sender;
+            sessionsInit(movieSelect.SelectedIndex - 1);
+            //MessageBox.Show(movieSelect.SelectedIndex.ToString());
         }
     }
 }

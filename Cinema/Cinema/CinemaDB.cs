@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Cinema
 {
@@ -15,7 +16,7 @@ namespace Cinema
         /// Inheritance and calling main Entity constructor with connetion to DB named "Test"
         /// </summary>
         public CinemaDB()
-            : base("Cinema")
+            : base("CinemaBase")
         { 
             
         }
@@ -27,25 +28,21 @@ namespace Cinema
         public DbSet<Hall> Halls { get; set; }
         public DbSet<HallType> HallTypes { get; set; }
         public DbSet<Session> Sessions { get; set; }
-
+        public DbSet<Ticket> Tickets { get; set; }
 
 
         public void addHallType(int sizeX, int sizeY){
-            var x = sizeX;
-            var y = sizeY;
-            int[,] places = new int[y,x];
-
-            for (int i = 0; i < y; i++)
+            try
             {
-                for (int j = 0; j < x; j++)
-                {
-                    places[y, x] = 0;
-                }
+                HallType hall = new HallType() { PlacesInRow = sizeX, Rows = sizeY };
+                HallTypes.Add(hall);
+                this.SaveChanges();
             }
-            var hall = new HallType(){ View = places };
-            
-            HallTypes.Add(hall);
-            this.SaveChanges();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
         public void addMovie(string Name) {
             var movie = new Movie() {  Name = Name };
@@ -59,12 +56,18 @@ namespace Cinema
             Halls.Add(hall);
             this.SaveChanges();
         }
-        public void createSession(int movieId, int hallId)
+        public void createSession(int movieId, int hallId, float ticketPrice)
         {
-            Session session = new Session() { MovieId = movieId, HallId = hallId };
+            Session session = new Session() { MovieId = movieId, HallId = hallId, TicketPrice = ticketPrice };
 
             Sessions.Add(session);
             this.SaveChanges();
+        }
+        public void addTicket(int placeX, int placeY, int sessionId) {
+            var ticket = new Ticket() { PlaceX = placeX, PlaceY = placeY, SessionId = sessionId};
+
+            Tickets.Add(ticket);
+            this.SaveChanges();     
         }
     }
 
@@ -88,15 +91,25 @@ namespace Cinema
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { set; get; }
-        public int[,] View { set; get; }
+        public int PlacesInRow { set; get; }
+        public int Rows { set; get; }
     }
-
     class Session {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { set; get; }
-        public List<int> SoldTickets { set; get; }
         public int HallId { set; get; }
         public int MovieId { set; get; }
+        public float TicketPrice { set; get; }
+    }
+
+    class Ticket {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { set; get; }
+        public int SessionId { set; get; }
+        public int PlaceX { set; get; }
+        public int PlaceY { set; get; }
+        public float price { set; get; }
     }
 }
