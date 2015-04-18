@@ -18,6 +18,11 @@ namespace Cinema
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    
+    class newItem {
+        public string Content {set;get;}
+        public int MovieId {set;get;}
+    }
     public partial class MainWindow : Window
     {
         CinemaDB db = new CinemaDB();
@@ -68,7 +73,10 @@ namespace Cinema
 
             foreach (var movie in db.Movies)
 			{
-                movieSelect.Items.Add(movie.Name);
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = movie.Name;
+                item.Tag = movie.Id;
+                movieSelect.Items.Add(item);
 			}
             
         }
@@ -81,8 +89,8 @@ namespace Cinema
                 for (int j = 0; j < places.GetLength(1); j++)
                 {
                     var btn = new Button();
-                    btn.Width = 20;
-                    btn.Height = 20;
+                    btn.Width = 30;
+                    btn.Height = 30;
                     btn.Content = i.ToString() + "" + j.ToString();
                     btn.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                     btn.VerticalAlignment = System.Windows.VerticalAlignment.Top;
@@ -102,9 +110,11 @@ namespace Cinema
             int position = 0;
             foreach (var item in db.Sessions.Where(t => t.MovieId == movieId))
             {
+                Movie currMovie = db.Movies.Where(f => f.Id == movieId).Single();
+                Hall currHall = db.Halls.Where(f => f.Id == item.HallId).Single();
 
-                TextBlock textBlock = new TextBlock() { 
-                      Text = "Movie: " + db.Movies.Where(f=>f.Id == movieId).Single().Name+ ", Hall: " + "Price: ",
+                TextBlock textBlock = new TextBlock() {
+                    Text = "" + currMovie.Name + ", Hall: " + currHall.Name + ", Price: " + item.TicketPrice,
                       Margin = new Thickness(0, position, 0, 0)
                 };
 
@@ -112,11 +122,10 @@ namespace Cinema
                     Tag = item.Id,
                     Height = 22,
                     Width = 80,
-                    Content = "del",
+                    Content = "Show Hall",
                     HorizontalAlignment = System.Windows.HorizontalAlignment.Right,
                     VerticalAlignment = System.Windows.VerticalAlignment.Top,
-                    Margin = new Thickness(0, position, 0, 0)
-                                    
+                    Margin = new Thickness(0, position, 0, 0)           
                 };
                 
                 delBtn.Click += showPlaces;
@@ -141,8 +150,9 @@ namespace Cinema
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //ComboBoxItem item = (ComboBoxItem)sender;
-            sessionsInit(movieSelect.SelectedIndex - 1);
+            ComboBoxItem item = (ComboBoxItem)movieSelect.SelectedItem;
+            int movieId = Convert.ToInt32(item.Tag);
+            sessionsInit(movieId);
             //MessageBox.Show(movieSelect.SelectedIndex.ToString());
         }
     }
