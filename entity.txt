@@ -1,0 +1,12 @@
+Entity Framework
+- Database First
+	Create DB, then Entity framework create Model for this DB
+	Model with classes and properties according to DB
+	MOdel has extension EDMX
+- Model First
+	We dont have DB
+	Create Model, then create DB using "Designer Entity Framework"
+	After that designer will generate DDL
+- Code First
+	no matter do we have the DB
+	Create Code for Model with Classes and Properties, Create DB

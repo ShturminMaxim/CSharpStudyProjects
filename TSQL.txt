@@ -1,0 +1,314 @@
+БД.
+SQL Compackt .- не надо устанавливать.
+для работі в оффлайне с небольшими даннімми
+
+формат файлов - sdf, 
+
+mdf - данные, ldf - логи, с файлами можно работать только через сервер.
+
+SQL сервер надо устанавливать.
+Работа с реляционными БД.
+--------------------------------------------------
+4 формы нормализации бд. (нормальных формы);
+нормальная форма - требования, предьявляемые к БД.
+
+Нормализация - устранение избыточности БД.
+
+1. Все строки должны быть различными;
+    Все єлементы внутри ячеек должны быть атамарными.
+
+2. 1 + Любое ее поле не в ходящее в состав первичного ключа, функционально должно от первичного ключа.
+     Все повториющиеся X кол-во раз элементы должны быть вынесены в отдельную таблицу.
+     Каждая таблица должна иметь первичный ключ. (зачастую id)
+
+3. 2 + у таблицы должны быть связи. Связью называется сопоставление внешнего ключа с первичным.
+    Primary key and Foreign Key
+    Внешний ключ принимает значение первичного ключа из другой таблицы - это и есть связь.
+
+4. 
+
+
+При заполнении и созданияя заполня.тся первіми таблиці, не имеющие внешних ключей.
+
+структура
+files - Program files -> MSSQL folder -> DATA - > there are our databases in this folder
+
+
+databases - our working Db-ses.
+    -system databases
+	-- master - system level general data. Main DB, stored all data
+	-- model - Db-template - empty or minimal info. for templating new DB-s
+	-- msdb - service DB, used by SQL agent for planned tasks. 
+	-- tempdb - stored temporary data. During one request ( transaction );
+- model
+ -- tables 
+ -- views
+ -- Programmability 
+ -- secuirity - manage Roles and Access.
+--library
+--- tables 
+
+Attach and Detach DB for moving db to another place.
+
+Primary Key(PK) always -> Idexed value
+
+
+----===Create New===----
+databases - > new database
+Tables -> New Table
+on the left side RightButtonClick- > set Primary Key (for ID)
+IdentitySpecification - > for ID automatic Increment
+Table - > rightClick - > Design - > For changing datatypes and Columns
+(Tools->Option->Designers -> check "Prevent saving changes");
+
+
+nvarchar - main string data
+int - int
+bit - true/false
+datetime - date and time
+
+
+---Add diagram----
+Create Diagram -> new database - > add all DB-s
+InsertAndUpdateSpecification - > Cascade
+Save diagram
+
+---Edit---
+Table->rightClick-> edit 100....
+
+
+
+
+
+25.02.2015
+-------======-------
+Категории команд
+DDL - data definition language, operators thous work with Objects in DB. 
+	= Create (create)
+	= Drop (delete), 
+	= Alter (change)
+DML - data manipulation language, operators, thous manipulates data in objects 
+	= Select,
+	= Update,
+	= Insert,
+	= Delete,
+DCL - data control language, operators, thous give Access to data.
+	= Deny,
+	= Revoke (rollback previously granted access),
+	= Grant,
+TCL - transaction control language, for wokring with transactions
+	= Commit (apply)
+	= RollBack ()
+	= SavePoint ,(set marks(control points) for making rollbacks)
+
+--------
+table
+database
+trigger
+view
+--------
+Execute button.
+
+Requests connecting by operator "GO"
+
+------===Restrictions===-----
+command CONSTRAINT
+restrictions:
+	for uniq
+	for some rules
+	for primary and foreign key
+
+
+
+---===DML==----
+SELECT - get data from DB
+in "SELECT" we write "names of fields", result from wich we want to see.
+
+"from" - writing Tables, result from this tables will be returned.
+"where" - conditions for Result filtering.
+"group by" - result will be grouped
+"having" - used only with "group by", rules for groupping Result data.(not "where")
+"order by" - sort result by Some rules.
+
+ctrl+f5 - CHECK REQUEST synatx.
+
+select as .... -> as used for rename Result Data Column
+select * -> select all
+
+Select Price*Pricerun  as "result" -> count value and give name for Column in Request Result
+
+Where Price  <=  20.82  ->  get data, if Rule is "true"
+
+Operators
+< , > , >= , <= , = , != , not, and, or, (), wetween xxx and yyy
+Operator "in" -> Like switch 
+in(xxx,yyy,zzz..) -> return row if field contains one of values inside IN.
+
+LIKE - compare strings,
+
+"order by" -> sort -> Number of field in request.
+ASC by default.
+DESC - revert sort.
+can be two Sirted fields, but First is Main sort, if there will be not sortable same fields, 
+this rows will be sorted with second Sort rule
+
+LIKE - for string Data types
+can work like regular expressions.
+Symbols -> 
+%  - any count of sybols
+_   - any one symbol
+[]  - all symbols(one of entered inside brackets), which can be present in string.
+[^] - not entered inside brackets symbols
+
+
+-==Multitable requesrs==----
+Books.Name
+
+
+
+Task:
+- work with data
+
+
+---====Agregating functions =----
+COUNT - countung quantity of fields 
+AVG - work with numbers, returns average number
+SUMM - work with numbers
+MIN - work with numbers
+MAX - work with numbers
+ 
+return 1 result.
+
+SubRequest in Select , can not return table, he returns on result.
+SubRequest can be inside FROM, can return Table of requests, can be used like temporary table for
+next requeststs
+SuBrequests used inside WHERE, can return 1 result or Result Column
+
+if subreuest returns one value, we can use Compare Operators, > < = !=
+else we can use SOME ANY ALL EXISTS
+
+EXISTS - get SUBrequest as Argument, returns boolean.
+-- used inside WHERE, check for any result in SUbrequest or Empty result inside.
+(where exists(subrequest) )
+
+SOME/ANY(with =) - almost the same functionality. Like IN,
+-- check And Compare Request result with Given data.
+
+ALL (with < >, >=, <= ) - returns result with elements according to Condidtions,
+-- take subrequest and MAP condition to all Elements in SELECT.
+
+
+----==  Combine requests =----
+
+UNION , combine QUERIES
+
+
+----===JOIN====----
+>	rightjoin - external join 
+>	leftjoin - external join
+>	innerojin (for some servers the same as JOIN)- internal join
+
+
+INSERT - add new data. we sould count all fields in rows, which are not NULL by default, 
+	id often added automaticly,
+	can add multiple values
+	can add result of SELECT subrequest
+	
+UPDATE - update old data in table   (set) , without WHERE updates all found rows
+DELETE - remove data from table, without WHERE delete all ROWS in table
+
+
+
+-----== Stored Procedures===-----
+---==DDL==---
+when write them?
+when often we use the same request with different values.
+f.e. select different books by name
+
+(looks like user functions)
+this is logically joined reuest with uniq name and different parameters.
++ afret first execution, procedure compiled and code cached in operative memory, fast reusage
++ any user can get acess to saved procedure, but cant change anything.
+
+create procedure:
+	CREATE PROCEDURE procedureName as parameters SQL request
+
+procedure execution:
+	execute procedureName
+	execute procedureName 
+
+parameters:
+	input
+	output with marker "output"
+can be some "return"-s , but should return 1 result
+
+Stored procedures saved in DataBase, but not in tables.
+- Cant have two variables or parameters with the same Name.
+- should be less than 1024 parameters
+- can have not request inside. there can be variables or arifmetic counting.
+- should not use CREATE , DROP , ALTER . Should work only with data, not with objects.
+- if we have Procedure with parameters, 
+	Whole Tables used in procedure will be cached 
+		and then all new Executiond will Search results from Cached tables
+DECLARE - for declare a variable ( use @varName)
+SET - set value inside variable
+
+--===Functions==---
+- Scalar functions
+- Single request functions
+- multiple requests functions
+
+- Scalar -> returns one value with defined type
+- Single request -> with one request inside
+- Multiple -> with multiple requests inside
+
+
+synax:
+	CREATE function FunctionName (parameters) 
+		returns type (of returned value (can be "Table" when function returns Table))
+	as
+	begin
+	.....
+	return ....
+	end
+
+execution:
+	execute fuctionName parameters	-> executed as Procedure
+	select functionName(parameters) 	-> like function
+
+!Always return a Value!
+
+---==Triggers==----
+executed on
+- вместо
+- после
+- во время
+
+EVENTS - > on INSERT, DELETE, UPDATE
+
+Create TRIGGER "triggerName" on "TableName" for/after/instead of EVENT(insert/update/delete)
+with encryption
+as
+triggerBody
+
+temporary tables -> inserted, deleted , there are temporary data for inserting or deleting.
+	they have te same structure as "TableName"
+used for Backup transaction  execution. 
+We can Rollback changes.
+
+@@ROWCOUNT - count changed rows
+
+----restrictions----
+you cannot
+- cannot create triggers for temporary tables
+- cannot use parameters
+- cannot execute trigger from Code
+- cannot use DDL,DCL comands (grand, revoke, delete, create, select into)
+- cannot return a value
+- should have only one "INSTEAD OF" for one event for one Table 
+
+commands
+	rollback transaction
+	Print()
+	raiserror()
+------------------
