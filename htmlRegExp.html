@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>regexp</title>
+</head>
+<body>
+	<div class="given-info">
+		<input class="data"></input>	
+		<button class="count">count</button>
+	</div>
+	<div class="result">
+		
+	</div>
+	<script type="text/javascript">
+	
+	document.querySelector('.count').addEventListener('click', function(){
+		var data = document.querySelector('.data').value;
+		if(data.length > 0) {
+			count(data);
+		}
+	});
+
+	function count(string){
+		var resultString = 'result= ';
+		
+		//trimming
+		string = string.replace(/(\d+)\s+(\d+)/g,'$1,$2').replace(/\s*/,'');
+		//debugger;
+		//count
+		resultString += string.replace(/(\d+)([\+\-\*\/])(\d+)/g, function(mainRes, a, b, c){
+			console.log(mainRes, "--",  a, b, c)
+			a = parseInt(a,10);
+			c = parseInt(c,10);
+			//debugger;
+			switch(b) {
+				case "+" :
+					return (a + c);
+					break;
+				case "-" :
+					return (a - c);
+					break;
+				case "*" :
+					return (a * c);
+					break;
+				case "\/" :
+					return (a / c);
+					break;
+
+			}
+		}); 
+
+		document.querySelector('.result').innerHTML = resultString;
+
+	}
+
+
+	function htmlCleaner(html) {
+		var str = html.replace(/"<[^"]*/gm ,'');
+
+		return str.replace(/(<[^<>]*>)/g, '');
+	}
+	</script>
+</body>
+</html>

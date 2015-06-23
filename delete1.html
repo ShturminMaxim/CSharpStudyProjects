@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style>
+		.main-box, .main-box-two {
+			width: 100px;
+  			margin: 0 auto;
+		}
+		.message {
+			text-align: center;
+		}
+		.red {
+			background-color: red;
+		}
+		.pink {
+			background-color: pink;
+		}
+		.black {
+			background-color: black;
+		}
+		.green {
+			background-color: green;
+		}
+
+		.blue {
+			background-color:blue;
+		}
+
+		.yellow {
+			background-color:yellow;	
+		}
+
+		#boxOne, #boxTwo, #boxThree, .box {
+			width: 100px;
+			height: 100px; 
+			margin: 10px 0;
+			border: solid 1px;
+		}
+
+		.my-form input {
+			margin: 5px 0;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+<div class="my-form">
+	<marquee>СМОТРИ</marquee>	
+	<form method="delete">
+		<input list="browsers">
+		<datalist id="browsers">
+		  <option value="Internet Explorer">
+		  <option value="Firefox">
+		  <option value="Chrome">
+		  <option value="Opera">
+		  <option value="Safari">
+		</datalist>
+	
+		<input type="checkbox" name="max">
+		<input type="checkbox" name="max">
+		<input type="checkbox" name="max">
+		<input type="checkbox" name="max">
+
+		<input type="number" name="quantity" min="1" max="5">
+		<input type="text" name="a">
+		<button> Кнопка следующая строка </button>
+	</form>
+</div>
+
+	<div class="message"><span>Собери светофор как можно быстрее!</span></div>
+	<section class="main-box">
+		<div id="boxOne"></div>
+		<div id="boxTwo"></div>
+		<div id="boxThree"></div>
+	</section>
+
+	<script>
+		var mainBox = document.querySelector('.main-box');
+		var boxOne = document.querySelector('#boxOne');
+		var boxTwo = document.querySelector('#boxTwo');
+		var boxThree = document.querySelector('#boxThree');
+		var colors = ['pink','black','red','green','blue','yellow'];
+		var tick = 0;
+		var date = new Date();
+		var startTime = date.getTime();
+		var finishTime;
+		var check = function(){
+			if(boxThree.className == "green" && boxTwo.className == "yellow" && boxOne.className == "red") {
+				var currDateTime = new Date();
+				finishTime = parseInt((currDateTime.getTime() - date.getTime()) / 1000);
+				
+				alert("Позравляю, ты собрал светофор за "+finishTime+" секунд!")
+			}
+		};
+
+		boxOne.addEventListener('click', function(e){
+			this.className = colors[tick];
+			tick >= colors.length-1 ? tick = 0 : tick++;
+		});
+
+
+		boxTwo.addEventListener('click', function(e){
+			this.className = colors[tick];
+			tick >= colors.length-1 ? tick = 0 : tick++;
+		});
+
+
+		boxThree.addEventListener('click', function(e){
+			this.className = colors[tick];
+			tick >= colors.length-1 ? tick = 0 : tick++;
+		});
+
+		mainBox.addEventListener('click', function(e){
+			check();
+		});
+	</script>
+
+
+   <!--  Little optimisation -->
+
+	<div class="message"><span>Собери светофор как можно быстрее! Оптимизировано чуток</span></div>
+	<section class="main-box-two">
+		<div data-name="boxOne" class="box"></div>
+		<div data-name="boxTwo" class="box"></div>
+		<div data-name="boxThree" class="box"></div>
+	</section>
+	
+	<script>
+		var mainBox = document.querySelector('.main-box-two');
+		var boxOne = document.querySelector('div[data-name="boxOne"]');
+		var boxTwo = document.querySelector('div[data-name="boxTwo"]');
+		var boxThree = document.querySelector('div[data-name="boxThree"]');
+		var boxes = document.querySelectorAll('.box');
+		var colors = ['pink','black','red','green','blue','yellow'];
+		var tick = 0;
+		var date = new Date();
+		var startTime = date.getTime();
+		var finishTime;
+		var check = function(){
+			if(boxThree.className.indexOf("green") >=0 && boxTwo.className.indexOf("yellow") >=0 && boxOne.className.indexOf("red") >=0 ) {
+				var currDateTime = new Date();
+				finishTime = parseInt((currDateTime.getTime() - date.getTime()) / 1000);
+				
+				alert("Позравляю, ты собрал светофор за "+finishTime+" секунд!")
+			}
+		};
+
+		for (var i = 0; i < boxes.length; i++) {
+			boxes[i].addEventListener('click', function(e){
+				this.className = 'box '+colors[tick];
+				tick >= colors.length-1 ? tick = 0 : tick++;
+			});
+		};
+
+		mainBox.addEventListener('click', function(e){
+			check();
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<template name="addActivityMenu">
+	<div class="overlay"></div>
+	<div class="add-activity-menu {{activityType}}">
+		<div class="close-menu">X</div>
+		<div class="add-form">
+			<div class="add-date">
+				{{#with  activityTypeCheck}}
+					{{#if isDaily}}
+						<div class="from">
+							<span>From:</span>
+							<div class="year">
+								<select name="yearFrom" id="yearFrom">
+                                    {{#each yearsList}}
+                                        <option value="{{_id}}" data-number="{{number}}">{{number}}</option>
+                                    {{/each}}
+								</select>
+							</div>
+							<div class="month">
+								<select name="monthFrom" id="monthFrom">
+                                    {{#each monthesList}}
+                                        <option value="{{_id}}" data-number="{{number}}">{{name}}</option>
+                                    {{/each}}
+								</select>
+							</div>
+						</div>
+						<div class="till">
+							<span>Till:</span>
+							<div class="year">
+								<select name="yearTill" id="yearTill">
+                                    {{#each yearsList}}
+                                        <option value="{{_id}}"  data-number="{{number}}">{{number}}</option>
+                                    {{/each}}
+								</select>
+							</div>
+							<div class="month">
+								<select name="monthTill" id="monthTill">
+                                    {{#each monthesList}}
+                                        <option value="{{_id}}" data-number="{{number}}">{{name}}</option>
+                                    {{/each}}
+								</select>
+							</div>
+						</div>
+					{{/if}}
+
+					{{#if isCustom}}
+						<div class="from till">
+							<span>When:</span>
+							<div class="year">
+								<select name="yearFrom" id="yearFrom">
+                                    {{#each yearsList}}
+                                        <option value="{{_id}}" data-number="{{number}}">{{number}}</option>
+                                    {{/each}}
+								</select>
+							</div>
+							<div class="month">
+								<select name="monthFrom" id="monthFrom">
+                                    {{#each monthesList}}
+                                       <option value="{{_id}}" data-number="{{number}}">{{name}}</option>
+                                    {{/each}}
+								</select>
+							</div>
+						</div>
+					{{/if}}
+				{{/with }}
+			</div>
+			<div class="what">
+				<label for="input-what">What do you do or done</label>
+				<input id="input-what" type="text" name="what">
+			</div>	
+			<div class="plus">+</div>
+			<div class="item">
+
+				<label for="input-item">Item</label>
+				<input id="input-item" type="text" name="item">
+			</div>	
+			
+			<div class="where">
+				<label for="input-where">Where</label>
+				<input id="input-where" type="text" name="where">
+			</div>	
+			<div class="how-much-time">
+				<label for="hours-spent">How much time spent</label>
+				<select name="hours-spent" id="hours-spent">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+                    <option value="5">6</option>
+                    <option value="5">7</option>
+                    <option value="5">8</option>
+				</select>
+			</div>
+			<div class="earned-skill">
+				<label for="input-earned-skill">Earned-skill</label>
+				<div>
+					<input class="input-earned-skill" type="text" name="earned-skill">
+					<div class="plus"><button>+</button></div>
+				</div>
+			</div>	
+			<div class="clear"></div>
+			<div class="ok-btn"><button>ok</button></div>
+		</div>
+	</div>
+</template>

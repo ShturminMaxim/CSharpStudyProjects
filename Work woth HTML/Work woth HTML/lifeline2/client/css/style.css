@@ -1,0 +1,370 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-weight: inherit;
+font-style: inherit;
+font-size: 100%;
+font-family: inherit;
+vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+outline: 0;
+}
+body {
+line-height: 1;
+color: black;
+background: white;
+}
+ol, ul {
+list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+border-collapse: separate;
+border-spacing: 0;
+}
+caption, th, td {
+text-align: left;
+font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: "";
+}
+blockquote, q {
+quotes: "" "";
+} 
+html{
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+body {
+	background: #d8d8d8;
+	/* background: url("https://dl.dropboxusercontent.com/s/yf9zdym7iouaflx/mockup.png") 50% 0 no-repeat; */
+}
+/* wrapper */
+.wrapper {
+    position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;	
+}
+/* --------------------- header ------------*/
+.header {
+	height: 50px;
+	position: absolute;
+	top: 0;
+	z-index:-10;
+	width: 100%;
+	/*background: url("/img/bg.jpg") no-repeat;*/
+    background: #d8d8d8;
+	/* background: url("headbg-left.png") no-repeat, url("headbg-right.png") 100% 0% no-repeat, url("headbg-all.png"); */
+}
+/*--------------------header end----------------------*/
+
+.lifeline-container {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	margin-top: 55px;
+}
+
+.line {
+	position: relative;
+	display: inline-block;
+	width: 80%;
+	height: 100%;
+	margin-top:0px;
+	/* background: url('line.png') 50% 0 no-repeat; */
+}
+.line-container {
+	overflow:hidden;
+	height: 100%;
+}
+.line-menu {
+	margin: 10px 0;
+	color: #fff;
+	/* background: #d7d7d7; */
+	font-size: 18px;
+}
+
+
+.line-year, .line-month {
+	margin: 10px 0;
+}
+.line-month {
+	/* background: #d7d7d7; */
+}
+.month-title {
+	padding: 2px 10px;
+	border-radius: 5px;
+	width: 200px;
+	margin: 0 auto;
+	background: #d8d8d8;
+	color: #000;
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: underline;
+	cursor: default;
+	border: solid 2px #0061D8;
+  	border-radius: 5px;
+/* 	-webkit-box-shadow: inset 5px 5px 4px -2px rgba(0,0,0,0.79);
+-moz-box-shadow: inset 5px 5px 4px -2px rgba(0,0,0,0.79);
+box-shadow: inset 5px 5px 4px -2px rgba(0,0,0,0.79); */
+}
+
+.activities .activity {
+	margin: 30px 0;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 14px;
+	height: 40px;
+	color: #ffffff;
+}
+
+.activities .daily-activities {
+	width: 50%;
+	float: left;
+}
+
+.activities .custom-activities {
+	width: 50%;
+	float: right;
+}
+.activity-button {
+	cursor: pointer;
+}
+
+.activity.custom .activity-button {
+	height:40px;
+	width:40px;
+	float:left;
+	background: url('round-ico.png') 0px no-repeat;
+}
+
+.activity.daily .activity-button {
+	height:40px;
+	width:40px;
+	float:right;
+	background: url('/img/round-ico.png') 0 no-repeat;
+}
+
+.clear {
+	clear: both;
+}
+
+.activity {
+	position:relative;
+}
+
+.activity-tooltip {
+	display: inline-block;
+	/* background: url('tooltip.png') no-repeat; */
+	height: 40px;
+	width: 100%;
+	
+}
+.activity-tooltip span {
+	display: inline-block;
+	margin-top: 10px;
+}
+.activity.custom .activity-button {
+	height:40px;
+	width:40px;
+	float:left;
+	background: url('/img/round-ico.png') 0px no-repeat;
+}
+.activity.custom .t-s, .activity.custom .t-b, .activity.custom .t-e {
+	float:left;
+} 
+
+.activity.daily .t-s, .activity.daily .t-b, .activity.daily .t-e {
+	float:right;
+} 
+.activity.daily .t-s, .activity.daily .t-e {
+		-webkit-transform: scaleX(-1);
+		-moz-transform: scaleX(-1);
+		-ms-transform: scaleX(-1);
+		-o-transform: scaleX(-1);
+		transform: scaleX(-1);
+}
+.t-s {
+	height:40px;
+	width: 15px;
+	background: url('/img/tooltip-bg.png') no-repeat;
+}
+.t-b {
+	background: url('/img/tooltip-bg.png') 0 -40px repeat-x;
+}
+.t-e {
+	height:40px;
+	width: 15px;
+	background: url('/img/tooltip-bg.png') 0 -81px no-repeat;
+}
+
+/* lines */
+.calendar-line {
+	position: absolute;
+	left: 50%;
+	top: 50px;
+	bottom: 0;
+	height: 100%;
+	height: 80%;
+	background: url('/img/mmmm.png') 50% 0 repeat-y;
+	width: 8%;
+	margin-left: -4%;
+	z-index:-1;
+}
+
+/*-------add activity buttons in head ---------*/
+.add-activity-btn {
+	display: inline-block;
+	height: 18px;
+	width: 30px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 8px;
+	background: #2f61d4;
+	color: #fff; 
+	cursor: pointer;
+	margin: 0 10px;
+}
+
+
+/*----------------- add Menu ------------------*/
+.add-activity-menu {
+	min-width: 415px;
+	position: absolute;
+	height: auto;
+	padding: 10px;
+	background: #2f61d4;
+	border-radius: 5px;
+	box-shadow: 2px 2px 8px;
+	text-align: left;	
+	z-index: 10;
+}
+.add-activity-menu.custom {
+	right: 30%;
+	top: 12%;
+}
+.add-activity-menu.daily {
+	right: 45%;
+	top: 12%;
+}
+.add-date>div {
+	display: block;
+}
+.add-date span {
+	color: #fff;
+}
+.add-date .year, .add-date .month {
+	display:inline-block;
+}
+.add-activity-menu .add-date .from,.add-activity-menu .add-date .till {
+	text-align: right;
+}
+.overlay {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:#fff;
+	opacity: 0.8;
+	z-index: 5;
+}
+.close-menu {
+	display:inline-block;
+	padding:1px;
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	background: #fff;
+	cursor:pointer;	
+}
+
+.add-activity-menu input, .add-activity-menu select {
+	display: block;
+	width:180px;
+}
+.add-activity-menu label, .add-date span {
+	font-size : 16px;
+	font-weight : bold;
+	color : #fff;
+	text-align:left;
+}
+.plus {
+	color : #fff;
+}
+.add-activity-menu .what, .add-activity-menu .item, .add-activity-menu .plus {
+	display:inline-block;
+}
+
+.add-form>div {
+	text-align: left;
+	margin-top: 10px;
+}
+.earned-skill {
+	float:right;
+}
+.earned-skill input {
+	display: inline-block;
+}
+#input-item {
+	width: 100px;
+}
+.ok-btn {
+	
+}
+/*---------------end of add menu------------------*/
+/*------------------skill table----------------*/
+.skills-table {
+	min-width: 300px;
+	position: absolute;
+	left: 3%;
+	top: 10%;
+	height: auto;
+	padding: 10px;
+	background: #2f61d4;
+	border-radius: 5px;
+	box-shadow: 2px 2px 8px;
+	color : #fff;
+}
+.skills-table .skills-title {
+	text-align: center;
+	text-decoration: underline;
+	font-weight: bold;
+	margin: 10px auto;
+}
+.skills-table ul {
+	width: 100%;
+}
+.skills-table ul li {
+	margin: 5px 0;
+	text-align: left;
+}
+.skills-table .skill-level {
+	display: inline-block;
+	width: 10%;
+	margin-left: 2%;
+	background: #fff;
+	height: 15px;
+}
+.skill-name {
+	display: inline-block;
+	text-align: right;
+	width: 50%;
+}

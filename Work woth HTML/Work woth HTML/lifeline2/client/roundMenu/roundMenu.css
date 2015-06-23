@@ -1,0 +1,18 @@
+.round-menu {
+    height: 180px;
+    width: 200px;
+    background: url("/img/add-menu-blank-bg.png");
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -77px;
+    margin-top: -90px;
+}
+.edit-btn {
+    position: absolute;
+    top: 85px;
+    right: 12px;
+    height: 12px;
+    width: 63px;
+    background: url("/img/edit-btn.png");
+}
