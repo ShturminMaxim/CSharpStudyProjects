@@ -19,9 +19,9 @@ namespace PatternsTask
             Created_Bike comanche =  builder.buildComanche();
             
             // Abstract Factory
-            Bike_AbstractFactory Bike_Factory = new Bike_ConcreteFactory();
-            Client client1 = new Client(factory1);
-            client1.Run();
+            //Bike_AbstractFactory Bike_Factory = new Bike_ConcreteFactory();
+            //Client client1 = new Client(factory1);
+            //client1.Run();
 
             // Factory Method
             Bike_Factory bikesCreator = new Bike_Factory();
