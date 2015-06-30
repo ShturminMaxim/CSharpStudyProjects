@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Список Книг";
+}
+
+<h2>Index</h2>
+
+<table border="1">
+    @{
+        int n = ViewBag.ListBooks.Count;
+        
+        if (n % 5 != 0)
+        {
+            n = (@ViewBag.ListBooks.Count / 5) + 1;
+        }
+        else
+        {
+            n = (@ViewBag.ListBooks.Count / 5);
+        }
+    }
+
+    @for (int i = 0, x = 0; i < n; i++)
+    {
+       <tr>
+           @for (int j = 0; j < 5; j++, x++)
+			{
+
+                if (x < ViewBag.ListBooks.Count)
+                {
+                    <td align="center">
+                       <img width="80" src="~/Images/default_cover.jpg" alt="Alternate Text" />
+                       <br />
+                        @ViewBag.ListBooks[x].Name
+                       <br />
+                       @ViewBag.ListBooks[x].Authors.LastName 
+                       <br /> 
+                       @ViewBag.ListBooks[x].Authors.FirstName
+                       <br />
+                        <a href="/Librarian/GetBook/@ViewBag.ListBooks[x].Id">взять книгу</a>
+                   </td>
+                } else {
+                    <td></td>
+                }
+			}
+        </tr>
+    }
+</table>
