@@ -1,0 +1,61 @@
+<body>
+	<div class="wrapper">
+			<div class="header">
+		
+			</div>
+		{{> lifeline}}	
+	</div>
+</body>
+<template name="lifeline">
+	<div class="lifeline-container">
+		{{> lifeLineMenu}}
+		<div class="line-container">			
+			<div class="line">
+				<div class="calendar-line"></div>
+				{{#each lineYear}}
+					<div class="line-year" data-id="sad8asd">
+						<div class="yearTitle">{{yearNumber}}</div>
+						{{#each lineMonth}}
+							<div class="month-title"><span>{{monthTitle}}</span></div>
+							<div class="activities">
+								<div class="daily-activities">
+									{{#each dailyActivities}}							
+											<div class="activity {{activitySize}} {{activityColor}} daily" data-id="{{_id}}">
+												<div class="activity-button"></div>
+												<div class="t-s"></div>
+												<div class="t-b">
+													<div class="activity-tooltip"><span>{{activityName}}</span></div>
+												</div>
+												<div class="t-e"></div>
+											</div>									
+									{{/each}}
+								</div>
+								<div class="custom-activities">
+									{{#each customActivities}}							
+											<div class="activity {{activitySize}} {{activityColor}} custom" data-id="{{_id}}">
+												<div class="activity-button"></div>
+												<div class="t-s"></div>
+												<div class="t-b">
+													<div class="activity-tooltip"><span>{{activityName}}</span></div>
+												</div>
+												<div class="t-e"></div>
+											</div>
+										
+									{{/each}}
+								</div>
+							</div>
+							<div class="clear"></div>
+						{{/each}}
+					</div>
+				{{/each}}
+			</div>
+		</div>
+		{{#if addingNewAct}}
+			{{>addActivityMenu}}
+		{{/if}}
+        {{#if editindActivity}}
+            {{>roundMenu}}
+        {{/if}}
+		{{>skillTable}}
+	</div>
+</template>		
