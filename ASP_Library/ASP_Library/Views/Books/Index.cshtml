@@ -1,10 +1,72 @@
 ﻿@{
     ViewBag.Title = "Список Книг";
 }
+<style>
+    table,
+    table td,
+    .quick-search {
+        border: solid 1px;
+    }
+
+    .quick-search {
+        position: relative;
+        margin: 10px;
+        float: right;
+    }
+</style>
 
 <h2>Index</h2>
 
-<table border="1">
+<form method="post">
+    <div class="search-type">
+        <input type="checkbox" name="searchType" value="author"> author<br>
+        <input type="checkbox" name="searchType" value="category" checked> category<br>
+        <input type="checkbox" name="searchType" value="theme"> theme <br>
+        <input type="checkbox" name="searchType" value="press"> press<br>
+        <input type="checkbox" name="searchType" value="name"> name<br>
+    </div>
+    <input type="text" name="textSearch" value=""/>
+    <input type="submit" name="ok" value="search"/>
+</form>
+
+
+<div class="quick-search">
+    <h4>Quick Ajax Searh</h4>
+    <div class="quick-search-type">
+        <input type="radio" name="searchType" value="author"> author<br>
+        <input type="radio" name="searchType" value="category" checked> category<br>
+        <input type="radio" name="searchType" value="theme"> theme <br>
+        <input type="radio" name="searchType" value="press"> press<br>
+        <input type="radio" name="searchType" value="name"> name<br>
+    </div>
+    <input type="text" name="textSearch" class="textSearch" value=""/>
+    <input type="submit" class="search" name="ok" value="search"/>
+</div>    
+<br />
+<script>
+    jQuery(function () {
+        jQuery('.search').on('click', function () {
+            var bookName = jQuery('.textSearch').val();
+            var type = jQuery('.quick-search-type input:checked').val();
+
+            jQuery.ajax({
+                type: "post",
+                data: {
+                    'textSearch': bookName,
+                    'searchType': type
+                },
+                success: function () {
+                    jQuery('body').html(arguments[0].match(/<body[^>]*>((.|[\n\r])*)<\/body>/im)[0]);
+                    console.dir(arguments);
+                }
+            })
+        });
+    })
+</script>
+
+@ViewBag.Checkboxes
+
+<table class="books-list">
     @{
         int n = ViewBag.ListBooks.Count;
         
@@ -31,6 +93,12 @@
                        <br />
                         @ViewBag.ListBooks[x].Name
                        <br />
+                        Tема - @ViewBag.ListBooks[x].Themes.Name
+                         <br />
+                        Press - @ViewBag.ListBooks[x].Press.Name
+                          <br />
+                        Category - @ViewBag.ListBooks[x].Categories.Name
+                        <br />
                        @ViewBag.ListBooks[x].Authors.LastName 
                        <br /> 
                        @ViewBag.ListBooks[x].Authors.FirstName
