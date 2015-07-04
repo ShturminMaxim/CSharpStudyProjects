@@ -1,0 +1,26 @@
+﻿@model ASP_Library.Models.S_Cards
+
+@{
+    ViewBag.Title = "GetBook";
+}
+
+<h2>GetBook</h2>
+
+<form method="post">
+    @Html.HiddenFor(model => model.Id_Book)
+    @Html.HiddenFor(model => model.DateOut)
+    @Html.HiddenFor(model => model.Id_Lib)
+
+    <select name="student">
+        @foreach (var item in ViewBag.ListStudents)
+        {
+                    <option value="@item.Id"> @item.FirstName @item.LastName</option>
+        }
+    </select>
+    <p>Название книги @ViewBag.Book.Name</p>
+<p>Автор: @ViewBag.Book.Authors.LastName @ViewBag.Book.Authors.FirstName</p>
+    <input type="submit" name="name" value="Выдать" />
+
+</form>
+
+
