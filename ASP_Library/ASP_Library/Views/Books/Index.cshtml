@@ -85,6 +85,7 @@
     </script>
     <h2>Index</h2>
     
+
     @using (Ajax.BeginForm("BooksSearch", new AjaxOptions { UpdateTargetId = "result", OnFailure = "failureFunctionHandler" }))
     { 
         <input type="text" name="name" data-autocomplete-source="@Url.Action("AutocompleteSearch")" value=""/>

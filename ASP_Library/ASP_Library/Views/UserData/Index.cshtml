@@ -1,0 +1,66 @@
+﻿@model List<ASP_Library.Models.userData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .item {
+        border: solid 1px;
+    }
+
+        .item > div {
+            border-bottom: solid 1px;
+        }
+</style>
+
+<script>
+    $(function () {
+        jQuery('.search-submit').on('click', function () {
+            var who = jQuery('.who').find('option:selected').val();
+            var lastName = jQuery('.lastname').val();
+
+            jQuery.ajax({
+                type: "post",
+                data: {
+                    'who': who,
+                    'lastName': lastName
+                },
+                success: function () {
+                    jQuery('#main-data').html(arguments[0].match(/<div id=\"main-data\"[^>]*>((.|[\n\r])*)<\/div>/im)[0]);
+                    console.dir(arguments);
+                }
+            })
+        });
+    });
+</script>
+
+
+<div class="seaarch-form">
+    <select class="who" name="who">
+        <option value="student">student</option>
+        <option value="teacher">teacher</option>
+    </select>
+    <input type="text" class="lastname" name="lastname" />
+    <button class="search-submit">search</button>
+</div>
+
+<div id="main-data">
+    <ul>
+        @{
+            for (var i = 0; i < Model.Count; i++)
+            {
+                if (Model[i].Books != null)
+                {
+                   <li class="item">
+                       <div>Lastname : @Model[i].LastName</div>
+                       <div>Book Name: @Model[i].Books.Name</div>
+                       <div>Date In  :@Model[i].DateIn</div>
+                       <div>date out :@Model[i].DateOut</div>
+                   </li>
+
+                }
+            }
+        }
+    </ul>
+</div>
