@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<ASP_Library.Models.Books>
+
+@{
     ViewBag.Title = "Список Книг";
 }
 <style>
@@ -15,9 +17,7 @@
     }
 </style>
 
-<h2>Index</h2>
-
-<form method="post">
+@*<form method="post">
     <div class="search-type">
         <input type="checkbox" name="searchType" value="author"> author<br>
         <input type="checkbox" name="searchType" value="category" checked> category<br>
@@ -27,10 +27,11 @@
     </div>
     <input type="text" name="textSearch" value=""/>
     <input type="submit" name="ok" value="search"/>
-</form>
+</form>*@
 
 
-<div class="quick-search">
+
+@*<div class="quick-search">
     <h4>Quick Ajax Searh</h4>
     <div class="quick-search-type">
         <input type="radio" name="searchType" value="author"> author<br>
@@ -42,7 +43,9 @@
     <input type="text" name="textSearch" class="textSearch" value=""/>
     <input type="submit" class="search" name="ok" value="search"/>
 </div>    
-<br />
+<br />*@
+
+
 <script>
     jQuery(function () {
         jQuery('.search').on('click', function () {
@@ -64,19 +67,67 @@
     })
 </script>
 
-@ViewBag.Checkboxes
+<script>
+    function failureFunctionHandler() {
+        alert('not found');
+    }
 
-<table class="books-list">
-    @{
-        int n = ViewBag.ListBooks.Count;
+</script>
+<div id="result">
+    <script>
+        $(function () {
+            $('[data-autocomplete-source]').each(function (i, elem) {
+                $(this).autocomplete({
+                    source: $(this).attr("data-autocomplete-source")
+                });
+            });
+        })
+    </script>
+    <h2>Index</h2>
+    
+
+    @using (Ajax.BeginForm("BooksSearch", new AjaxOptions { UpdateTargetId = "result", OnFailure = "failureFunctionHandler" }))
+    { 
+        <input type="text" name="name" data-autocomplete-source="@Url.Action("AutocompleteSearch")" value=""/>
+        <input type="submit" name="ok" value="search"/>
+    }
+    
+    @*
+        AjaxOptions
+
+      UpdateTargetId - Айди элемента , который будет Перерендерен с результатами Экшна.
+      Confirm - Содержит сообщения о подтверждении отправки запроса на сервер,
+      HttpMethod - Гет или Пост метод отправки данных.
+      InsertionMode - устанавливает как полученные данные будут отображаться на странице. Афтер, Бефоре, Реплейс.
+      LoadingElementDuration - колво миллисекунд до показа Прелоадера
+      LoadinglementId - Айди элемента прелоадера
+      onBegin - перед отправкой запроса , без параметров
+      onComplete - после выполнения запроса (не зависимо от результата) , request and error
+      onFailure - после неудачного завершения запроса, request and error
+      onSuccess - после удачного завершения запроса
+      Url - адрес сервера для запроса
+    
+    *@
+
+    @*
         
+        JSON
+        js object notation
+        
+                
+    *@
+
+    <table class="books-list">
+    @{
+        int n = Model.Count;
+
         if (n % 5 != 0)
         {
-            n = (@ViewBag.ListBooks.Count / 5) + 1;
+            n = (@Model.Count / 5) + 1;
         }
         else
         {
-            n = (@ViewBag.ListBooks.Count / 5);
+            n = (@Model.Count / 5);
         }
     }
 
@@ -84,31 +135,34 @@
     {
        <tr>
            @for (int j = 0; j < 5; j++, x++)
-			{
+           {
 
-                if (x < ViewBag.ListBooks.Count)
-                {
+               if (x < Model.Count)
+               {
                     <td align="center">
                        <img width="80" src="~/Images/default_cover.jpg" alt="Alternate Text" />
                        <br />
-                        @ViewBag.ListBooks[x].Name
+                        @Model[x].Name
                        <br />
-                        Tема - @ViewBag.ListBooks[x].Themes.Name
+                        Tема - @Model[x].Themes.Name
                          <br />
-                        Press - @ViewBag.ListBooks[x].Press.Name
+                        Press - @Model[x].Press.Name
                           <br />
-                        Category - @ViewBag.ListBooks[x].Categories.Name
+                        Category - @Model[x].Categories.Name
                         <br />
-                       @ViewBag.ListBooks[x].Authors.LastName 
+                       @Model[x].Authors.LastName 
                        <br /> 
-                       @ViewBag.ListBooks[x].Authors.FirstName
+                       @Model[x].Authors.FirstName
                        <br />
-                        <a href="/Librarian/GetBook/@ViewBag.ListBooks[x].Id">взять книгу</a>
+                        <a href="/Librarian/GetBook/@Model[x].Id">взять книгу</a>
                    </td>
-                } else {
+               }
+               else
+               {
                     <td></td>
-                }
-			}
+               }
+           }
         </tr>
     }
 </table>
+</div>

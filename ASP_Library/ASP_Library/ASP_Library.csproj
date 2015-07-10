@@ -130,6 +130,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\LibrarianController.cs" />
     <Compile Include="Controllers\List.cs" />
+    <Compile Include="Controllers\UserDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,6 +139,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Library.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\userData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +234,7 @@
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Librarian\GetBook.cshtml" />
     <Content Include="Views\list.cshtml" />
+    <Content Include="Views\UserData\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

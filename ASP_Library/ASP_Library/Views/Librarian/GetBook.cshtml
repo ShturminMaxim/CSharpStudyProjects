@@ -5,8 +5,13 @@
 }
 
 <h2>GetBook</h2>
-
+<script>
+    $(function () {
+         
+    });
+</script>
 <form method="post">
+    @Ajax.ActionLink(
     @Html.HiddenFor(model => model.Id_Book)
     @Html.HiddenFor(model => model.DateOut)
     @Html.HiddenFor(model => model.Id_Lib)
