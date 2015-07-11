@@ -1,0 +1,189 @@
+﻿@model ASPProject11072015.Models.Books
+
+@{
+    ViewBag.Title = "AddBook";
+}
+<style>
+    #dialog {
+        display:none;
+        width:300px;
+        height:auto;
+        position:absolute;
+        top:20%;
+        left:50%;
+        margin-left:-150px;
+        border:solid 1px #000000;
+       
+        text-align:center;
+    }
+        #dialog > div {
+            width:50%;
+            margin:0 auto;
+            text-align:center;
+        }
+</style>
+<script>    
+    $(function () {
+        var dialog = $('#dialog');
+        $('.additem').on('click', function () {
+            var addType = $(this).attr("data-id");
+            var inputContainer = $('.input-box');
+            var firstNameBlock = $('<label>First Name</label><input type="text" data-type="firstName"/>');
+            var lastNameNameBlock = $('<label>Last Name</label><input type="text" data-type="lastName"/>');
+            var Name = $('<label>Name</label><input type="text" data-type="Name"/>');
+
+            inputContainer.html('');
+
+            switch (addType) {
+                case 'Theme':
+                    inputContainer.append(Name);
+                    break;
+                case 'Category':
+                    inputContainer.append(Name);
+                    break;
+                case 'Author':
+                    inputContainer.append(firstNameBlock);
+                    inputContainer.append(lastNameNameBlock);
+                    break;
+                case 'Press':
+                    inputContainer.append(Name);
+                    break;
+            }
+               
+            dialog.show();
+            dialog.find('.submit').on('click', function () {
+                var dataObj = {};
+
+                if ($(this).hasClass('cancel')) {
+                    dialog.hide();
+                } else {
+                    inputContainer.find('input').each(function(i,elem){
+                        dataObj[$(elem).attr('data-type')] = $(elem).val();
+                    });
+
+                    dataObj.addType = addType;
+
+                   
+                    $.ajax({
+                        url: '/Book/AddItem',
+                        type: 'POST',
+                        data: dataObj
+                    });
+                    dialog.hide();
+                }
+
+            })
+        })
+    })
+</script>
+
+<h2>AddBook</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Books</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Pages)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Pages)
+            @Html.ValidationMessageFor(model => model.Pages)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.YearPress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.YearPress)
+            @Html.ValidationMessageFor(model => model.YearPress)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Theme")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Id_Themes, (SelectList)ViewBag.listThemes)
+        
+            <button data-id="Theme" class="additem">Add Theme</button>
+            
+            @Html.ValidationMessageFor(model => model.Id_Themes)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Category")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Id_Category, (SelectList)ViewBag.listCategory)            
+            
+            <button data-id="Category" class="additem">Add Category</button>
+            
+            @Html.ValidationMessageFor(model => model.Id_Category)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Author")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Id_Author, (SelectList)ViewBag.listAuthor)            
+            
+            <button data-id="Author" class="additem">Add Author</button>
+            
+            
+            @Html.ValidationMessageFor(model => model.Id_Author)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Press")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Id_Press, (SelectList)ViewBag.listPress)
+            
+            <button data-id="Press" class="additem">Add Press</button>
+            
+            @Html.ValidationMessageFor(model => model.Id_Press)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Comment)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Comment)
+            @Html.ValidationMessageFor(model => model.Comment)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Quantity)
+            @Html.ValidationMessageFor(model => model.Quantity)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    <div id="dialog">
+        <div> Add new item</div>
+        <div class="input-box"></div>
+        <div><button class="submit ok">ok</button><button class="submit cancel">cancel</button></div>
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
