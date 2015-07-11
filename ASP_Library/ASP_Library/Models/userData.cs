@@ -7,6 +7,7 @@ namespace ASP_Library.Models
 {
     public class userData
     {
+        public string userType { get; set; }
         public DateTime? DateIn { get; set; }
         public DateTime DateOut { get; set; }
         public Books Books;

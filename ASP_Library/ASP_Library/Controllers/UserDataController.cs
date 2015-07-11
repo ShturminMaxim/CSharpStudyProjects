@@ -25,68 +25,50 @@ namespace ASP_Library.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection data)
         {
-            //var userData = db.Books.Where(b => b.Quantity > 0).ToList();
             List<userData> result = new List<userData>();
+            string userType = data["who"];
+
+           // dynamic user = null;
+            dynamic card = null;
+
             try
             {
-                //result.LastName = db.Students.Where(s => s.LastName.Contains(data["lastName"])).Select(s => s.LastName).Distinct().ToString();
+                switch (userType)
+                {
+                    case "student":
+                        Students user = db.Students.Where(s => s.LastName.Contains(data["lastName"])).Single();
+                        card = db.S_Cards.Where(c => c.Id_Student == user.Id).ToList();
+                        break;
+                    case "teacher":
+                        Teachers user = db.Teachers.Where(s => s.LastName.Contains(data["lastName"])).Single();
+                        card = db.T_Cards.Where(c => c.Id_Teacher == user.Id).ToList();
+                        break;
+                }
 
-                //switch (data["who"])
-                //{
-                //    case "student":
-                var student = db.Students.Where(s => s.LastName.Contains(data["lastName"])).Single();
-                var scard = db.S_Cards.Where(c => c.Id_Student == student.Id).ToList();
 
-                for (int i = 0; i < scard.Count(); i++)
+                for (int i = 0; i < card.Count(); i++)
                 {
                     var peopleData = new userData();
-                    peopleData.LastName = student.LastName.ToString();
-                    peopleData.DateIn = scard[i].DateIn;
-                    peopleData.DateOut = scard[i].DateOut;
-                    peopleData.Books = db.Books.Where(b => b.Id == scard[i].Id_Book).Single();
+                    peopleData.LastName = user.LastName.ToString();
+                    peopleData.DateIn = card[i].DateIn;
+                    peopleData.DateOut = card[i].DateOut;
+                    peopleData.Books = db.Books.Where(b => b.Id == card[i].Id_Book).Single();
+                    peopleData.userType = userType;
 
                     result.Add(peopleData);
                 }
 
-                //result.LastName = student.LastName.ToString();
-                //result.DateIn = scard.DateIn;
-                //result.DateOut = scard.DateOut;
-                //result.Books = db.Books.Where(b => b.Id == scard.Id_Book).Single();
-
-                //        result.S_Card = (ASP_Library.Models.S_Cards)db.S_Cards.Where(b => b.Id_Student == 1).Distinct();
-                //        break;
-                //    case "teacher":
-                //        result.T_Card = (ASP_Library.Models.T_Cards)db.T_Cards.Where(b => b.Id_Teacher == 1).Distinct();
-                //        break;
-                //}
                 return View(result);
             }
             catch
             {
                 return View(result);
             }    
-            //result.LastName = db.Students.Where(s => s.LastName.Contains(data["lastName"])).Select(s => s.LastName).Distinct().ToString();
+        }
 
-            //switch (data["who"])
-            //{
-            //    case "student":
-                    //var student = db.Students.Where(s => s.LastName.Contains(data["lastName"])).Single();
-                    //var scard = db.S_Cards.Where(c => c.Id_Student == student.Id).Single();
-            
-                    //result.LastName = student.LastName.ToString();
-                    //result.DateIn = scard.DateIn;
-                    //result.DateOut = scard.DateOut;
-                    //result.Books = scard.Books;
-
-            //        result.S_Card = (ASP_Library.Models.S_Cards)db.S_Cards.Where(b => b.Id_Student == 1).Distinct();
-            //        break;
-            //    case "teacher":
-            //        result.T_Card = (ASP_Library.Models.T_Cards)db.T_Cards.Where(b => b.Id_Teacher == 1).Distinct();
-            //        break;
-            //}
-            //ASP_Library.Models.userData result = ;
-            //ViewBag.Result = JsonConvert.SerializeObject(userData);
-            //return View(result);
+        static List<userData> getList(dynamic user)
+        {
+            return 
         }
 
         //
