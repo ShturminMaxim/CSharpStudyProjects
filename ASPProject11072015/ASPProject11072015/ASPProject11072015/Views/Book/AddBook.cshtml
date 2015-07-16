@@ -25,12 +25,14 @@
 <script>    
     $(function () {
         var dialog = $('#dialog');
+        var storedData = {};
+
         $('.additem').on('click', function () {
             var addType = $(this).attr("data-id");
             var inputContainer = $('.input-box');
             var firstNameBlock = $('<label>First Name</label><input type="text" data-type="firstName"/>');
             var lastNameNameBlock = $('<label>Last Name</label><input type="text" data-type="lastName"/>');
-            var Name = $('<label>Name</label><input type="text" data-type="Name"/>');
+            var Name = $('<label>Name</label><input type="text" data-type="name"/>');
 
             inputContainer.html('');
 
@@ -49,7 +51,7 @@
                     inputContainer.append(Name);
                     break;
             }
-               
+
             dialog.show();
             dialog.find('.submit').on('click', function () {
                 var dataObj = {};
@@ -57,27 +59,41 @@
                 if ($(this).hasClass('cancel')) {
                     dialog.hide();
                 } else {
-                    inputContainer.find('input').each(function(i,elem){
+                    inputContainer.find('input').each(function (i, elem) {
                         dataObj[$(elem).attr('data-type')] = $(elem).val();
                     });
 
                     dataObj.addType = addType;
 
-                   
+
                     $.ajax({
                         url: '/Book/AddItem',
                         type: 'POST',
-                        data: dataObj
+                        data: dataObj,
+                        success: function (data) {
+                            $.get('').success(function (data) {
+                                debugger;
+                                var mainWrapper = jQuery(data.match(/<body[^>]*>((.|[\n\r])*)<\/body>/im)[0]).find('.main');
+                                jQuery('.main').html(mainWrapper.html());
+                            });
+                        }
                     });
                     dialog.hide();
                 }
-
             })
-        })
+        });
+
+        var saveFormData = function () {
+
+        };
+
+        var restoreFormData = function () {
+
+        };
     })
 </script>
-
-<h2>AddBook</h2>
+<div class="main">
+    <h2>AddBook</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -175,6 +191,9 @@
         </p>
     </fieldset>
 }
+
+</div>
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")

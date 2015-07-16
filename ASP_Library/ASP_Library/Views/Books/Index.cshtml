@@ -59,7 +59,7 @@
                     'searchType': type
                 },
                 success: function () {
-                    jQuery('body').html(arguments[0].match(/<body[^>]*>((.|[\n\r])*)<\/body>/im)[0]);
+                    jQuery('body').html(data.match(/<body[^>]*>((.|[\n\r])*)<\/body>/im)[0]);
                     console.dir(arguments);
                 }
             })

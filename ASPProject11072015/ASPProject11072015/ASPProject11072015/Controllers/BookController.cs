@@ -44,8 +44,13 @@ namespace ASPProject11072015.Controllers
         [HttpPost]
         public ActionResult AddItem(FormCollection form)
         {
+            var cat = new Categories();
+            cat.Name = form["name"];
 
-            return RedirectToAction("Index");
+            db.Categories.InsertOnSubmit(cat);
+            db.SubmitChanges();
+
+            return new EmptyResult();
         }
 
     }
