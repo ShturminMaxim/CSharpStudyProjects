@@ -8,10 +8,10 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using Auth_ASP.Filters;
-using Auth_ASP.Models;
+using Tickets.Filters;
+using Tickets.Models;
 
-namespace Auth_ASP.Controllers
+namespace Tickets.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
@@ -79,9 +79,9 @@ namespace Auth_ASP.Controllers
                 // Попытка зарегистрировать пользователя
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email, Phone = model.Phone });
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("InfoStudent", "Account");
+                    return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -93,10 +93,6 @@ namespace Auth_ASP.Controllers
             return View(model);
         }
 
-        public ActionResult InfoStudents(){
-            
-            return View();
-        }
         //
         // POST: /Account/Disassociate
 
@@ -284,7 +280,7 @@ namespace Auth_ASP.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("libraryConnection", "Имя пользователя уже существует. Введите другое имя пользователя.");
+                        ModelState.AddModelError("UserName", "Имя пользователя уже существует. Введите другое имя пользователя.");
                     }
                 }
             }
