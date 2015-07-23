@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using Tickets.Models;
+using System.Web.Security;
 
 namespace Tickets.Filters
 {
@@ -33,8 +34,10 @@ namespace Tickets.Filters
                     {
                         if (!context.Database.Exists())
                         {
+                            //Roles.CreateRole("User");
+
                             // Создание базы данных SimpleMembership без схемы миграции Entity Framework
-                            ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
+                            ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();   
                         }
                     }
 

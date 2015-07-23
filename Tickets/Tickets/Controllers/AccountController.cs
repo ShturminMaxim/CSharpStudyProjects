@@ -80,6 +80,9 @@ namespace Tickets.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email, Phone = model.Phone });
+                    
+                   // Roles.AddUserToRole(model.UserName, "User");
+                    
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }

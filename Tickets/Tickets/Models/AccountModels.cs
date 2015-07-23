@@ -16,6 +16,8 @@ namespace Tickets.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<EventСategories> EventСategories { get; set; }
     }
 
     [Table("UserProfile")]
