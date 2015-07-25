@@ -4,10 +4,9 @@ using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
-using Tickets.Models;
-using System.Web.Security;
+using CodeFirstForASP.NET.Models;
 
-namespace Tickets.Filters
+namespace CodeFirstForASP.NET.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public sealed class InitializeSimpleMembershipAttribute : ActionFilterAttribute
@@ -26,20 +25,18 @@ namespace Tickets.Filters
         {
             public SimpleMembershipInitializer()
             {
-                //Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<UsersContext>(null);
 
                 try
                 {
-                    //using (var context = new UsersContext())
-                    //{
-                    //    if (!context.Database.Exists())
-                    //    {
-                    //        //Roles.CreateRole("User");
-
-                    //        // Создание базы данных SimpleMembership без схемы миграции Entity Framework
-                    //        ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();   
-                    //    }
-                    //}
+                    using (var context = new UsersContext())
+                    {
+                        if (!context.Database.Exists())
+                        {
+                            // Создание базы данных SimpleMembership без схемы миграции Entity Framework
+                            ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
+                        }
+                    }
 
                     WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }

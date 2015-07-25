@@ -6,6 +6,7 @@
 
     // Compile the template
     var theTemplate = Handlebars.compile(theTemplateScript);
+    
 
     // Define our data object
     var data = {

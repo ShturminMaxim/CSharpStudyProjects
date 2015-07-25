@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{70C48AC9-838B-4C28-BE69-90E2037081FA}</ProjectGuid>
+    <ProjectGuid>{95BA152D-8B9D-496A-86AA-E06811ABB5C2}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tickets</RootNamespace>
-    <AssemblyName>Tickets</AssemblyName>
+    <RootNamespace>CodeFirstForASP.NET</RootNamespace>
+    <AssemblyName>CodeFirstForASP.NET</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -39,9 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Handlebars">
-      <HintPath>..\packages\Handlebars.Net.1.4.0\lib\Handlebars.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -185,25 +182,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\EventCategoriesController.cs" />
-    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\DBInitialiser.cs" />
+    <Compile Include="DAL\StoreInitializer.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\EventsModel.cs" />
-    <Compile Include="Models\EventsСategoriesModel.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\StoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TicketsDbs.mdf" />
-    <Content Include="App_Data\TicketsDbs_log.ldf">
-      <DependentUpon>TicketsDbs.mdf</DependentUpon>
-    </Content>
-    <Content Include="Content\index.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -260,17 +251,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="App_Readme\Handlebarsjs_README.md" />
-    <Content Include="App_Readme\Handlebarsjs_LICENSE" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\handlebars.amd.js" />
-    <Content Include="Scripts\handlebars.amd.min.js" />
-    <Content Include="Scripts\handlebars.js" />
-    <Content Include="Scripts\handlebars.min.js" />
-    <Content Include="Scripts\handlebars.runtime.amd.js" />
-    <Content Include="Scripts\handlebars.runtime.amd.min.js" />
-    <Content Include="Scripts\handlebars.runtime.js" />
-    <Content Include="Scripts\handlebars.runtime.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -284,8 +265,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
-    <Content Include="Scripts\lib\handlebars-v3.0.3.js" />
-    <Content Include="Scripts\main_template\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -321,21 +300,15 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Partials\addEvent.cshtml" />
-    <Content Include="Views\EventCategories\Index.cshtml" />
-    <Content Include="Views\EventCategories\Details.cshtml" />
-    <Content Include="Views\EventCategories\Create.cshtml" />
-    <Content Include="Views\EventCategories\Edit.cshtml" />
-    <Content Include="Views\EventCategories\Delete.cshtml" />
-    <Content Include="Views\EventCategories\CreateCategory.cshtml" />
-    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -357,7 +330,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1138/</IISUrl>
+          <IISUrl>http://localhost:1846/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

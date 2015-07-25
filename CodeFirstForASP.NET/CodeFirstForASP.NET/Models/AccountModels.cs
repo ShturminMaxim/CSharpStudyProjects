@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
 
-namespace Tickets.Models
+namespace CodeFirstForASP.NET.Models
 {
     public class UsersContext : DbContext
     {
@@ -16,8 +16,6 @@ namespace Tickets.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<EventsModel> EventsModel { get; set; }
-        public DbSet<EventsСategoriesModel> EventsСategoriesModel { get; set; }
     }
 
     [Table("UserProfile")]
@@ -27,8 +25,6 @@ namespace Tickets.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
     }
 
     public class RegisterExternalLoginModel
@@ -81,20 +77,7 @@ namespace Tickets.Models
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Почтовый адрес не корректный.", MinimumLength = 6)]
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Почтовій адрес")]
-        public string Email { get; set; }
-
-
-        [Required]
-        [StringLength(100, ErrorMessage = "Телефон не корректный.", MinimumLength = 6)]
-        [DataType(DataType.PhoneNumber)]
-        [Display(Name = "телефон")]
-        public string Phone { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "Значение \"{0}\" должно содержать не менее {2} символов.")]
+        [StringLength(100, ErrorMessage = "Значение \"{0}\" должно содержать не менее {2} символов.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
