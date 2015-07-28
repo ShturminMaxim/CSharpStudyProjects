@@ -8,10 +8,15 @@
     <div class="main-wrapper">
         {{#each events}}
             <div class="event">
-                <div class="event-name">{{name}}</div>
-                <div class="description">{{description}}</div>
+                <div class="event-name"><span>Teaser: </span>{{Teaser}}</div>
+                <div class="event-name"><span>User: </span>{{User}}</div>
+                <div class="event-name"><span>Name: </span>{{Name}}</div>
+                <div class="description"><span>Category: </span>{{Category}}</div>
+                <div class="description"><span>Description: </span>{{Description}}</div>
+                <div class="description"><span>Cost: </span>{{Cost}}</div>
+                <div class="description"><span>Description: </span>{{Description}}</div>
             </div>
         {{/each}}
     </div>
 </script>
-<script src="~/Scripts/main_template/main.js"></script>
+@*<script src="~/Scripts/main_template/main.js"></script>*@

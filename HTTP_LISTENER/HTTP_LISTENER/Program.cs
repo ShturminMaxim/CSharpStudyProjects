@@ -27,7 +27,7 @@ namespace HTTP_LISTENER
 
             Fiddler.FiddlerApplication.BeforeRequest += delegate(Fiddler.Session oS)
             {
-                Console.WriteLine("Before request for:\t" + oS.fullUrl);
+                //Console.WriteLine("Before request for:\t" + oS.fullUrl);
                 // In order to enable response tampering, buffering mode must
                 // be enabled; this allows FiddlerCore to permit modification of
                 // the response in the BeforeResponse handler rather than streaming
@@ -35,9 +35,21 @@ namespace HTTP_LISTENER
                 oS.bBufferResponse = true;
             };
 
+
             Fiddler.FiddlerApplication.BeforeResponse += delegate(Fiddler.Session oS)
             {
-                Console.WriteLine("{0}:HTTP {1} for {2}", oS.id, oS.responseCode, oS.fullUrl);
+                //Console.WriteLine(oS.fullUrl.IndexOf("srvice.maxymiser").ToString());
+                //
+
+                if (oS.fullUrl.IndexOf("service.maxymiser") >= 0)
+                {
+                    oS.utilDecodeResponse();
+                    oS.utilReplaceInResponse("try {", "try {alert('Привееет!');");
+                    //Console.WriteLine(oS.utilReplaceInResponse("</head>","<script>alert('Привееет!');</script></head>"));
+                }
+                //oSession.utilReplaceInResponse('','<script>alert("mmcore - "+location.href); // mmcore.SetCookie("gm", "", -1); mmcore.async=true; mmcore.CGRequest(); mmcore.SetCookie("mma","mma",1,1); var mma = mmcore.GetCookie("mma",1); alert("cookie is - "+mma);</script></head>');
+       
+                //Console.WriteLine("{0}:HTTP {1} for {2}", oS.id, oS.responseCode, oS.fullUrl);
 
                 // Uncomment the following two statements to decompress/unchunk the
                 // HTTP response and subsequently modify any HTTP responses to replace 
@@ -45,7 +57,9 @@ namespace HTTP_LISTENER
                 //oS.utilDecodeResponse(); oS.utilReplaceInResponse("Microsoft", "Bayden");
             };
 
-            Fiddler.FiddlerApplication.AfterSessionComplete += delegate(Fiddler.Session oS) { Console.WriteLine("Finished session:\t" + oS.fullUrl); };
+            Fiddler.FiddlerApplication.AfterSessionComplete += delegate(Fiddler.Session oS) { 
+                //Console.WriteLine("Finished session:\t" + oS.fullUrl); 
+            };
 
             // Tell the system console to handle CTRL+C by calling our method that
             // gracefully shuts down the FiddlerCore.

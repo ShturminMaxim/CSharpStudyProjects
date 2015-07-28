@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Globalization;
 using System.Web.Security;
 
@@ -18,6 +19,11 @@ namespace Tickets.Models
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<EventsModel> EventsModel { get; set; }
         public DbSet<EventsСategoriesModel> EventsСategoriesModel { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 
     [Table("UserProfile")]

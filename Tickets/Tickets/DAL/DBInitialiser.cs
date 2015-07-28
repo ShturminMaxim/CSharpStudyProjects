@@ -11,6 +11,13 @@ namespace Tickets.DAL
     {
         protected override void Seed(UsersContext context)
         {
+            var listUsers = new List<UserProfile>{
+                new UserProfile{UserName="Max", Email="max@max.com", Phone="09355522233", UserId=1}
+            };
+
+            listUsers.ForEach(c => context.UserProfiles.Add(c));
+            context.SaveChanges();
+
             var listCategory = new List<EventsСategoriesModel>{
                 new EventsСategoriesModel{ Name="Night"},
                 new EventsСategoriesModel{ Name="Holidays"},

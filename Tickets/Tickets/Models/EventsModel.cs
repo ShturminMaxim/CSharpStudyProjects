@@ -17,7 +17,7 @@ namespace Tickets.Models
             public int? Discount { get; set; }
 
             public int EventsСategoriesModelId { get; set; }
-            public virtual EventsСategoriesModel Categories { get; set; }
+            public virtual EventsСategoriesModel Category { get; set; }
 
             public int UserId { get; set; }
             public virtual UserProfile User { get; set; }
