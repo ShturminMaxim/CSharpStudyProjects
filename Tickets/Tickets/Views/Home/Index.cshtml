@@ -1,0 +1,17 @@
+﻿<link href="~/Content/index.css" rel="stylesheet" />
+<script id="index-template" type="text/x-handlebars-template">
+                   
+    <div class="theme">
+          <p>Current events</p>
+    </div>
+
+    <div class="main-wrapper">
+        {{#each events}}
+            <div class="event">
+                <div class="event-name">{{name}}</div>
+                <div class="description">{{description}}</div>
+            </div>
+        {{/each}}
+    </div>
+</script>
+<script src="~/Scripts/main_template/main.js"></script>

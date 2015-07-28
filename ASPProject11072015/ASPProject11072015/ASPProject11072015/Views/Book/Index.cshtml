@@ -1,0 +1,23 @@
+﻿@model List<ASPProject11072015.Models.Books>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("AddBook", "AddBook", "")
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@item.Name</td>
+            <td>@item.Press.Name</td>
+            <td>@item.Pages</td>
+            <td>@item.Categories.Name</td>
+            <td>@item.Themes.Name</td>            
+        </tr>    
+    }
+</table>

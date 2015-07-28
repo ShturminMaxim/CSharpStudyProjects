@@ -59,7 +59,7 @@
                     'searchType': type
                 },
                 success: function () {
-                    jQuery('body').html(arguments[0].match(/<body[^>]*>((.|[\n\r])*)<\/body>/im)[0]);
+                    jQuery('body').html(data.match(/<body[^>]*>((.|[\n\r])*)<\/body>/im)[0]);
                     console.dir(arguments);
                 }
             })
@@ -71,18 +71,19 @@
     function failureFunctionHandler() {
         alert('not found');
     }
-
 </script>
 <div id="result">
-    <script>
-        $(function () {
-            $('[data-autocomplete-source]').each(function (i, elem) {
-                $(this).autocomplete({
-                    source: $(this).attr("data-autocomplete-source")
+        <script>
+            $(function () {
+                $('[data-autocomplete-source]').each(function (i, elem) {
+                    $(this).autocomplete({
+                        source: $(this).attr("data-autocomplete-source")
+                    });
                 });
-            });
-        })
-    </script>
+            })
+        </script>
+
+    <a href="/UserData">User data info</a>
     <h2>Index</h2>
     
 
