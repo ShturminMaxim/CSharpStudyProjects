@@ -13,7 +13,9 @@
     @Scripts.Render("~/Scripts/main_template/main.js")
 </head>
     <body>
-        <div class="wrapper"></div>
+        <div class="wrapper">
+                    @RenderBody()
+        </div>
    @*     <header>
             <div class="content-wrapper">
                 
@@ -51,7 +53,7 @@
                 </div>
             </div>
         </footer>*@
-        @RenderBody()
+
         @RenderSection("scripts", required: false)
     </body>
 </html>

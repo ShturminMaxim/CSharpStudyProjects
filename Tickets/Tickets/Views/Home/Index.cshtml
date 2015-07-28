@@ -1,10 +1,24 @@
 ﻿<link href="~/Content/index.css" rel="stylesheet" />
+<div class="header">
+    @Html.Partial("_Loginpartial")
+</div>             
+
+<div class="search-form">
+    <input type="text" value="" name="word"/>
+    <button class="submit-search">search</button>
+</div>
+
+<div class="add-form">
+    <button class="create-new-event">Create New</button>
+</div>
+
+<div class="index-template">
+
+</div>
 <script id="index-template" type="text/x-handlebars-template">
-                   
     <div class="theme">
           <p>Current events</p>
     </div>
-
     <div class="main-wrapper">
         {{#each events}}
             <div class="event">
@@ -19,4 +33,5 @@
         {{/each}}
     </div>
 </script>
+
 @*<script src="~/Scripts/main_template/main.js"></script>*@

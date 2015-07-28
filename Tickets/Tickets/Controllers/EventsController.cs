@@ -47,6 +47,41 @@ namespace Tickets.Controllers
         }
 
 
+        // GET: /Events/SearchFor
+        
+        public ActionResult SearchFor(string categoryName)
+        {
+            //get all Events from DB
+            var events = db.EventsModel.Where(e => e.Category.Name.Contains(categoryName)).Distinct().ToList();
+
+            //list for JSON parcing
+            var list = new List<object>();
+
+            if (events == null)
+            {
+                return HttpNotFound();
+            }
+
+            //for each Event from DB create new object with data needed 
+            events.ForEach(c =>
+            {
+                var b = new
+                {
+                    Name = c.Name,
+                    Description = c.Description,
+                    Teaser = c.Teaser,
+                    Cost = c.Cost,
+                    Discount = c.Discount,
+                    //This is an emulation of "Entity Link to Category" 
+                    Category = c.Category.Name,
+                    User = c.User.UserName
+                }; list.Add(b);
+            });
+
+            //return JSON to client
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
 
         //
         // GET: /Events/Details/5
