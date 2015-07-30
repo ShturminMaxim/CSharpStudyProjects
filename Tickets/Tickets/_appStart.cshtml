@@ -1,0 +1,6 @@
+﻿@*@{
+    var newUser = new UserProfile { UserName = "Max", Email = "max@max.com", Phone = "09355522233", UserId = 1 };
+
+    WebSecurity.CreateUserAndAccount(newUser.UserName, "gfhjkmgfhjkm", new { Email = newUser.Email, Phone = newUser.Phone });
+    WebSecurity.Login(newUser.UserName, "gfhjkmgfhjkm");
+}*@

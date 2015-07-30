@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Tickets.Filters;
 using Tickets.Models;
 using WebMatrix.WebData;
 
@@ -23,6 +24,8 @@ namespace Tickets.Controllers
         // POST: /AddEvent/Create
 
         [HttpPost]
+        [InitializeSimpleMembership]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(FormCollection data)
         {
             EventsModel newEvent = new EventsModel();

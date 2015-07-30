@@ -1,10 +1,13 @@
-﻿<link href="~/Content/index.css" rel="stylesheet" />
+﻿@{
+    ViewBag.Title = @Resources.Resource.IndexHeader;
+}
+<link href="~/Content/index.css" rel="stylesheet" />
 <div class="row header">
     @Html.Partial("_Loginpartial")
 
     <div class="search-form">
         <input type="text" value="" name="word"/>
-        <button class="submit-search">search</button>
+        <button class="submit-search">@Resources.Resource.Search</button>
     </div>
 </div>             
 

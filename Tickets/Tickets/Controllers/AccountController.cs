@@ -40,7 +40,7 @@ namespace Tickets.Controllers
                 return RedirectToLocal(returnUrl);
             }
 
-            // Появление этого сообщения означает наличие ошибки; повторное отображение формы
+            //Появление этого сообщения означает наличие ошибки; повторное отображение формы
             ModelState.AddModelError("", "Имя пользователя или пароль указаны неверно.");
             return View(model);
         }
@@ -80,10 +80,17 @@ namespace Tickets.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { Email = model.Email, Phone = model.Phone });
-                    
-                   // Roles.AddUserToRole(model.UserName, "Admin");
-                    
                     WebSecurity.Login(model.UserName, model.Password);
+
+                    if (Roles.RoleExists("Admin") == false) {
+                        Roles.CreateRole("Admin");
+                    }
+
+                    if (WebSecurity.CurrentUserId == 1 || WebSecurity.CurrentUserId == 3)
+                    {
+                        Roles.AddUserToRole(model.UserName, "Admin");
+                     }
+
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

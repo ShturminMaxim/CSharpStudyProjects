@@ -5,13 +5,15 @@
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a>
         }
+@User.IsInRole("Admin")
  </text>
-      @* if (User.IsInRole("Admin"))
+      if (User.IsInRole("Admin") == true)
     {
         <div class="add-form">
             <button class="create-new-event">Create New</button>
         </div>   
-    }*@
+        
+    }
 } else {
     <ul>
         <li>@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>

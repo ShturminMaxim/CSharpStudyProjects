@@ -13,21 +13,20 @@ namespace Tickets.DAL
     {
         protected override void Seed(UsersContext context)
         {
-            Roles.CreateRole("Admin");
-            Roles.CreateRole("User");
-            Roles.CreateRole("Client");
+            var newUser = new UserProfile { UserName = "DummyUser", Email = "max@max.com", Phone = "09355522233", UserId = 1 };
 
-            var listUsers = new List<UserProfile>{
-                new UserProfile{UserName="Max", Email="max@max.com", Phone="09355522233", UserId=1}
-            };
+            
+            //WebSecurity.CreateUserAndAccount(newUser.UserName, "gfhjkmgfhjkm", new { Email = newUser.Email, Phone = newUser.Phone });
+            //WebSecurity.Login(newUser.UserName, "gfhjkmgfhjkm");
+            
+            //listUsers.ForEach(c => context.UserProfiles.Add(c));
+            //context.SaveChanges();
 
-            Roles.AddUserToRole(listUsers[0].UserName, "Admin");
-
-            listUsers.ForEach(c => context.UserProfiles.Add(c));
+            context.UserProfiles.Add(newUser);
             context.SaveChanges();
 
-            var token = WebSecurity.GeneratePasswordResetToken("Max");
-            var result = WebSecurity.ResetPassword(token, "gfhjkmgfhjkm");
+            //var token = WebSecurity.GeneratePasswordResetToken("Max");
+            //var result = WebSecurity.ResetPassword(token, "gfhjkmgfhjkm");
 
             var listCategory = new List<EventsСategoriesModel>{
                 new EventsСategoriesModel{ Name="Night"},
@@ -61,6 +60,8 @@ namespace Tickets.DAL
             };
             listEvents.ForEach(p => context.EventsModel.Add(p));
             context.SaveChanges();
+
+            //Roles.AddUserToRole(newUser.UserName, "Admin");
         }
     }
 }
