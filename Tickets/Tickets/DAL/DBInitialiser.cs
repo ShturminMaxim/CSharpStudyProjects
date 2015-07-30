@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using Tickets.Models;
+using WebMatrix.WebData;
 
 namespace Tickets.DAL
 {
@@ -11,12 +13,21 @@ namespace Tickets.DAL
     {
         protected override void Seed(UsersContext context)
         {
+            Roles.CreateRole("Admin");
+            Roles.CreateRole("User");
+            Roles.CreateRole("Client");
+
             var listUsers = new List<UserProfile>{
                 new UserProfile{UserName="Max", Email="max@max.com", Phone="09355522233", UserId=1}
             };
 
+            Roles.AddUserToRole(listUsers[0].UserName, "Admin");
+
             listUsers.ForEach(c => context.UserProfiles.Add(c));
             context.SaveChanges();
+
+            var token = WebSecurity.GeneratePasswordResetToken("Max");
+            var result = WebSecurity.ResetPassword(token, "gfhjkmgfhjkm");
 
             var listCategory = new List<EventsСategoriesModel>{
                 new EventsСategoriesModel{ Name="Night"},

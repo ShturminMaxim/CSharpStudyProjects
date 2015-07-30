@@ -1,16 +1,12 @@
 ﻿<link href="~/Content/index.css" rel="stylesheet" />
-<div class="header">
+<div class="row header">
     @Html.Partial("_Loginpartial")
+
+    <div class="search-form">
+        <input type="text" value="" name="word"/>
+        <button class="submit-search">search</button>
+    </div>
 </div>             
-
-<div class="search-form">
-    <input type="text" value="" name="word"/>
-    <button class="submit-search">search</button>
-</div>
-
-<div class="add-form">
-    <button class="create-new-event">Create New</button>
-</div>
 
 <div class="index-template">
 
