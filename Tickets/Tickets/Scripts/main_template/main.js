@@ -7,6 +7,7 @@
 
     // Compile the template
     var theTemplate = Handlebars.compile(theTemplateScript);
+
     window.renderTemplate = function () {
         return $.getJSON('/Events').success(function (data) {
 
@@ -20,12 +21,13 @@
 
             // Add the compiled html to the page
             teplateWrapper.html(theCompiledHtml);
-
-            //Add events
         });
     }
 
     var addEvents = function () {
+        /**
+        *  Search events
+        */
         wrapper.on('click', '.search-form .submit-search', function () {
             var val = $('.search-form').find('input[name="word"]').val();
             $.ajax({
@@ -51,6 +53,10 @@
         });
     };
 
+
+    /**
+    * Render HTML Template
+    */
     renderTemplate().done(function () {
         addEvents();
     });

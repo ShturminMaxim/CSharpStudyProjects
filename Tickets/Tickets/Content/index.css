@@ -4,6 +4,19 @@
     padding:10px;
 }
 
+.event .teaser-image {
+    width: 300px;
+    display: inline-block;
+}
+
+.event .event-description-box {
+    display: inline-block;
+}
+
+
+
+
+/* add event*/
 .add-event-box {
     width: 360px;
     min-height: 300px;
@@ -24,12 +37,14 @@
 .add-event-box input {
     padding: 5px;
     margin-bottom: 10px;
+    display: block;
+    margin: 0 auto;
 }
 
 .add-event-box .submit-event {
     width: 310px;
     display: inline-block;
-    margin: 0;
+    margin: 26px 0 0 0;
 }
 
 .overlay {

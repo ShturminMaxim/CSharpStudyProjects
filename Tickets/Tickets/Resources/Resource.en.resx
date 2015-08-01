@@ -120,7 +120,13 @@
   <data name="Event" xml:space="preserve">
     <value>Событие</value>
   </data>
+  <data name="IndexHeader" xml:space="preserve">
+    <value>рлдваыплорвыпа</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
   </data>
 </root>

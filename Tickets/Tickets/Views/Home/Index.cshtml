@@ -1,13 +1,13 @@
 ﻿@{
-    ViewBag.Title = @Resources.Resource.IndexHeader;
+    ViewBag.Title = Tickets.Resources.Resource.IndexHeader;
 }
 <link href="~/Content/index.css" rel="stylesheet" />
 <div class="row header">
     @Html.Partial("_Loginpartial")
-
+    <div>@ViewBag.Title</div>
     <div class="search-form">
         <input type="text" value="" name="word"/>
-        <button class="submit-search">@Resources.Resource.Search</button>
+        <button class="submit-search">@Tickets.Resources.Resource.Search</button>
     </div>
 </div>             
 
@@ -21,13 +21,17 @@
     <div class="main-wrapper">
         {{#each events}}
             <div class="event">
-                <div class="event-name"><span>Teaser: </span>{{Teaser}}</div>
-                <div class="event-name"><span>User: </span>{{User}}</div>
-                <div class="event-name"><span>Name: </span>{{Name}}</div>
-                <div class="description"><span>Category: </span>{{Category}}</div>
-                <div class="description"><span>Description: </span>{{Description}}</div>
-                <div class="description"><span>Cost: </span>{{Cost}}</div>
-                <div class="description"><span>Description: </span>{{Description}}</div>
+                <div class="event-name">
+                    <img class="teaser-image" src="/Images/{{Teaser}}" alt="Alternate Text" />
+                </div>
+                <div class="event-description-box">
+                    <div class="event-name"><span>User: </span>{{User}}</div>
+                    <div class="event-name"><span>Name: </span>{{Name}}</div>
+                    <div class="description"><span>Category: </span>{{Category}}</div>
+                    <div class="description"><span>Description: </span>{{Description}}</div>
+                    <div class="description"><span>Cost: </span>{{Cost}}</div>
+                    <div class="description"><span>Description: </span>{{Description}}</div>
+                </div>
             </div>
         {{/each}}
     </div>

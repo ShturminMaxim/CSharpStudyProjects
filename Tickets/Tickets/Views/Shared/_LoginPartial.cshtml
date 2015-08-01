@@ -5,14 +5,13 @@
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a>
         }
-@User.IsInRole("Admin")
  </text>
       if (User.IsInRole("Admin") == true)
     {
         <div class="add-form">
             <button class="create-new-event">Create New</button>
         </div>   
-        
+        <script src="~/Scripts/create/createItem.js"></script>
     }
 } else {
     <ul>

@@ -89,7 +89,7 @@ namespace Tickets.Controllers
                     if (WebSecurity.CurrentUserId == 1 || WebSecurity.CurrentUserId == 3)
                     {
                         Roles.AddUserToRole(model.UserName, "Admin");
-                     }
+                    }
 
                     return RedirectToAction("Index", "Home");
                 }
