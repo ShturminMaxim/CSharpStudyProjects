@@ -1,0 +1,73 @@
+.tabs{
+    .panel-body{
+        background: #FFF;
+        .border-radius(@dev-default-border-radius);
+    }
+}
+
+.nav-tabs{
+    border-color: @dev-default-border-color;    
+    
+    > li{
+        > a{
+            color: @dev-default-font-color;            
+            margin: 0px;
+            border: 0px;
+            border-bottom: 3px solid transparent;
+            .box-transition-all(200ms);
+            padding: @dev-unit * 3 @dev-unit * 4;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+            
+            &:hover{
+                border-bottom-color: @dev-default-border-color;
+                background: @dev-default-background;
+            }
+        }
+        &.active{
+            > a,
+            > a:hover,
+            > a:focus{
+                color: @dev-default-font-color;               
+                border: 0px;
+                border-bottom: 3px solid @dev-theme-background;
+                background: @dev-default-background;
+            }
+        }
+    }
+    
+    &.nav-tabs-arrowed{
+        > li{            
+            &.active{
+                > a{
+
+                    &:after, &:before {
+                        top: 100%;
+                        left: 50%;
+                        border: solid transparent;
+                        content: " ";
+                        height: 0;
+                        width: 0;
+                        position: absolute;
+                        pointer-events: none;                        
+                    }
+
+                    &:after {
+                        border-color: rgba(255, 255, 255, 0);
+                        border-top-color: @dev-default-background;
+                        border-width: 6px;
+                        margin-left: -6px;
+                    }
+                    &:before {
+                        border-color: rgba(255, 255, 255, 0);
+                        border-top-color: @dev-theme-background;
+                        border-width: 10px;
+                        margin-left: -10px;
+                    }
+                }
+            }           
+        }
+    }
+    
+}

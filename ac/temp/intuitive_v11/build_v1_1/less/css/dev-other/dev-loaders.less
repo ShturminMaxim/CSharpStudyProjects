@@ -1,0 +1,188 @@
+/* template loaders */
+    
+    /* circle universal loader */
+        /* keyframes */
+        @-webkit-keyframes dev-loader-circle-1 {
+            0%  {top: -10px;}
+            50% {top: 0px; .opacity(.5);}
+            100% {top: -10px;}   
+        }
+        @keyframes dev-loader-circle-1 {
+            0%  {top: -10px;}
+            50% {top: 0px; .opacity(.5);}
+            100% {top: -10px;}   
+        }           
+        
+        @-webkit-keyframes dev-loader-circle-2 {
+            0%  {right: -10px;}
+            50% {right: 0px; .opacity(.5);}
+            100% {right: -10px;}   
+        }
+        @keyframes dev-loader-circle-2 {
+            0%  {right: -10px;}
+            50% {right: 0px; .opacity(.5);}
+            100% {right: -10px;}   
+        }
+        
+        @-webkit-keyframes dev-loader-circle-3 {
+            0%  {bottom: -10px;}
+            50% {bottom: 0px; .opacity(.5);}
+            100% {bottom: -10px;}   
+        }
+        @keyframes dev-loader-circle-3 {
+            0%  {bottom: -10px;}
+            50% {bottom: 0px; .opacity(.5);}
+            100% {bottom: -10px;}   
+        }
+        
+        @-webkit-keyframes dev-loader-circle-4 {
+            0%  {left: -10px;}
+            50% {left: 0px; .opacity(.5);}
+            100% {left: -10px;}   
+        }
+        @keyframes dev-loader-circle-4 {
+            0%  {left: -10px;}
+            50% {left: 0px; .opacity(.5);}
+            100% {left: -10px;}   
+        }
+        
+        
+        @-webkit-keyframes scaleout {
+            0% { -webkit-transform: scale(0.0) }
+            100% {-webkit-transform: scale(1.0); opacity: 0;}
+        }
+        @keyframes scaleout {
+            0% {transform: scale(0.0); -webkit-transform: scale(0.0);} 
+            100% {transform: scale(1.0);-webkit-transform: scale(1.0);opacity: 0;}
+        }
+        /* ./keyframes */
+    
+    
+    @dev-loader-page-loader-size: 40px;
+    @dev-loader-page-loader-color: @dev-theme-background;
+    @dev-loader-page-loader-background: @dev-default-background;
+    @dev-loader-page-loader-secondary-background: darken(@dev-default-background,20%);
+        
+    .dev-page-loading{
+        position: fixed;
+        width: 100%;
+        height: 100%;        
+        background: @dev-loader-page-loader-background;
+        z-index: 999;
+        .opacity(0);
+        
+        &:before{
+            content: " ";
+            position: absolute;
+            width: @dev-loader-page-loader-size;
+            height: @dev-loader-page-loader-size;
+            top: 50%;
+            left: 50%;
+            margin-top: -@dev-loader-page-loader-size / 2;
+            margin-left: -@dev-loader-page-loader-size / 2;
+            background: @dev-loader-page-loader-color;
+            border-radius: 50%;
+            -webkit-animation: scaleout 800ms infinite ease-in-out;
+            animation: scaleout 800ms infinite ease-in-out;
+        }
+        &:after{
+            content: " ";
+            position: absolute;
+            width: @dev-loader-page-loader-size - 10;
+            height: @dev-loader-page-loader-size - 10;
+            top: 50%;
+            left: 50%;
+            margin-top: -@dev-loader-page-loader-size / 2 + 5;
+            margin-left: -@dev-loader-page-loader-size / 2 + 5;
+            background: @dev-loader-page-loader-secondary-background;
+            border-radius: 50%;
+            -webkit-animation: scaleout 400ms infinite ease-in-out;
+            animation: scaleout 400ms infinite ease-in-out;
+        }
+        
+        &.preloader{
+            .opacity(1);
+        }
+    }
+    
+    
+    @dev-loader-circle-size: 30px;
+    @dev-loader-circle-border: 2px;
+    @dev-loader-circle-border-color: @dev-theme-background;
+    @dev-loader-circle-speed: 500ms;
+
+    .dev-loader-circle{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -@dev-loader-circle-size/2 0px 0px -@dev-loader-circle-size/2;
+        width: @dev-loader-circle-size;
+        height: @dev-loader-circle-size;
+        //.opacity(0);
+        
+        > div{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: @dev-loader-circle-size;
+            height: @dev-loader-circle-size;
+            border: @dev-loader-circle-border solid @dev-loader-circle-border-color;
+            .border-radius(100%);
+        }
+        
+        &.dev-loader-circle-active{
+            .opacity(1);
+            
+            
+            > div:nth-child(1){top: -10px; -webkit-animation: dev-loader-circle-1 @dev-loader-circle-speed infinite linear; animation: dev-loader-circle-1 @dev-loader-circle-speed infinite linear;}
+            > div:nth-child(2){right: -10px; left: auto; -webkit-animation: dev-loader-circle-2 @dev-loader-circle-speed infinite linear; animation: dev-loader-circle-2 @dev-loader-circle-speed infinite linear;}
+            > div:nth-child(3){top: auto; bottom: -10px; -webkit-animation: dev-loader-circle-3 @dev-loader-circle-speed infinite linear; animation: dev-loader-circle-3 @dev-loader-circle-speed infinite linear;}
+            > div:nth-child(4){left: -10px; -webkit-animation: dev-loader-circle-4 @dev-loader-circle-speed infinite linear; animation: dev-loader-circle-4 @dev-loader-circle-speed infinite linear;}
+        }
+    }    
+    /* ./circle universal loader */
+    
+    /* circle default loader */
+        /* keyframes */
+        @-webkit-keyframes dev-loader-default {
+            0%{.opacity(0.2); top: 0px;}            
+            50%{.opacity(1); top: -10px;}
+            100%{.opacity(0.2); top: 0px;}
+        }
+        @keyframes dev-loader-default {
+            0%{.opacity(0.2); top: 0px;}            
+            50%{.opacity(1); top: -10px;}
+            100%{.opacity(0.2); top: 0px;}
+        }      
+        /* ./keyframes */
+    
+    
+    @dev-loader-default-size: 30px;
+    @dev-loader-default-background: @dev-theme-background;
+    @dev-loader-default-speed: 500ms;
+    
+    .dev-loader-default{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -@dev-loader-default-size/2 0px 0px -@dev-loader-default-size/2;
+        width: @dev-loader-default-size;
+        height: @dev-loader-default-size;
+        
+        > div{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: @dev-loader-circle-size;
+            height: @dev-loader-circle-size;            
+            background: @dev-loader-default-background;
+            .border-radius(100%);
+            .opacity(0);
+            -webkit-animation: dev-loader-default @dev-loader-default-speed infinite linear; 
+            animation: dev-loader-default @dev-loader-default-speed infinite linear;
+        }
+    }
+    
+    /* circle default loader */
+    
+/* end template loaders */

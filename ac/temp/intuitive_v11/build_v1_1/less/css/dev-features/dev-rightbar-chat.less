@@ -1,0 +1,391 @@
+    // Rightbar chat
+    
+    /* variables */
+    @dev-rightbar-chat-width: @dev-layout-rightbar-width;
+    @dev-rightbar-chat-background: @dev-layout-rightbar-background;
+    
+    @dev-rightbar-chat-contacts-color: @dev-theme-background;
+    @dev-rightbar-chat-contacts-status-online: @dev-bg-success;
+    @dev-rightbar-chat-contacts-status-away: @dev-bg-warning;
+    @dev-rightbar-chat-contacts-status-dont: @dev-bg-danger;
+    @dev-rightbar-chat-contacts-status-offline: #CCC;
+    
+    @dev-rightbar-chat-user-background: darken(@dev-layout-sidebar-background,2%);
+    @dev-rightbar-chat-user-color: @dev-layout-sidebar-font-color;
+    @dev-rightbar-chat-user-sub-color: #c0cbd6;
+    /* ./variables */
+    
+    .dev-page{    
+        .dev-page-rightbar{
+            
+            .rightbar-chat{
+                float: left;
+                width: @dev-rightbar-chat-width * 2;
+                height: 100%;
+                position: relative;            
+                
+                .rightbar-title{
+                    float: left;
+                    width: 100%;
+                    height: @dev-layout-header-height;                    
+                    padding: @dev-unit * 2 @dev-unit * 3;
+                    display: none;
+                    
+                    h3{
+                        line-height: 35px;
+                        padding: 0px;
+                        margin: 0px;
+                        font-size: @dev-rightbar-header-font-size;
+                        color: @dev-rightbar-header-color;
+                        float: left;                    
+                        font-weight: 600;
+                        text-transform: uppercase;
+                    }
+                    
+                    .btn{
+                        float: left;                                
+                        display: block;
+                        width: 35px;
+                        height: 35px;
+                        background: transparent;
+                        color: darken(@dev-rightbar-chat-background,25%);
+                        border: 2px solid darken(@dev-rightbar-chat-background,25%);
+                        text-align: center;                                                        
+                        font-size: 14px;
+                        padding: 0px;
+                        line-height: 30px;
+                        
+                        &:hover{
+                            border: 2px solid darken(@dev-rightbar-chat-background,30%);
+                            color: darken(@dev-rightbar-chat-background,30%);
+                        }
+                    }
+                }
+                
+                .rightbar-chat-frame-contacts{
+                    float: left;
+                    width: @dev-rightbar-chat-width;
+                    .box-transition(margin-left,200ms,ease);
+
+                    ul.contacts{
+                        display: block;
+                        float: left;
+                        list-style: none;
+                        padding: 0px;
+                        margin: 0px;
+                        width: 100%;
+
+                        li{
+                            float: left;
+                            width: 100%;
+
+                            a{
+                                position: relative;
+                                float: left;
+                                width: 100%;
+                                padding: 10px 20px;
+                                font-size: 12px;
+                                font-weight: 600;
+                                text-decoration: none;
+                                line-height: 40px;
+                                color: @dev-rightbar-chat-contacts-color;
+                                .box-transition-all(200ms);                            
+
+                                img{
+                                    float: left;
+                                    margin: 0px 20px 0px 0px;
+                                    width: 40px;                                
+                                    .border-radius(20px);
+                                }
+
+                                &:hover{
+                                    color: darken(@dev-rightbar-chat-contacts-color,10%);
+                                    background: darken(@dev-rightbar-chat-background,5%);
+                                }
+
+                                &.status{
+                                    &:after{
+                                        position: absolute;
+                                        content: " ";
+                                        left: 46px;
+                                        top: 36px;
+                                        width: 16px;
+                                        height: 16px;
+                                        .border-radius(50%);
+                                        background: @dev-rightbar-chat-contacts-status-offline;
+                                        border: 2px solid @dev-rightbar-chat-background;
+                                    }
+                                    &.online{
+                                        &:after{
+                                            background: @dev-rightbar-chat-contacts-status-online;
+                                        }
+                                    }
+                                    &.away{
+                                        &:after{
+                                            background: @dev-rightbar-chat-contacts-status-away;
+                                        }
+                                    }
+                                    &.dont{
+                                        &:after{
+                                            background: @dev-rightbar-chat-contacts-status-dont;
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            &.title{
+                                padding: 20px 20px 5px;
+                                font-size: 12px;
+                                font-weight: 600;
+                                color: darken(@dev-rightbar-chat-background,25%);
+                                line-height: 20px;
+                                text-transform: uppercase;
+                            }
+                        }
+
+                    }
+
+                }
+
+                .rightbar-chat-frame-chat{
+                    position: relative;
+                    float: left;
+                    width: @dev-rightbar-chat-width;                
+
+                    .user{
+                        float: left;
+                        width: 100%;
+                        height: 200px;                    
+                        background: @dev-rightbar-chat-user-background;
+                        background-position: center center;
+                        background-size: @dev-rightbar-chat-width 200px;                    
+
+                        .user-panel{
+                            float: left;
+                            width: 100%;
+                            height: 55px;
+                            padding: 15px 15px 0px;
+
+                            .btn{
+                                float: left;                                
+                                display: block;
+                                width: 35px;
+                                height: 35px;
+                                background: transparent;
+                                color: @dev-rightbar-chat-user-color;
+                                border: 2px solid rgba(255,255,255,0.25);
+                                text-align: center;                                                        
+                                font-size: 14px;
+                                line-height: 30px;
+                                padding: 0px;
+
+                                &:hover{
+                                    border: 2px solid rgba(255,255,255,0.5);
+                                }
+                            }
+                        }
+                        .user-info{
+                            float: left;
+                            width: 100%;
+                            text-align: center;
+                            margin-top: -20px;
+
+                            .user-info-image{                            
+                                width: 100px;
+                                margin: 0px auto;
+                                height: 100%;
+                                position: relative;
+
+                                img{
+                                    width: 100px;
+                                    .border-radius(50%);
+                                    border: 2px solid darken(@dev-rightbar-chat-user-background,2%);
+                                }
+
+                                &.status{
+                                    &:after{
+                                        content: " ";
+                                        position: absolute;
+                                        right: 5px;
+                                        bottom: 0px;
+                                        width: 24px;
+                                        height: 24px;
+                                        background: @dev-rightbar-chat-contacts-status-offline;
+                                        border: 2px solid darken(@dev-rightbar-chat-user-background,2%);
+                                        .border-radius(50%);
+                                    }
+                                    &.online{
+                                        &:after{
+                                            background: @dev-rightbar-chat-contacts-status-online;
+                                        }
+                                    }
+                                    &.away{
+                                        &:after{
+                                            background: @dev-rightbar-chat-contacts-status-away;
+                                        }
+                                    }
+                                    &.dont{
+                                        &:after{
+                                            background: @dev-rightbar-chat-contacts-status-dont;
+                                        }
+                                    }
+                                }
+                            }                        
+
+                            h5{
+                                display: block;
+                                margin: 10px 0px 0px 0px;
+                                font-size: 14px;
+                                font-weight: 600;
+                                color: @dev-rightbar-chat-user-color;
+                                text-shadow: 1px 1px 2px rgba(0,0,0,0.25);
+                            }
+                            span{
+                                display: block;
+                                font-size: 12px;
+                                line-height: 20px;
+                                color: @dev-rightbar-chat-user-sub-color;
+                            }
+                        }
+                    }
+
+                    .chat-wrapper{
+                        float: left;
+                        width: 100%;
+
+                        ul.chat{
+                            display: block;
+                            float: left;
+                            list-style: none;
+                            padding: 0px 10px 0px;
+                            margin: 0px;
+                            width: 100%;                    
+
+                            li{
+                                position: relative;
+                                display: inline-block;
+                                float: right;                       
+                                clear: both;
+                                line-height: 18px;
+                                padding: 10px 15px 5px 15px;
+                                margin-bottom: 15px;
+                                margin-right: 5px;
+                                font-size: 12px;
+                                .border-radius(5px);
+                                background: #FFF;
+                                -webkit-animation: zoomIn 200ms;
+                                animation: zoomIn 200ms;
+
+                                span{
+                                    display: block;
+                                    line-height: 20px;
+                                    font-size: 11px;
+                                    color: @dev-rightbar-chat-user-sub-color;
+                                    text-align: right;
+                                }
+
+                                &:after,&:before{
+                                    position: absolute;
+                                    content: " ";                                                                                   
+                                    .border-radius(50%);                     
+                                    width: 10px;
+                                    height: 10px; 
+                                    background: #FFF;
+                                }
+                                &:before{
+                                    width: 4px;
+                                    height: 4px;
+                                }
+
+                                &.sent{
+                                    &:after{
+                                        right: -5px;
+                                        bottom: 4px;
+                                    }
+                                    &:before{
+                                        right: -10px;
+                                        bottom: 4px;
+                                    }
+                                }
+
+                                &.inbox{
+                                    float: left;
+                                    background: @dev-rightbar-chat-user-background;
+                                    color: @dev-rightbar-chat-user-color;
+                                    margin-right: 0px;
+                                    margin-left: 5px;
+
+                                    &:after, &:before{
+                                        background: @dev-rightbar-chat-user-background;                                
+                                    }
+
+                                    &:after{
+                                        left: -5px;
+                                        bottom: 4px;
+                                    }
+                                    &:before{
+                                        left: -10px;
+                                        bottom: 4px;
+                                    }
+                                }
+
+                                &:first-child{
+                                    margin-top: 10px;
+                                }
+                            }
+
+                        }                    
+
+                    }
+
+                    .form{
+                        position: absolute;
+                        bottom: 0px;
+                        left: 0px;                    
+                        height: 45px;
+                        width: @dev-rightbar-chat-width;
+
+                        .form-group{
+                            margin-bottom: 0px;
+
+                            .btn{
+                                .border-radius(0px);
+                                padding: 10px;
+                                min-width: 45px;
+                            }
+                            .form-control{
+                                padding: 10px;
+                                height: auto;
+                            }
+                        }                   
+                    }
+
+                }
+
+                &.rightbar-chat-opened{
+                    .rightbar-chat-frame-contacts{
+                        margin-left: -@dev-rightbar-chat-width;
+                    }                
+                }
+
+            }
+
+        }
+    }
+    
+    
+    @media all and (max-width: @screen-mobile){
+        
+        .dev-page{    
+            .dev-page-rightbar{
+                .rightbar-chat{                    
+                    .rightbar-title{
+                        display: block;
+                    }
+                }
+            }
+        }
+        
+    }
+    // ./Rightbar chat

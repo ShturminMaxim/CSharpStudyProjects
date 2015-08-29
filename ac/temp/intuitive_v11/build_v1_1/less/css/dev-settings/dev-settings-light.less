@@ -1,0 +1,263 @@
+    
+    @dev-page-background: #FBFBFB;
+    @dev-page-color: #505B64;
+    
+    @dev-page-margin: 10px;
+    
+    @screen-mobile: 992px;
+    
+    /* default colors */
+        @dev-theme-background: #34495D;//#275D69;
+        @dev-theme-color: #FFF;
+        
+        @dev-bg-default: #F3F7F7;
+        @dev-bg-default-hover: #F9F9F9;
+        @dev-bg-default-focus: #FFF;
+        @dev-bg-default-active: #F8F8F8;
+        
+        @dev-bg-primary: @dev-theme-background;//#34495E;
+        @dev-bg-primary-hover: lighten(@dev-bg-primary, 5%);
+        @dev-bg-primary-focus: lighten(@dev-bg-primary, 8%);
+        @dev-bg-primary-active: @dev-bg-primary-focus;
+        
+        @dev-bg-info: #85d6de;
+        @dev-bg-info-hover: lighten(@dev-bg-info, 5%);
+        @dev-bg-info-focus: lighten(@dev-bg-info, 8%);
+        @dev-bg-info-active: @dev-bg-info-focus;
+        
+        @dev-bg-success: #82b440;
+        @dev-bg-success-hover: lighten(@dev-bg-success, 5%);
+        @dev-bg-success-focus: lighten(@dev-bg-success, 8%);
+        @dev-bg-success-active: @dev-bg-success-focus;
+        
+        @dev-bg-warning: #F3BC65;
+        @dev-bg-warning-hover: lighten(@dev-bg-warning, 5%);
+        @dev-bg-warning-focus: lighten(@dev-bg-warning, 8%);
+        @dev-bg-warning-active: @dev-bg-warning-focus;
+        
+        @dev-bg-danger: #E74E40;
+        @dev-bg-danger-hover: lighten(@dev-bg-danger, 5%);
+        @dev-bg-danger-focus: lighten(@dev-bg-danger, 8%);
+        @dev-bg-danger-active: @dev-bg-danger-focus;
+        
+        @dev-bg-facebook: #3B5998;
+        @dev-bg-facebook-hover: lighten(@dev-bg-facebook, 5%);
+        @dev-bg-facebook-focus: lighten(@dev-bg-facebook, 8%);
+        @dev-bg-facebook-active: @dev-bg-facebook-focus;
+    /* ./default colors */
+    
+    // default settings
+    @dev-unit: 5px;
+    
+    @dev-default-font-size: 12px;
+    @dev-default-font-color: #555;
+    
+    @dev-default-font-sub-size: 11px;    
+    @dev-default-font-sub-color: #999;        
+    
+    @dev-default-link-color: #48b0f7;
+    
+    @dev-default-border-color: #F0F0F0;
+    @dev-default-border-color-active: #E5E5E5;
+    @dev-default-border-radius: 5px;
+    
+    @dev-default-background: #FAFAFA;
+    @dev-default-background-hover: #F1F1F1;
+    @dev-default-background-focus: #F5F5F5;
+    
+    @dev-default-background-active: @dev-theme-background;    
+    @dev-default-font-active-color: #FFF;
+    
+    
+    @dev-default-font-primary-color: @dev-bg-primary;
+    @dev-default-font-info-color: @dev-bg-info;
+    @dev-default-font-success-color: @dev-bg-success;
+    @dev-default-font-warning-color: @dev-bg-warning;
+    @dev-default-font-danger-color: @dev-bg-danger;
+
+    // ./default settings
+    
+    // code
+    @dev-default-code-background: #DEE7F9;
+    @dev-default-code-color: #252D30;
+    @dev-default-code-border-color: darken(@dev-default-code-background,10%);
+    // ./code
+    
+    
+    // buttons
+        @dev-button-font-size: 12px;
+        
+        // default
+        @dev-button-default-border-color: @dev-default-border-color;
+        @dev-button-default-border-color-active: @dev-default-border-color-active;        
+        @dev-button-default-background: #FAFAFA;
+        @dev-button-default-background-active: @dev-default-background-focus;
+        // ./default
+        
+        // primary
+        @dev-button-primary-background: @dev-bg-primary;
+        @dev-button-primary-background-hover: @dev-bg-primary-hover;
+        @dev-button-primary-background-focus: @dev-bg-primary-focus;
+        @dev-button-primary-background-active: @dev-bg-primary-active;
+        @dev-button-primary-border-color: @dev-bg-primary;
+        @dev-button-primary-border-color-hover: @dev-bg-primary-active;
+        @dev-button-primary-border-color-focus: @dev-bg-primary-focus;
+        // ./primary
+        
+        // info
+        @dev-button-info-background: @dev-bg-info;
+        @dev-button-info-background-hover: @dev-bg-info-hover;
+        @dev-button-info-background-focus: @dev-bg-info-focus;
+        @dev-button-info-background-active: @dev-bg-info-active;
+        @dev-button-info-border-color: @dev-bg-info;
+        @dev-button-info-border-color-hover: @dev-bg-info-active;
+        @dev-button-info-border-color-focus: @dev-bg-info-focus;
+        // ./info
+        
+        // success
+        @dev-button-success-background: @dev-bg-success;
+        @dev-button-success-background-hover: @dev-bg-success-hover;
+        @dev-button-success-background-focus: @dev-bg-success-focus;
+        @dev-button-success-background-active: @dev-bg-success-active;
+        @dev-button-success-border-color: @dev-bg-success;
+        @dev-button-success-border-color-hover: @dev-bg-success-active;
+        @dev-button-success-border-color-focus: @dev-bg-success-focus;
+        // ./success
+
+        // warning
+        @dev-button-warning-background: @dev-bg-warning;
+        @dev-button-warning-background-hover: @dev-bg-warning-hover;
+        @dev-button-warning-background-focus: @dev-bg-warning-focus;
+        @dev-button-warning-background-active: @dev-bg-warning-active;
+        @dev-button-warning-border-color: @dev-bg-warning;
+        @dev-button-warning-border-color-hover: @dev-bg-warning-active;
+        @dev-button-warning-border-color-focus: @dev-bg-warning-focus;
+        // ./warning
+        
+        // danger
+        @dev-button-danger-background: @dev-bg-danger;
+        @dev-button-danger-background-hover: @dev-bg-danger-hover;
+        @dev-button-danger-background-focus: @dev-bg-danger-focus;
+        @dev-button-danger-background-active: @dev-bg-danger-active;
+        @dev-button-danger-border-color: @dev-bg-danger;
+        @dev-button-danger-border-color-hover: @dev-bg-danger-active;
+        @dev-button-danger-border-color-focus: @dev-bg-danger-focus;
+        // ./danger
+        
+        // danger
+        @dev-button-facebook-background: @dev-bg-facebook;
+        @dev-button-facebook-background-hover: @dev-bg-facebook-hover;
+        @dev-button-facebook-background-focus: @dev-bg-facebook-focus;
+        @dev-button-facebook-background-active: @dev-bg-facebook-active;
+        @dev-button-facebook-border-color: @dev-bg-facebook;
+        @dev-button-facebook-border-color-hover: @dev-bg-facebook-active;
+        @dev-button-facebook-border-color-focus: @dev-bg-facebook-focus;
+        // ./danger
+        
+    //./buttons
+
+    // tables
+        @dev-table-background: #E8EEF2;
+        @dev-table-background-active: #E5E8EA;
+        @dev-table-heading-background: #DEE7ED;
+        
+        @dev-table-border-width: 1px;
+        @dev-table-border-color: #EDF0F2;        
+        
+        @dev-table-font-size: @dev-default-font-size;
+        @dev-table-font-color: #666;
+        
+        @dev-table-font-heading-size: 12px;
+        @dev-table-font-heading-color: #1C4759;
+        @dev-table-font-heading-weight: 600;
+        @dev-table-font-heading-transform: uppercase;        
+        
+        
+    // forms
+        @dev-form-height: 32px;                
+        
+        @dev-form-background: @dev-default-background;
+        @dev-form-background-active: #FFF;//@dev-default-background-focus;
+        
+        @dev-form-border-color: @dev-default-border-color;
+        @dev-form-border-color-active: @dev-default-border-color-active;        
+        
+        @dev-form-font-input-size: @dev-default-font-size;
+        
+        @dev-form-font-size: @dev-default-font-size;
+        @dev-form-font-color: #454545;
+        @dev-form-font-weight: bold;
+        @dev-form-font-transform: uppercase;
+        
+        @dev-form-font-sub-size: 11px;
+        @dev-form-font-sub-color: @dev-default-font-sub-color;
+        @dev-form-font-sub-weight: 400;
+        @dev-form-font-placeholder: #DDD;
+        
+        @dev-form-state-error-font-color: #BD4036;
+        @dev-form-state-error-border-color: #FFD9D9;
+        @dev-form-state-error-background-color: #FFF2F2;
+        
+        @dev-form-state-success-font-color: #7E9D1C;
+        @dev-form-state-success-border-color: #ECF5CD;
+        @dev-form-state-success-background-color: #FBFDF2;
+        
+        @dev-form-state-warning-font-color: #EBC009;
+        @dev-form-state-warning-border-color: #FEF3C7;
+        @dev-form-state-warning-background-color: #FEFAE9;
+    // ./forms
+    
+    // charts
+    @dev-default-chart-height: 400px;
+    // ./charts
+    
+    /* layout settings */
+        /* boxed */
+        @dev-layout-boxed-width: 1200px;
+        @dev-layout-boxed-background: #E5E5E5;
+        /* ./boxed */        
+        
+        /* header */
+        @dev-layout-header-background: #34495D;
+        @dev-layout-header-background-hover: darken(@dev-layout-header-background,5%);
+        @dev-layout-header-color: #FFF;
+        @dev-layout-header-height: 55px;
+        @dev-layout-header-logo: 300px;
+        @dev-layout-header-icon-size: 14px;
+        /* ./header */
+
+        /* sidebar */
+        @dev-layout-sidebar-background: #F0F0F0;
+        @dev-layout-sidebar-width: 300px;
+        @dev-layout-sidebar-unit: 55px;
+
+        @dev-layout-sidebar-font-color: #888;
+        @dev-layout-sidebar-font-sub-color: #959595;
+        @dev-layout-sidebar-font-size: 13px;
+        @dev-layout-sidebar-icon-size: 14px;
+        @dev-layout-sidebar-icon-color: @dev-theme-background;;
+
+        @dev-layout-sidebar-title-color: #B1B1B1;
+        /* ./sidebar */
+
+        /* footer */
+        @dev-layout-footer-background: #34495D;
+        @dev-layout-footer-color: #FFF;
+        @dev-layout-footer-height: 40px;
+
+        @dev-layout-footer-container-height: 150px;
+        @dev-layout-footer-container-background: darken(@dev-layout-footer-background,3%);
+        @dev-layout-footer-container-color: @dev-layout-footer-color;
+        /* ./footer */
+
+        /* rightbar */
+        @dev-layout-rightbar-width: 300px;
+        @dev-layout-rightbar-background: #EDF1F2;
+        @dev-layout-rightbar-color: @dev-default-font-color;
+
+        @dev-rightbar-header-color: @dev-default-font-color;    
+        @dev-rightbar-header-font-size: 14px;    
+        /* ./rightbar */
+                
+    /* ./layouts */
+    

@@ -1,0 +1,100 @@
+.dev-page{
+    .box-transition(margin-left,100ms,ease);
+    
+    .dev-page-header{        
+        /* rightbar toggle button */
+        .dev-page-rightbar-toggle{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            padding: 0px !important;
+            background: @dev-layout-header-background;
+            height: @dev-layout-header-height;
+            width: @dev-layout-header-height;
+            text-decoration: none;
+            right: -@dev-layout-header-height;
+            cursor: pointer;
+            
+            .dev-page-rightbar-toggle-icon{
+                position: relative;
+                float: left;
+                width: 15px;
+                height: 15px;
+                margin: (@dev-layout-header-height - 15px) / 2;
+                .box-transition-all(200ms);
+                
+                .line-one{
+                    position: absolute;
+                    left: 1px;
+                    top: 0px;
+                    width: 14px;
+                    height: 7px;
+                    border: 2px solid @dev-layout-header-color;
+                    border-bottom: 0px;                    
+                    .box-transition-all(200ms);
+                }
+                .line-two{
+                    position: absolute;
+                    left: 1px;
+                    top: 8px;
+                    width: 14px;
+                    height: 7px;
+                    border: 2px solid @dev-layout-header-color;
+                    border-top: 0px;
+                    .box-transition-all(200ms);
+                }
+            }
+                        
+        }
+        /* ./rightbar toggle button */
+        
+    }   
+    
+    .dev-page-rightbar{        
+        .box-shadow(-5px 0px 10px 0px rgba(0, 0, 0, 0.2));
+        .box-transition(right,100ms,ease);        
+    }                            
+    
+    &.dev-page-rightbar-open{
+        margin-left: -@dev-layout-rightbar-width;            
+        
+        .dev-page-header{
+            .dev-page-rightbar-toggle{
+                .dev-page-rightbar-toggle-icon{
+                    .box-rotate(360deg);
+                    
+                    .line-one{
+                        width: 15px;
+                        border-left: 0px;
+                        border-right: 0px;
+                        top: 6px;
+                        .box-rotate(-45deg);
+                    }
+                    .line-two{
+                        width: 15px;
+                        border-left: 0px;
+                        border-right: 0px;                        
+                        top: 3px;
+                        .box-rotate(45deg);
+                    }
+                }
+            }
+        }                                
+        
+        .dev-page-rightbar{
+            right: 0px;
+        }
+        
+        .dev-page-footer{
+            &.dev-page-footer-collapsed{
+                .dev-page-footer-control-stuck{
+                    display: none;
+                }
+            }
+        }
+    }    
+}
+
+
+
+    

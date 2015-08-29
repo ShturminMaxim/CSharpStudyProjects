@@ -1,0 +1,48 @@
+    /* progress bar */
+    .progress{
+        height: @dev-unit * 5;
+        margin: @dev-unit 0px;
+        .border-radius(@dev-default-border-radius);
+        background: rgba(0,0,0,0.1);
+        .box-shadow(none);        
+        
+        .progress-bar{
+            line-height:  @dev-unit * 5;
+            font-size: @dev-default-font-size;
+            background: @dev-theme-background;
+            color: @dev-theme-color;
+            
+            &.progress-bar-info{
+                background: @dev-bg-info;
+            }
+            &.progress-bar-success{
+                background: @dev-bg-success;
+            }
+            &.progress-bar-warning{
+                background: @dev-bg-warning;
+            }
+            &.progress-bar-danger{
+                background: @dev-bg-danger;
+            }
+        }
+        
+        &.progress-bar-sm{
+            height: @dev-unit * 3;
+            margin: @dev-unit * 2 0px;            
+            .border-radius(2px);
+            
+            &.progress-bar{
+                line-height: @dev-unit * 3;
+            }
+        }
+        &.progress-bar-xs{
+            height: @dev-unit;
+            margin: @dev-unit * 3 0px;
+            .border-radius(2px);
+            
+            &.progress-bar{
+                line-height: @dev-unit;
+            }
+        }
+    }
+    /* ./progress bar */

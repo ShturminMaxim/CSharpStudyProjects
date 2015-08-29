@@ -1,0 +1,234 @@
+.dev-page{
+    .dev-page-header{
+        
+        .dph-logo{
+            float: left;
+            width: @dev-layout-header-logo;
+            height: @dev-layout-header-height;
+            line-height: @dev-layout-header-height;
+            background: @dev-theme-background;
+            text-align: center;
+            position: relative;
+            margin-right: @dev-layout-header-height;            
+            
+            /* logo */
+            a{
+                width: 100%;
+                display: block;
+                height: @dev-layout-header-height;
+                background: url('../img/logo.png') top center no-repeat transparent;                
+                text-indent: -99999px;
+                overflow: hidden;
+                
+                &:hover{
+                    background-color: darken(@dev-theme-background, 2%);
+                }                   
+            }
+            /* ./logo */
+            
+            /* navigation collapse button */
+            .dev-page-sidebar-collapse{
+                position: absolute;
+                top: 0px;
+                background: @dev-layout-header-background;
+                height: @dev-layout-header-height;
+                width: @dev-layout-header-height;
+                text-decoration: none;
+                right: -@dev-layout-header-height;
+                cursor: pointer;
+                
+                .dev-page-sidebar-collapse-icon{
+                    position: relative;
+                    float: left;
+                    width: @dev-layout-header-height;
+                    height: @dev-layout-header-height;
+                    .box-transition-all(200ms);
+                
+                    .line-one,.line-two,.line-three{                    
+                        position: absolute;
+                        left: 26px;
+                        top: 21px;
+                        display: block;
+                        width: 3px;
+                        height: 3px;
+                        background: @dev-layout-header-color;
+                        .box-transition-all(100ms);
+                    }
+                    .line-two{
+                        top: 26px;
+                    }
+                    .line-three{
+                        top: 31px;
+                    }
+                    
+                }                   
+                
+                &:hover{
+                    background: @dev-layout-header-background-hover;
+                }
+                
+                &.active{
+                    
+                    .dev-page-sidebar-collapse-icon{
+                    .box-rotate(360deg);
+                    
+                        .line-one,.line-two,.line-three{
+                            width: 16px;
+                            height: 2px;
+                            left: 19px;
+                            top: 21px;
+                        }                                      
+                        .line-two{
+                            top: 26px;
+                        }
+                        .line-three{
+                            top: 31px;
+                        }
+                    }                    
+                }
+                
+            }
+            /* ./navigation collapse button */                        
+        }
+        
+        .dph-buttons{
+            float: left;
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            margin-right: @dev-unit * 2;
+            
+            > li{
+                display: block;
+                float: left;
+                position: relative;
+                
+                > a{
+                    display: block;
+                    line-height: @dev-layout-header-height;
+                    padding: 0px @dev-unit * 2;
+                    text-align: center;
+                    color: @dev-layout-header-color;
+                    min-width: @dev-layout-header-height;
+                    background: @dev-layout-header-background;
+                    .box-transition-background-color(200ms);
+                    
+                    &:hover{
+                        background: @dev-layout-header-background-hover;
+                    }
+                    
+                    .fa, .glyphicon{
+                        font-size: @dev-layout-header-icon-size;
+                    }
+                    
+                }
+
+                &.active{
+                    > a{
+                        background: @dev-layout-header-background-hover;
+                    }
+                    .dev-popup{
+                        display: block;
+                    }
+                }
+                &.dph-button-stuck{
+                    width: @dev-layout-header-height;
+                    height: @dev-layout-header-height;
+                }
+            } 
+            
+            &.pull-right{
+                margin-right: 0px;
+                margin-left: @dev-unit * 2;
+            }
+        }
+        
+        .dph-container{
+            float: left;
+            padding: @dev-unit * 2 0px;
+            margin-right: @dev-unit * 2;
+            
+            &.pull-right{
+                margin-right: 0px;
+                margin-left: @dev-unit * 2;
+            }
+        }        
+    }
+}    
+
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+    .dev-page{       
+        .dev-page-header{
+            .dph-logo{
+                > a{
+                    background-image: url(../img/logo@2x.png);
+                    background-size: @dev-layout-header-logo @dev-layout-header-height;
+                }
+            }
+        }
+    }
+      
+}
+
+@media all and (max-width: @screen-mobile) {
+    
+    .dev-page{       
+        .dev-page-header{
+            height: auto;
+            position: relative;
+            float: left;
+            
+            .dph-logo{
+                width: 100%;
+                margin-right: 0px;
+                .box-shadow(none);
+                
+                .dev-page-sidebar-collapse{
+                    right: 0px;
+                    color: @dev-theme-color;
+                    background: @dev-theme-background;
+                    
+                    .dev-page-sidebar-collapse-icon{
+                        .line-one,.line-two,.line-three{
+                            background: #FFF;                        
+                            width: 3px;
+                            height: 3px;
+                            left: 20px;
+                            top: 26px;
+                        }
+                        .line-two{
+                            left: 26px;
+                        }
+                        .line-three{
+                            left: 32px;
+                        }
+                    }
+                    
+                    &:hover{
+                        background: darken(@dev-theme-background, 2%);
+                    }
+                    &.active{
+                        .dev-page-sidebar-collapse-icon{
+                            .line-one,.line-two,.line-three{
+                                width: 16px;
+                                height: 2px;
+                                left: 19px;
+                                top: 21px;
+                            }
+                            .line-two{
+                                top: 26px;
+                            }
+                            .line-three{
+                                top: 31px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .dev-page-container{
+            padding-top: 0px;
+        }
+    }
+    
+}

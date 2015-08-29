@@ -1,0 +1,101 @@
+    /* bootstrap and simple tables */
+    .table-responsive{
+        float: left;
+        width: 100%;
+    }
+    .table{
+        width: 100%;
+        > thead > tr, > tbody > tr{
+            th{
+                background: @dev-table-heading-background;
+                color: @dev-table-font-heading-color;
+                font-size: @dev-table-font-heading-size;
+                font-weight: @dev-table-font-heading-weight;
+                text-transform: @dev-table-font-heading-transform;                
+                line-height: @dev-unit * 3;
+                padding: @dev-unit * 3;
+                border-top: @dev-table-border-width solid @dev-table-border-color !important;
+                border-bottom: @dev-table-border-width solid @dev-table-border-color;
+                line-height: @dev-unit * 4;
+                vertical-align: middle;
+                
+                .checkbox{
+                    margin: 0px;
+                }
+            }
+            td{
+                padding: @dev-unit * 3;
+                font-size: @dev-table-font-size;
+                color: @dev-table-font-color;
+                border-color: @dev-table-border-color;
+                line-height: @dev-unit * 4;
+                .box-transition-background-color(200ms);
+                border-width: @dev-table-border-width;
+                vertical-align: middle;
+                
+                a{
+                    text-decoration: none;
+                    .box-transition-color(200ms);
+                }
+                
+                &.table-products{
+                    a{
+                        color: @dev-theme-background;
+                        font-weight: bold;
+                        &:hover{
+                            color: darken(@dev-theme-background, 20%);
+                        }
+                    }
+                }
+            }
+                        
+        }
+        &.table-hover{
+            tbody tr, tbody tr{
+                &:hover{
+                    > td{
+                        background: @dev-table-background-active;
+                    }
+                }
+            }
+        }
+        &.table-bordered{border-color: @dev-table-border-color;
+            thead tr,tbody tr, tr{
+                > td, > th{
+                    border-width: 1px;
+                    border-color: @dev-table-border-color;
+                }
+            }
+        }
+        
+        &.table-no-columns{
+            > td{background: @dev-table-background; text-align: center;}
+        }
+        
+        &.table-striped{
+            > tbody{
+                > tr{
+                    &:nth-of-type(odd){                
+                        background: @dev-table-background;                
+                    }
+                }
+            }
+        }
+        &.text-center{
+             > thead > tr, > tbody > tr{
+                 th,td{
+                     text-align: center;
+                 }
+             }
+        }
+    }
+    
+    .table-controls{
+        .table-controls-block{
+            float: right; 
+            width: 250px; 
+            margin-bottom: @dev-unit;
+        }
+    }
+    
+    /* ./bootstrap and simple tables */

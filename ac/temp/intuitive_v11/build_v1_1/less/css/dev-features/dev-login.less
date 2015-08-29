@@ -1,0 +1,168 @@
+    @dev-login-background: @dev-theme-background;
+    @dev-login-block-width: 300px;
+    @dev-login-block-logo-height: @dev-layout-header-height;
+    @dev-login-logo-block-placeholder: #667D8D;    
+    @dev-login-logo-block-icon: #667D8D;    
+    @dev-login-color: #EEE;
+    @dev-login-color-hover: #FFF;
+    @dev-login-icon-color: #889AA4;
+    
+    @dev-login-v2-background: #2D3A4B;
+    
+    .dev-page{
+        &.dev-page-login{            
+            background: @dev-login-background;
+            height: auto;
+            min-height: 100%;            
+            
+            .dev-page-login-block{
+                margin: 100px auto 50px;
+                -webkit-animation: appear 1s;
+                animation: appear 1s;
+                width: @dev-login-block-width;
+                color: @dev-login-color;
+                .clearfix;
+                
+                a{
+                    color: @dev-login-color;
+                    text-decoration: none;
+                    
+                    &:hover{
+                        color: @dev-login-color-hover;
+                    }
+                }
+                
+                &__logo{
+                    float: left;
+                    width: 100%;
+                    display: block;
+                    height: @dev-login-block-logo-height;
+                    background: url('../img/logo.png') top center no-repeat transparent;                
+                    text-indent: -99999px;
+                    overflow: hidden;
+                    margin-bottom: @dev-unit * 5;
+                }
+                
+                &__form{
+                    float: left;
+                    width: 100%;
+                    margin-bottom: @dev-unit * 4;
+                    
+                    p{
+                        line-height: @dev-unit * 4;
+                        margin: @dev-unit * 2 0px;
+                    }
+                    
+                    .title{
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: @dev-login-color;
+                        margin-bottom: @dev-unit * 4;
+                    }
+                    
+                    .help-block{                                          
+                        line-height: @dev-unit * 5;
+                        margin: 0px;
+                        font-size: @dev-default-font-sub-size;
+                        color: @dev-login-logo-block-placeholder;
+                    }
+                    
+                    .form-group{
+                        border-bottom: 1px solid rgba(255,255,255,0.1);
+                        .box-transition-all(200ms);     
+                        margin-bottom: @dev-unit * 2;
+                        
+                        .form-control::-webkit-input-placeholder {color: @dev-login-logo-block-placeholder;}
+                        .form-control::-moz-placeholder          {color: @dev-login-logo-block-placeholder;}
+                        .form-control:-moz-placeholder           {color: @dev-login-logo-block-placeholder;}
+                        .form-control:-ms-input-placeholder      {color: @dev-login-logo-block-placeholder;}
+                                                                        
+                        .form-control{
+                            background: transparent;
+                            border: 0px;                            
+                            .border-radius(0px);                            
+                            color: @dev-login-color;        
+                            padding: 12px 5px 12px 15px;
+                            height: 47px;
+                        }                        
+                        
+                        .input-group-addon{
+                            padding: 6px 5px 6px 15px;
+                            color: @dev-login-icon-color;
+                            border: 0px;                            
+                            background: none;
+                            .border-radius(0px);
+                        }
+                        
+                        .btn{
+                            padding: 10px 15px;
+                        }
+                        
+                        &.focus{                            
+                            border-bottom: 1px solid rgba(255,255,255,0.3);                            
+                        }
+                        &.no-border{
+                            border-bottom: 0px;
+                        }
+                        &.no-margin{
+                            margin-bottom: 0px;
+                        }
+                    }
+                }
+                
+                &__footer{
+                    float: left;
+                    width: 100%;               
+                    color: @dev-login-logo-block-placeholder;
+                    font-size: @dev-default-font-sub-size;
+                    text-align: center;
+                }
+            }
+            
+            &.dev-page-login-v2{
+                background: @dev-login-v2-background;
+                .dev-page-login-block{
+                    &__form{
+                        .form-group{
+                            border: 1px solid rgba(255,255,255,0.1);
+                            background: rgba(0,0,0,0.1);
+                            .border-radius(@dev-default-border-radius);
+                            
+                            
+                            &.no-border{
+                                border: 0px;
+                                background: transparent;
+                            }
+                            &.focus{
+                                border: 1px solid rgba(255,255,255,0.2);
+                                background: rgba(0,0,0,0.2);                                                                
+                            }
+                        }
+                    }
+                }
+            }                        
+        }                
+    }    
+    
+    @media all and (max-width: @screen-mobile) {   
+        .dev-page{
+            &.dev-page-login{                            
+                .dev-page-login-block{
+                    margin: 50px auto;
+                }
+            }
+        }        
+    }
+    
+    @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+        .dev-page{                
+            &.dev-page-login{                
+                .dev-page-login-block{                    
+                    &__logo{
+                        background-image: url(../img/logo@2x.png);
+                        background-size: @dev-layout-header-logo @dev-layout-header-height;
+                    }
+                }
+            }
+        }      
+    }

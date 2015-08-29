@@ -1,0 +1,196 @@
+    // Bootstrap buttons    
+    .btn{
+        height: auto;
+        line-height: @dev-unit * 5 - 2;
+        padding: @dev-unit @dev-unit * 3;
+        font-size: @dev-button-font-size;        
+        .box-transition-all(200ms);
+        outline: none !important;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: @dev-unit;
+        
+        // btn sizes 
+        &.btn-lg{
+            padding: @dev-unit * 2 @dev-unit * 3;
+            font-size: @dev-button-font-size + 6px;
+        }
+        &.btn-sm{
+            padding: @dev-unit @dev-unit * 2;
+            line-height: @dev-unit * 4 - 2;
+        }
+        &.btn-xs{
+            padding: @dev-unit;
+            font-size: @dev-button-font-size - 1px;
+            line-height: @dev-unit * 3 - 2;
+        }
+        // ./btn sizes 
+        
+        // btn styling
+        &.btn-default{            
+            border-color: @dev-button-default-border-color;
+            background: @dev-button-default-background;
+            
+            &:hover,&:focus,&.focus{
+                background: @dev-button-default-background-active;
+                border-color: @dev-button-default-border-color-active;
+            }            
+        }
+        
+        &.btn-primary{            
+            border-color: @dev-button-primary-border-color;
+            background: @dev-button-primary-background;
+            &:hover{
+                background: @dev-button-primary-background-hover;
+                border-color: @dev-button-primary-border-color-hover;
+            }      
+            &:focus,&.focus{
+                background: @dev-button-primary-background-focus;
+                border-color: @dev-button-primary-border-color-focus;
+            }            
+        }
+        
+        &.btn-info{
+            border-color: @dev-button-info-border-color;
+            background: @dev-button-info-background;
+            &:hover{
+                background: @dev-button-info-background-hover;
+                border-color: @dev-button-info-border-color-hover;
+            }      
+            &:focus,&.focus{
+                background: @dev-button-info-background-focus;
+                border-color: @dev-button-info-border-color-focus;                
+            }
+        }
+        
+        &.btn-success{
+            border-color: @dev-button-success-border-color;
+            background: @dev-button-success-background;
+            &:hover{
+                background: @dev-button-success-background-hover;
+                border-color: @dev-button-success-border-color-hover;
+            }      
+            &:focus,&.focus{
+                background: @dev-button-success-background-focus;
+                border-color: @dev-button-success-border-color-focus;
+            }
+        }
+        
+        &.btn-warning{
+            border-color: @dev-button-warning-border-color;
+            background: @dev-button-warning-background;
+            &:hover{
+                background: @dev-button-warning-background-hover;
+                border-color: @dev-button-warning-border-color-hover;                
+            }       
+            &:focus,&.focus{
+                background: @dev-button-warning-background-focus;
+                border-color: @dev-button-warning-border-color-focus;                
+            }
+        }
+        
+        &.btn-danger{
+            border-color: @dev-button-danger-border-color;
+            background: @dev-button-danger-background;
+            &:hover{
+                background: @dev-button-danger-background-hover;
+                border-color: @dev-button-danger-border-color-hover;                
+            }       
+            &:focus,&.focus{
+                background: @dev-button-danger-background-focus;
+                border-color: @dev-button-danger-border-color-focus;
+            }
+        }
+        
+        &.btn-facebook{
+            border-color: @dev-button-facebook-border-color;
+            background: @dev-button-facebook-background;
+            color: #FFF;
+            
+            &:hover{
+                background: @dev-button-facebook-background-hover;
+                border-color: @dev-button-facebook-border-color-hover;                
+            }       
+            &:focus,&.focus{
+                background: @dev-button-facebook-background-focus;
+                border-color: @dev-button-facebook-border-color-focus;
+            }
+        }
+        // ./btn styling
+        
+        &:hover,&:focus,&.focus{.box-shadow(none);}        
+        
+        &:active,&.active{
+            .box-transition-all(100ms);
+            .box-shadow(inset 0px 2px 3px rgba(0,0,0,0.1));
+        }
+        //&:hover,&:active,&:focus,&.active,&.focus{outline: none !important;}
+        
+        &.btn-rounded{
+            .border-radius(@dev-unit * 5 / 2 + @dev-unit);
+        }
+        &.btn-clean{
+            background: #FFF;
+            color: @dev-default-font-color;
+            border-width: 2px;
+            line-height: @dev-unit * 5 - 4;
+            &:hover,&:focus,&.focus{
+                background: @dev-default-background-focus;
+            }
+            font-weight: 600;
+            
+            &.btn-primary{color: @dev-button-primary-background;}
+            &.btn-info{color: @dev-button-info-background;}
+            &.btn-success{color: @dev-button-success-background;}
+            &.btn-warning{color: @dev-button-warning-background;}
+            &.btn-danger{color: @dev-button-danger-background;}
+        }
+        
+        .caret{
+            margin-left: 5px;
+        }
+        .fa{
+            font-size: 14px;
+            vertical-align: baseline;
+            
+            &.pull-left,&.pull-right{
+                line-height: 23px;
+            }
+        }
+        
+        &.btn-icon{            
+            .fa{
+                margin-right: @dev-unit * 2;                                
+                
+                &.pull-right{
+                    margin-right: 0px;
+                    margin-left: @dev-unit * 2;
+                }
+            }            
+        }
+        &.btn-only-icon{
+            text-align: center;
+            padding-left: 0px;
+            padding-right: 0px;
+            min-width: 35px;            
+            
+            .fa{
+                line-height: 19px;
+                vertical-align: inherit;
+            }
+        }
+    }
+
+    .input-group{
+        .btn{margin-bottom: 0px;}
+    }
+    /*
+    .input-group-btn{
+        &:last-child{
+            .btn{
+                margin-left: 0px;
+            }
+        }
+    }*/
+    
+    // ./Bootstrap buttons

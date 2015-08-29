@@ -1,0 +1,555 @@
+<!doctype html>  
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	
+	<title>Intuitive - Admin Dashboard Template</title>
+	
+	<meta name="description" content=""/>
+	<meta name="author" content="Dmitry Ivaniuk"/>
+	<meta name="copyright" content="Dmitry Ivaniuk"/>
+	<meta name="generator" content="Documenter v1.6 http://rxa.li/documenter"/>
+	<meta name="date" content="2012-12-21T00:00:00+01:00"/>
+
+        
+        
+        <link rel="stylesheet" href="css/shCoreDefault.css"  media="all"/>     
+        <link rel="stylesheet" href="css/shThemeDefault.css"  media="all"/>                
+        
+	<link rel="stylesheet" href="css/documenter_style.css" media="all">
+	
+	
+	<script src="js/jquery.1.6.4.js"></script>
+	        
+	<script src="js/jquery.scrollTo-1.4.2-min.js"></script>
+	<script src="js/jquery.easing.js"></script>	        
+        
+        <script src="js/shCore.js"></script>
+	
+	<script src="js/shBrushCss.js"></script>
+	<script src="js/shBrushXml.js"></script>
+	<script src="js/shBrushJScript.js"></script>
+        
+
+        
+	<script>SyntaxHighlighter.defaults['toolbar'] = false;SyntaxHighlighter.all();</script>
+	
+	<script>document.createElement('section');var duration=500,easing='swing';</script>
+	<script src="js/script.js"></script>
+	
+	<style>		
+		::-moz-selection{background:#BBBBBB;color:#222222;}
+		::selection{background:#BBBBBB;color:#222222;}		
+		a{color:#335A85;}
+		hr{border-top: 1px solid #666; border-bottom:1px solid #FFF;}
+		#documenter_sidebar, #documenter_sidebar ol a{background: #33414e;color:#FFF;}
+		#documenter_sidebar ol a{border-top: 1px solid #42505e;border-bottom:1px solid #2c363f;color:#FFF; padding: 10px 10px; line-height: 20px;}
+		#documenter_sidebar ol a:hover{background: #364654;color:#FFF;border-top:1px solid #42505e;}
+		#documenter_sidebar ol a.current{background: left top repeat #2c363f;color:#FFF;border-top:1px solid #42505e;}                
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+                #documenter_copyright a{color: #fff;}
+                .abtn{display: block; float: left; padding: 10px; color: #333; border: 1px solid #CCC; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
+                    .abtn:hover{text-decoration: none; background: #F1F1F1;}
+	</style>
+	
+</head>
+<body>
+	<div id="documenter_sidebar">
+		<a href="#documenter_cover" id="documenter_logo"></a>
+		<ol id="documenter_nav">
+			<li><a class="current" href="#documenter_cover">Start</a></li>						
+			<li><a href="#html_structure">HTML structure</a></li>
+			<li><a href="#css_structure">CSS structure</a></li>
+			<li><a href="#javascript_structure">Javascript structure</a></li>                        
+			<li><a href="#how_to">How-to...?</a></li>                        
+                        <li><a href="#credits">Credits</a></li>
+                        <li><a href="#changelog">Changelog</a></li>
+		</ol>
+		<div id="documenter_copyright">Copyright Dmitry Ivaniuk 2015<br>
+		made with the <a href="http://rxa.li/documenter">Documenter v1.6</a> 
+		</div>
+	</div>
+	<div id="documenter_content">
+	<section id="documenter_cover">
+            <h1>Intuitive - Admin Dashboard Template</h1><hr><ul><li>Created: 14/07/2015</li><li>Latest Update: 22/07/2015</li><li>By: Dmitry Ivaniuk</li><li>Email: <a href="mailto:aqvatarius@ukr.net">aqvatarius@ukr.net</a></li></ul>            
+        </section>
+
+        
+<section id="html_structure">
+	<h3>HTML structure</h3><hr class="notop">
+        <h4>Structure of default document</h4>
+<pre class="brush: xml">
+
+    <!-- page wrapper -->
+    <div class="dev-page">
+
+        <!-- page header -->    
+        <div class="dev-page-header">...</div>
+        <!-- ./page header -->
+
+        <!-- page container -->
+        <div class="dev-page-container">
+
+            <!-- page sidebar -->
+            <div class="dev-page-sidebar">...</div>
+            <!-- ./page sidebar -->
+
+            <!-- page content -->
+            <div class="dev-page-content">                    
+                <!-- page content container -->
+                <div class="container">
+
+                    ...
+
+                    <!-- Copyright -->
+                    <div class="copyright">
+
+                    </div>
+                    <!-- ./Copyright -->
+                </div>
+                <!-- ./page content container -->
+
+            </div>
+            <!-- ./page content -->                                               
+        </div>  
+        <!-- ./page container -->
+
+        <!-- right bar -->
+        <div class="dev-page-rightbar">...</div>
+        <!-- ./right bar -->
+
+        <!-- page footer -->    
+        <div class="dev-page-footer">...</div>
+        <!-- ./page footer -->
+
+        <!-- page search -->
+        <div class="dev-search">...</div>
+        <!-- page search -->            
+    </div>
+    <!-- ./page wrapper -->     
+
+</pre>        
+
+<h4>Header structure</h4>
+<pre class="brush: xml">
+    
+    <div class="dph-logo"><!-- logo box -->
+        <a href="#">Logo</a><!-- logo link -->
+        <a class="dev-page-sidebar-collapse"><!-- collapse navigation button -->
+            <div class="dev-page-sidebar-collapse-icon">
+                <span class="line-one"></span>
+                <span class="line-two"></span>
+                <span class="line-three"></span>
+            </div>
+        </a><!-- ./collapse navigation button -->
+    </div><!-- ./logo box -->
+
+    <ul class="dph-buttons"><!-- buttons -->
+        <li><!-- buttons item -->
+            <a href="#"></a> <!-- button -->
+        </li><!-- ./buttons item -->
+    </ul><!-- buttons -->
+
+</pre>            
+        
+<h4>Navigation structure</h4>        
+<pre class="brush: xml">
+
+    <ul class="dev-page-navigation"><!-- start navigation -->
+        <li class="title">Navigation</li><!-- Navigation title -->
+        <!-- navigation item -->
+        <li class="active">
+            <a href="#"><!-- navigation button -->
+                <i class="fa fa-desktop"></i><!-- navigation button icon -->
+                <span>Item</span><!-- navigation button text -->
+            </a><!-- ./navigation button -->
+        </li>
+        <!-- ./navigation item -->
+        
+        <!-- navigation item -->
+        <li>
+            <a href="#"><!-- navigation button -->
+                <i class="fa fa-file-o"></i><!-- navigation button icon -->
+                <span>Pages</span><!-- navigation button text -->
+            </a><!-- ./navigation button -->
+            <ul>...</ul><!-- sublevel -->
+        </li>
+        <!-- ./navigation item -->
+    </ul>                       
+
+</pre>          
+
+<h4>Content structure</h4>        
+<pre class="brush: xml">
+    
+    <!-- page title -->
+    <div class="page-title">
+        <h1>Heading</h1>
+        <p>Subheading</p>
+
+        <!-- breadcrumb -->
+        <ul class="breadcrumb">
+            <li><a href="#">Link</a></li>                                
+            <li>Static</li>
+        </ul>
+        <!-- ./breadcrumb -->
+    </div>                        
+    <!-- ./page title -->   
+                                             
+    <!-- content wrapper -->
+    <div class="wrapper"></div> <!-- + .wrapper-white to get white background -->
+    <!-- ./content wrapper -->
+</pre> 
+
+<h4>Progressbars Structure</h4>
+<p>Detailed documentation of progressbar usage you can find on bootstrap site. In this template you can see custom size: <strong>.progress-bar-sm, .progress-bar-xs</strong></p>
+
+<pre class="brush: xml">
+    <div class="progress progress-bar-sm"><!-- progressbar small -->
+        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%</div>
+    </div><!-- ./progressbar small -->
+
+    <div class="progress progress-bar-xs"><!-- progressbar extra small -->
+        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%</div>
+    </div><!-- ./progressbar extra small -->
+</pre>
+<p>This size is integrated in lots of elements in site, such as table, panel, informers, forms etc.</p>
+
+<h4>Simple Contact List Structure</h4>
+<pre class="brush: xml">
+
+    <div class="list-contacts"><!-- list contacts -->
+        <a href="#" class="list-contacts-item"><!-- list contacts item -->
+            &lt;img src="#"> <!-- item image -->
+            Devin Stephens <!-- title -->
+            <button class="btn btn-primary btn-clean btn-rounded pull-right"><i class="fa fa-pencil"></i></button><!-- button -->
+        </a><!-- ./list contacts item -->
+    </div><!-- ./list contacts -->
+   
+</pre>
+<p>Available statuses: <strong>contact-online,contact-offline,contact-away</strong></p>
+<p>Add class: <strong>.list-contacts-inline</strong> to get contacts on one line</p>
+
+
+<h4>Gallery Structure</h4>
+<pre class="brush: xml">
+    <div class="gallery isotope" id="gallery"><!-- gallery list -->
+        <div class="gallery-sizer"></div>
+        <div class="gallery-gutter"></div>
+
+        <a href="#" class="gallery-item"><!-- gallery item -->
+            &lt;img src="assets/images/gallery/img_10.jpg"><!-- main image-->
+            <div class="gallery-item-info"><!-- info-->
+                &lt;img src="assets/images/users/user_1.jpg"> Devin Stephens<!-- user -->
+                <span class="pull-right">date <i class="fa fa-clock-o"></i></span><!-- date -->
+            </div><!-- ./info-->
+        </a><!-- ./gallery item -->                       
+    </div><!-- ./gallery list -->
+</pre>
+<p>Check pages-gallery.html to get more info how to use Blueimp Gallery plugin to preview large images.</p>
+
+<h4>Simple Timeline Structure</h4>
+<pre class="brush: xml">
+                            
+    <ul class="timeline-simple"><!-- timeline -->
+        <li><!-- item -->
+            <div class="timeline-simple-wrap"><!-- wrapper -->
+                data
+                <span class="timeline-simple-date">time</span><!-- time -->
+            </div>
+        </li><!-- ./item -->
+    </ul><!-- ./timeline -->
+
+</pre>
+<p>Add class <strong>primary,success,info,success</strong> to li(item) to get item highlighted</p>
+
+<h4>Timeline Structure</h4>
+<pre class="brush: xml">
+                            
+    <div class="timeline"><!-- timeline -->              
+        
+        <div class="timeline-item"><!-- item -->
+            <div class="timeline-item-date">date</div><!-- date -->
+            <div class="timeline-item-image">&lt;img src="#"></div><!-- image or icon -->
+            <div class="timeline-item-data"><!-- info -->
+                <h4>Title</h4><!-- title -->
+                <p class="text-muted">Subtitle</p><!-- subtitle -->
+            </div><!-- ./info -->
+        </div><!-- item -->
+        
+    </div><!-- ./timeline -->
+</pre>
+<p>Add class <strong>timeline-item-primary, timeline-item-info, timeline-item-danger, timeline-item-warning, timeline-item-success</strong> to .timeline-item to get item highlighted</p>
+
+</section>
+<section id="css_structure">
+	<h3>CSS structure</h3><hr class="notop">
+        <p>In downloaded package you will find <strong>less files</strong>, structured in directories:</p>
+
+        <ul>
+            <li><strong>dev-elements</strong> - Main elements of layout(navigation, search, rightbar, footer, header)</li>            
+            <li><strong>dev-features</strong> - All features of this template, such as form-elements, widgets etc.</li>            
+            <li><strong>dev-layout</strong> - Layout files</li>
+            <li><strong>dev-other</strong> - Other files(mixins, function, helpers etc.)</li>
+            <li><strong>dev-plugins</strong> - All third-party plugin styles</li>
+            <li><strong>dev-settings</strong> - Theme settings(colors,sizes etc.)</li>
+            <li><strong>default.less</strong> - Mixin file</li>
+        </ul>
+<p>In less/css folder of template you will find 6 custom themes for template. Each of this template can be used via including other theme link.</p>        
+<p>Please use your own css file for your stylesheets. It's easiest way to update template in future.</p>
+        
+</section>
+        
+<section id="javascript_structure">
+	<h3>Javascript structure</h3><hr class="notop">
+
+        <h4>Basics</h4>
+        <p>In downloaded package you will find <strong>JS</strong> folder:</p>
+        <ul>
+            <li><strong>plugins</strong> - Third-party plugins</li>
+            <li><strong>demo*.js</strong> - All demo files that need for theme demonstration</li>            
+            <li><strong>dev-app.js</strong> - Main application file</li>            
+            <li><strong>dev-clock.js</strong> - File for lock screen(show clock)</li>
+            <li><strong>dev-email.js</strong> - File for email pages</li>
+            <li><strong>dev-faq.js</strong> - File for FAQ page</li>
+            <li><strong>dev-icon-search.js</strong> - File for list icons</li>
+            <li><strong>dev-layout-default.js</strong> - Main application file that controls layout options</li>
+            <li><strong>dev-loaders.js</strong> - Loaders</li>
+            <li><strong>dev-settings.js</strong> - Settings file(change themes)</li>
+            <li><strong>dev-timeout.js</strong> - Session timeout file</li>
+        </ul>
+            
+<h4>Sparkline charts plugin</h4>
+<pre class="brush: xml">                    
+    &lt;script type='text/javascript' src='js/plugins/sparkline/jquery.sparkline.min.js'>&lt;/script>
+</pre>
+<p>Allows you to use sparkline charts</p>
+        
+<h4>Blueimp Gallery plugin</h4>
+<pre class="brush: xml">                    
+    &lt;script type='text/javascript' src='js/plugins/blueimp/jquery.blueimp-gallery.min.js'>&lt;/script>
+</pre>
+<p>Allows you to use popup preview of large image</p>        
+        
+<h4>Rickshaw plugin</h4>
+<pre class="brush: xml">                            
+        &lt;script type="text/javascript" src="js/plugins/rickshaw/d3.v3.js">&lt;/script>
+        &lt;script type="text/javascript" src="js/plugins/rickshaw/rickshaw.min.js">&lt;/script>        
+</pre>
+<p>Allows you to use Rickshaw charts</p>
+
+<h4>Knob plugin</h4>
+<pre class="brush: xml">                    
+    &lt;script type='text/javascript' src='js/plugins/knob/jquery.knob.js'>&lt;/script>
+</pre>
+<p>Allows you to use knob circle charts</p>
+
+<h4>jVctorMap plugin</h4>
+<pre class="brush: xml">                    
+&lt;script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'>&lt;/script>
+&lt;script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-europe-mill-en.js'>&lt;/script>
+</pre>
+<p>Allows you to use jvectormaps plugin</p>
+
+<h4>Custom scrollbar</h4>
+<pre class="brush: xml">                    
+    &lt;script type='text/javascript' src='js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js'>&lt;/script>
+</pre>
+<p>Allows you to use custom content scroller</p>        
+
+<h4>Tags input plugin</h4>
+<pre class="brush: xml">                    
+    &lt;script type='text/javascript' src='js/plugins/tags-input/jquery.tagsinput.min.js'>&lt;/script>
+</pre>
+<p>Allows you to use field with tags</p>
+        
+<h4>Google maps plugin</h4>
+<pre class="brush: xml">                    
+    &lt;script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places">&lt;/script>
+</pre>
+<p>Allows you to use Google maps plugin</p>        
+
+<h4>Datatables plugin</h4>
+<pre class="brush: xml">                    
+    &lt;script type='text/javascript' src='js/plugins/datatables/jquery.dataTables.min.js'>&lt;/script>
+</pre>
+<p>Allows you to use datatables plugin(sortable tables, with paging, search and other controls).</p>        
+
+<h4>Codemirror plguin</h4>
+<pre class="brush: xml">                    
+    &lt;script type='text/javascript' src='js/plugins/codemirror/codemirror.js'>&lt;/script>
+    &lt;script type='text/javascript' src="js/plugins/codemirror/addon/edit/matchbrackets.js">&lt;/script>
+    &lt;script type='text/javascript' src="js/plugins/codemirror/mode/htmlmixed/htmlmixed.js">&lt;/script>
+    &lt;script type='text/javascript' src="js/plugins/codemirror/mode/xml/xml.js">&lt;/script>
+    &lt;script type='text/javascript' src="js/plugins/codemirror/mode/javascript/javascript.js">&lt;/script>
+    &lt;script type='text/javascript' src="js/plugins/codemirror/mode/css/css.js">&lt;/script>
+    &lt;script type='text/javascript' src="js/plugins/codemirror/mode/clike/clike.js">&lt;/script>
+    &lt;script type='text/javascript' src="js/plugins/codemirror/mode/php/php.js">&lt;/script>
+</pre>
+<p>Allows you to use Codemirror plguin(WYSIWYG code editor).</p>                 
+
+<h4>jQuery validation plugin</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js">&lt;/script>
+    &lt;script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js">&lt;/script>
+</pre>
+<p>Allows you to use jQuery Validation form plugin</p>
+
+<h4>Bootstrap plugins</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/bootstrap/bootstrap-tour.js">&lt;/script><!-- tour plugin -->
+    &lt;script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datetimepicker.js">&lt;/script><!-- Datepicker plugin -->        
+    &lt;script type="text/javascript" src="js/plugins/bootstrap/bootstrap-select.js">&lt;/script><!-- Custom Select plugin -->
+</pre>
+
+<h4>FileTree plugin</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/filetree/jqueryFileTree.js">&lt;/script>    
+</pre>
+<p>Allows you to use File Tree plugin.</p>
+
+<h4>isotope plugin</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/isotope/isotope.pkgd.min.js">&lt;/script>    
+</pre>
+<p>Allows you to use isotope gallery. </p>
+
+<h4>Masked Input plugin</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/maskedinput/jquery.maskedinput.min.js">&lt;/script>    
+</pre>
+<p>Allows you to use Masked Input plugin. Creates rules for input text.</p>
+
+<h4>NVD3 Charts plugin</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/nvd3/lib/d3.v3.js">&lt;/script>        
+    &lt;script type="text/javascript" src="js/plugins/nvd3/nv.d3.min.js">&lt;/script>
+</pre>
+<p>Allows you to use NVD3 Charts plugin.</p>
+
+<h4>Rangeslider plugin</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/rangeslider/jQAllRangeSliders-min.js">&lt;/script>            
+</pre>
+<p>Allows you to use Range Slider plugin.</p>
+
+<h4>Smart Wizard plugin</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/smartwizard/jquery.smartWizard-2.0.min.js">&lt;/script>            
+</pre>
+<p>Allows you to use Smart Wizard plugin.</p>
+
+<h4>Summernote plugin</h4>
+<pre class="brush: xml">
+    &lt;script type="text/javascript" src="js/plugins/summernote/summernote.js">&lt;/script>            
+</pre>
+<p>Allows you to use Summernote plugin. WYSIWYG Editor.</p>
+
+<h4>Tocify plugin</h4>
+<pre class="brush: xml">    
+    &lt;script type="text/javascript" src="js/plugins/tocify/jquery.tocify.min.js">&lt;/script>
+</pre>
+<p>Allows you to use Tocify plugin. Content table plugin.</p>
+
+</section>
+
+        
+        
+<section id="how_to">
+	<h3>How-to...?</h3><hr class="notop">
+
+<h4>How to start using Intuitive template?</h4>
+<ol>
+    <li> Find folder <strong>html</strong> in downloaded package.</li>            
+    <li> Upload contents of <strong>html</strong> folder to your webserver</li>            
+    <li> Use <strong>blank.html</strong> as basic HTML file</li>
+</ol>
+
+<h4>How customize template?</h4>
+<p>Open folder <strong>less</strong> there you will find all you need to work with template.<br/>
+In <strong>css</strong> folder you will find folder dev-settings with .less settings files to customize template styles.<br/>
+In <strong>js</strong> folder you will find commented .js files and plugins.</p>
+
+<h4>How to change template Theme?</h4>
+<p>If you using files from <strong>html</strong> folder:<br/>
+    Open <strong>html/css</strong> folder. There you will find 10 custom theme files. After you choose one of this themes, change CSS file in your html documents:        
+</p>
+<pre class="brush: xml">
+    <!-- CSS INCLUDE -->        
+    &lt;link rel="stylesheet" type="text/css" id="dev-css" href="css/YourThemeGoesHere.css"/>
+    <!-- EOF CSS INCLUDE -->                                           
+</pre>
+<p>Now available 12 themes:<br/>
+<strong>
+blue.css<br/>
+blue-white.css<br/>
+dark.css<br/>
+dark-white.css<br/>
+green.css<br/>
+green-white.css<br/>
+light.css<br/>
+light-white.css<br/>
+lightblue.css<br/>
+lightblue-white.css<br/>
+default.css<br/>
+default-white.css</strong>
+</p>
+
+</section>
+<section id="credits">
+	<h3>Credits</h3><hr class="notop">
+        
+        <ul>
+            <li><a href="http://jqueryui.com/">jQuery</a></li>
+            <li><a href="http://jqueryui.com/">jQuery UI</a></li>
+            <li><a href="http://getbootstrap.com/">Twitter Bootstrap</a></li>
+            <li><a href="http://omnipotent.net/jquery.sparkline/#s-about">jQuery Sparkline charts</a></li>
+            <li><a href="http://anthonyterrien.com/knob/">jQuery Knob charts</a></li>
+            <li><a href="http://datatables.net/">jQuery DataTables</a></li>
+            <li><a href="http://manos.malihu.gr/jquery-custom-content-scroller/">jQuery mCustomScrollBar</a></li>
+            <li><a href="http://xoxco.com/projects/code/tagsinput/">jQuery TagsInput plugin</a></li>
+            <li><a href="http://digitalbush.com/projects/masked-input-plugin/">jQuery Maskedinput plugin</a></li>
+            <li><a href="http://jqueryvalidation.org/">jQuery Validation</a></li>               
+            <li><a href="http://hackerwins.github.io/summernote/">Summernote editor</a></li>
+            <li><a href="http://codemirror.net">Codemirror plugin</a></li>            
+            <li><a href="http://jvectormap.com/">jVectorMap plugin</a></li>            
+            <li><a href="http://www.lesscss.org/">Less css plugin</a></li>            
+            <li><a href="https://github.com/blueimp/Gallery">Blueimp Gallery</a></li>            
+            <li><a href="https://github.com/eternicode/bootstrap-datepicker/">Bootstrap datepicker</a></li>
+            <li><a href="http://silviomoreto.github.io/bootstrap-select/">Bootstrap select</a></li>
+            <li><a href="http://nvd3.org/">NDV3 charts</a></li>            
+            <li><a href="http://code.shutterstock.com/rickshaw/">Rickshaw charts</a></li>
+            <li><a href="http://www.techlaboratory.net/smartwizard">Smart Wizard</a></li>
+            <li><a href="http://gregfranko.com/jquery.tocify.js/">Tocify</a></li>            
+            <li><a href="http://ionden.com/a/plugins/ion.rangeSlider/en.html">Ion.RangeSlider</a></li>
+            <li><a href="http://www.jstree.com/">jsTree</a></li>            
+        </ul>        
+        
+</section>    
+<section id="changelog">
+        <h3>Changelog</h3><hr class="notop">
+        
+        <ul>  
+            <li>
+                <strong>Version 1.1</strong> - 22.07.2014
+                <ul>
+                    <li>Fixed minor bugs</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Version 1.0</strong> - 14.07.2014
+                <ul>
+                    <li>Release</li>
+                </ul>
+            </li>                    
+        </ul>
+        
+</section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+.gallery{
+    float: left;
+    width: 100%;
+    padding: @dev-unit * 4;
+    
+    .gallery-sizer,.gallery-item{
+        width: 23%;
+    }
+    .gallery-gutter{width: 2%;}
+    
+    .gallery-item{
+        background: #FFF;
+        padding: @dev-unit;
+        .border-radius(@dev-default-border-radius);
+        margin-bottom: @dev-unit * 3;
+        .box-shadow(0px 1px 2px rgba(0,0,0,0.2));
+        .box-transition-all(200ms);
+        color: @dev-default-font-color;
+        text-decoration: none;
+        display: block;
+        
+        > img{width: 100%;}
+        
+        .gallery-item-info{
+            line-height: @dev-unit * 8;            
+            padding: @dev-unit @dev-unit 0px @dev-unit;
+            
+            img{
+                width: @dev-unit * 6;
+                height: @dev-unit * 6;
+                .border-radius(50%);
+                margin-right: @dev-unit * 2;
+            }
+            
+            span{
+                color: @dev-default-font-sub-color;
+            }
+        }
+        
+        &.gallery-item-2{
+            width: 47%;
+        }
+                
+        &:hover{
+            .box-shadow(0px 1px 4px rgba(0,0,0,0.3));
+            
+            &:before{
+                cursor: pointer;
+                content: " ";
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background: rgba(255,255,255,0.5);                
+                .border-radius(@dev-default-border-radius);
+                -webkit-animation: appear 200ms;
+                animation: appear 200ms;
+            }
+            &:after{
+                cursor: pointer;
+                background: rgba(255,255,255,0.8);
+                width: 50px;
+                height: 50px;
+                top: 50%;
+                left: 50%;
+                position: absolute;
+                margin: -25px 0px 0px -25px;
+                content: "\f0c1";
+                font-family: "FontAwesome";
+                font-size: 24px;
+                color: @dev-default-font-color;
+                text-align: center;
+                line-height: 50px;
+                .border-radius(50%);
+                -webkit-animation: appear 200ms;
+                animation: appear 200ms;
+            }
+        }
+    }
+    
+}

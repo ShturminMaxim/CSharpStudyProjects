@@ -1,0 +1,4 @@
+PACKAGE v.1.1
+    - documents			--> Intuitive Documentation v1.1 !!!! DO NOT FORGET TO CHECK IT OUT !!!! 
+    - html 			--> Intuitive HTML version v1.1
+    - less 			--> Intuitive Less css version v1.1    

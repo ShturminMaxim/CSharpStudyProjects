@@ -1,0 +1,166 @@
+@dev-lock-screen-background: @dev-theme-background;
+@dev-lock-screen-color: #667D8D;
+
+.dev-page{
+    &.dev-page-lock-screen{
+        float: left;
+        width: 100%;
+        min-height: 100%;
+        background: @dev-lock-screen-background;
+        
+        .dev-page-lock-screen-box{
+            width: 370px;            
+            margin: 100px auto 0px;
+            -webkit-animation: zoomIn 300ms;
+            animation: zoomIn 300ms;
+            
+            .first-screen,.second-screen{
+                float: left;
+                width: 100%;
+            }
+            .second-screen{
+                display: none;                
+                
+                .photo{
+                    float: left;
+                    width: 100%;
+                    margin-bottom: @dev-unit * 3;
+                    text-align: center;
+                    
+                    img{
+                        border: @dev-unit solid rgba(255,255,255,0.2);
+                        width: 180px;
+                        height: 180px;
+                        .border-radius(50%);
+                    }
+                }       
+                .elements{
+                    .form-group{
+                        margin-bottom: @dev-unit * 2;
+                        
+                        .input-group-addon,.form-control{
+                            background: rgba(255,255,255,0.2);
+                            border: 0px;
+                            color: #FFF;    
+                        }
+                    }
+                }
+                .title{
+                    float: left;
+                    width: 100%;
+                    margin-bottom: @dev-unit * 10;
+                    font-size: 14px;
+                    color: #FFF;
+                    text-align: center;
+
+                    span{
+                        display: inline-block;
+                        width: 100%;
+                        font-size: 12px;
+                        color: #BBB;
+                    }
+                }                
+            }
+            
+            .basement{
+                float: left;
+                width: 100%;               
+                color: @dev-lock-screen-color;
+                font-size: @dev-default-font-sub-size;
+                text-align: center;
+                margin-top: @dev-unit * 5;
+            }            
+            
+            .clock{
+                text-align: center;
+                width: 100%;
+                margin-bottom: @dev-unit * 4;
+            }
+            .date{
+                float: left;
+                width: 100%;
+                line-height: @dev-unit * 5;
+                text-align: center;
+                font-size: 14px;
+                color: #FFF;
+                margin-bottom: @dev-unit * 10;
+                             
+            }
+            .lock-button{
+                width: 100%;
+                text-align: center;
+                
+                .btn{
+                    background: transparent;
+                    border: 2px solid rgba(255,255,255,0.2);
+                    width: @dev-unit * 12;
+                    height: @dev-unit * 12;
+                    line-height: @dev-unit * 12;                    
+                    padding: 0px;
+                    .border-radius(50%);
+                    color: #FFF;
+                    .box-transition-all(400ms);
+                    position: relative;
+                    
+                    &:after{
+                        left: -2px;
+                        top: -2px;
+                        content: " ";
+                        position: absolute;
+                        width: @dev-unit * 12;
+                        height: @dev-unit * 12;
+                        border: 2px solid rgba(255,255,255,0.1);
+                        .opacity(0);
+                        -webkit-animation: pulsate 1s ease-out;
+                        -webkit-animation-iteration-count: infinite; 
+                        animation: pulsate 1s ease-out;
+                        animation-iteration-count: infinite; 
+                        .border-radius(50%);
+                    }
+                    
+                    i{                        
+                        font-size: 28px;
+                        .opacity(0.2);
+                        line-height: 54px;
+                        .box-transition-all(100ms);
+                    }
+                    
+                    &:hover{
+                        background: rgba(255,255,255,0.1);
+                        border-color: rgba(255,255,255,0.3);
+                        
+                        i{
+                            .opacity(0.3);
+                        }
+                    }
+                }
+            }
+            
+            &.dev-page-lock-screen-animate{
+                .first-screen{                    
+                    display: none;
+                }
+                .second-screen{
+                    display: block;
+                    -webkit-animation: zoomIn 300ms;
+                    animation: zoomIn 300ms;
+                }                
+            }
+            
+        }
+        
+    }
+}
+@media all and (max-width: @screen-mobile) {
+    
+    .dev-page{
+        &.dev-page-lock-screen{            
+            .dev-page-lock-screen-box{
+                width: 100%;
+                padding: @dev-unit * 10;
+                margin-top: 0px;
+            }
+        }
+    }
+    
+}

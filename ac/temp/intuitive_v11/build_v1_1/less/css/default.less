@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+/* third-party plugins */
+@import "dev-plugins/bootstrap/bootstrap.less";
+@import "dev-plugins/bootstrap-select/bootstrap-select.less";
+@import "dev-plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.less";
+@import "dev-plugins/bootstrap-checkbox/awesome-bootstrap-checkbox.less";
+@import "dev-plugins/spectrum/spectrum.less";
+@import "dev-plugins/tags-input/tagsinput.less";
+@import "dev-plugins/font-awesome/font-awesome.less";
+@import "dev-plugins/mcustomscrollbar/jquery.mCustomScrollbar.css";
+@import "dev-plugins/blueimp/blueimp-gallery.min.css";
+@import "dev-plugins/summernote/summernote.less";
+@import "dev-plugins/codemirror/codemirror.css";
+@import "dev-plugins/bootstrap-tour/bootstrap-tour.less";
+@import "dev-plugins/nestable/nestable.less";
+@import "dev-plugins/jstree/jstree.less";
+@import "dev-plugins/tocify/tocify.less";
+@import "dev-plugins/jvectormap/jquery-jvectormap.less";
+
+    /* charts */
+    @import "dev-plugins/nvd3/nv.d3.less";
+    @import "dev-plugins/rickshaw/rickshaw.less";
+    /* ./charts */
+
+/* ./third-party plugins */
+
+/* helpers */
+@import "dev-other/dev-help-classes.less";
+@import "dev-other/dev-functions.less"; //mixins
+@import "dev-other/dev-settings.less";
+/* ./helpers */
+
+/* settings */
+@import "dev-settings/dev-settings-blue-white.less";
+/* ./settings */
+
+/* keyframes */
+@import "dev-other/dev-keyframes.less";
+/* ./keyframes */
+
+/* layouts */
+@import "dev-layouts/dev-layouts.less";
+@import "dev-layouts/dev-layout-default.less";
+/* ./layouts */
+
+/* other */
+@import "dev-other/dev-loaders.less";
+/* ./other */
+
+/* elements */
+@import "dev-elements/dev-page-header.less";
+@import "dev-elements/dev-page-footer.less";
+@import "dev-elements/dev-page-rightbar.less";
+@import "dev-elements/dev-page-navigation.less";
+@import "dev-elements/dev-page-search.less";
+/* ./elements */
+
+/* third-party plugins */
+@import "dev-plugins/datatables/datatables.less";
+@import "dev-plugins/sortable/sortable.less";
+/* ./third-party plugins */
+
+/* features */
+@import "dev-features/dev-login.less";
+@import "dev-features/dev-rightbar-chat.less";
+@import "dev-features/dev-typography.less";
+@import "dev-features/dev-form-elements.less";
+@import "dev-features/dev-modals.less";
+@import "dev-features/dev-progress.less";
+@import "dev-features/dev-pagination.less";
+@import "dev-features/dev-form-wizard.less";
+@import "dev-features/dev-buttons.less";
+@import "dev-features/dev-dropdowns.less";
+@import "dev-features/dev-tables.less";
+@import "dev-features/dev-widgets.less";
+@import "dev-features/dev-tabs.less";
+@import "dev-features/dev-panels.less";
+@import "dev-features/dev-features.less";
+@import "dev-features/dev-popup.less";
+@import "dev-features/dev-popover.less";
+@import "dev-features/dev-sliding-menu.less";
+@import "dev-features/dev-email.less";
+@import "dev-features/dev-invoice.less";
+@import "dev-features/dev-lists.less";
+@import "dev-features/dev-gallery.less";
+@import "dev-features/dev-error.less";
+@import "dev-features/dev-lock-screen.less";
+@import "dev-features/dev-timeline.less";
+@import "dev-features/dev-profile.less";
+@import "dev-features/dev-faq.less";
+/* ./features */
+
+/* import google font */
+//@import url(http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&subset=latin,latin-ext);
+//@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,500,600,700&subset=latin,latin-ext);
+/* ./import google font */
+
+html,body{
+    padding: 0px; 
+    margin: 0px;     
+    height: 100%; 
+    min-height: 100%;
+    font-family: Arial,Helvetica,Arial,sans-serif; /* font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif; */ 
+    font-size: @dev-default-font-size; 
+    color: @dev-default-font-color;
+}
+body{
+    background: @dev-page-background; 
+}
+
+

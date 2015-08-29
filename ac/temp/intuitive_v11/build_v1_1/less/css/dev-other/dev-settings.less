@@ -1,0 +1,56 @@
+/* settings */
+    .dev-settings{
+        position: fixed; 
+        right: -230px; 
+        top: 200px; 
+        .box-transition-all(400ms); 
+        z-index: 5;
+        
+        .dev-settings-button{
+            position: absolute; 
+            left: -36px; 
+            height: 36px; 
+            width: 36px; 
+            top: 10px; 
+            background: rgba(0,0,0,0.8);
+            .border-radius(3px 0px 0px 3px);
+            font-size: 14px;
+            color: #FFF; 
+            line-height: 34px; 
+            text-align: center; 
+            cursor: pointer;
+        }
+        
+        .dev-settings-body{
+            width: 230px; 
+            background: rgba(0,0,0,0.5); 
+            .border-radius(5px 0px 0px 5px); 
+            padding: 15px 4px 10px 10px; 
+            color: #FFF;            
+            
+            a{
+                width: 30px; 
+                height: 30px; 
+                margin-right: 6px; 
+                margin-bottom: 5px; 
+                display: inline-block;                
+                
+                img{
+                    width: 30px; height: 30px;
+                    .border-radius(50%);
+                    border: 2px solid rgba(255,255,255,0.2);
+                }
+                
+                &.active{ 
+                    img{border: 2px solid rgba(255,255,255,8);}
+                }
+            }
+        }
+        &.active{
+            right: 0px;
+            .dev-settings-button{
+                background: rgba(0,0,0,0.5);
+            }
+        }
+    }
+/* ./settings */

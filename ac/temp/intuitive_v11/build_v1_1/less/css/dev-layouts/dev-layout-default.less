@@ -1,0 +1,224 @@
+.dev-page{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;        
+    float: left;
+    position: relative;
+    overflow: hidden;
+    visibility: visible !important;
+
+        .dev-page-header{
+            width: 100%;
+            height: @dev-layout-header-height;
+            background: @dev-layout-header-background;
+            color: @dev-layout-header-color;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 5;
+            .box-shadow(0px 5px 10px rgba(0,0,0,0.2));
+        }
+        
+        .dev-page-container{
+            position: relative;
+            z-index: 4;
+            float: left;
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+            padding-top: @dev-layout-header-height;                        
+            
+            .dev-page-sidebar{
+                position: absolute;                
+                z-index: 3;
+                height: 100%;
+                width: @dev-layout-sidebar-width;
+                background: @dev-layout-sidebar-background;
+                color: @dev-layout-sidebar-font-color;                
+                .box-transition(width,200ms,cubic-bezier(.99,0,.5,.99));                
+                padding-bottom: @dev-layout-footer-height;
+            }
+            
+            .dev-page-content{
+                position: relative;
+                z-index: 2;
+                width: 100%;        
+                height: 100%;
+                min-height: 100%;
+                padding-left: @dev-layout-sidebar-width;
+                .box-transition(padding,200ms,cubic-bezier(.99,0,.5,.99));
+                padding-bottom: @dev-layout-footer-height;
+                
+                .container{
+                    position: relative;
+                    height: 100%;
+                    min-height: 100%;                    
+                }               
+            }            
+        }
+        
+        .dev-page-rightbar{            
+            position: fixed;
+            top: 0px;
+            right: -@dev-layout-rightbar-width - 10px;/* -10 shadow */
+            height: 100%;
+            overflow: hidden;
+            width: @dev-layout-rightbar-width;
+            background: @dev-layout-rightbar-background;
+            color: @dev-layout-rightbar-color;                    
+            z-index: 4;            
+        }
+        
+        .dev-page-footer{            
+            position: absolute;
+            z-index: 5;
+            width: 100%;
+            height: @dev-layout-footer-height;
+            background: @dev-layout-footer-background;
+            color: @dev-layout-footer-color;
+            left: 0px;
+            bottom: 0px;             
+        }
+    
+    
+    &.dev-page-sidebar-minimized{
+        .dev-page-container{
+            .dev-page-sidebar{
+                width: @dev-layout-sidebar-unit;
+            }
+            .dev-page-content{
+                padding-left: @dev-layout-sidebar-unit;
+            }
+        }
+    }
+    
+    &.dev-page-sidebar-collapsed{
+        .dev-page-container{
+            .dev-page-sidebar{
+                width: 0px;
+                overflow: hidden;
+            }
+            .dev-page-content{
+                padding-left: 0px;
+            }
+        }
+    }
+    
+    &.dev-page-sidebar-right{
+        .dev-page-container{
+            .dev-page-sidebar{
+                right: 0px;
+            }
+            .dev-page-content{
+                padding-left: 0px;
+                padding-right: @dev-layout-sidebar-width;
+            }
+        }
+        
+        &.dev-page-sidebar-minimized{
+            .dev-page-container{
+                .dev-page-content{
+                    padding-left: 0px;
+                    padding-right: @dev-layout-sidebar-unit;
+                }
+            }
+        }
+        
+        &.dev-page-sidebar-collapsed{
+            .dev-page-container{
+                .dev-page-content{
+                    padding-right: 0px;
+                }
+            }
+        }
+    }
+    
+    &.dev-page-no-footer{        
+        .dev-page-container{
+            .dev-page-sidebar,.dev-page-content{            
+                padding-bottom: 0px;
+            }
+        }
+    }    
+    
+    &.dev-page-loaded{
+        height: auto;
+    }
+    
+    &.dev-page-fullscreen{
+        .dev-page-container{
+            position: static;
+
+            .dev-page-content{
+                position: static;
+            }
+        }
+    }
+        
+}
+.dev-page-boxed{
+    background: url('../img/backgrounds/default-background.jpg') left top no-repeat @dev-layout-boxed-background;
+    
+    .dev-page{
+        width: @dev-layout-boxed-width;
+        background: @dev-default-background;
+        margin: 0px auto;
+        float: none;       
+        .box-multiple-shadow(5px 0px 10px rgba(0,0,0,0.05), -5px 0px 10px rgba(0,0,0,0.05));        
+                
+    }
+}
+
+@media all and (max-width: @screen-mobile) {
+    
+    .dev-page{
+        .dev-page-container{
+            float: left;
+            width: 100%;
+            
+            .dev-page-sidebar{
+                position: relative;
+                float: left;
+                width: 100%;
+                height: auto;                
+                .box-transition(none);
+                display: none;
+                padding-bottom: 0px;                
+            }
+            .dev-page-content{
+                padding: 0px;
+                float: left;
+                .box-transition(none);
+                
+                .container{
+                    padding-bottom: @dev-layout-footer-height + 10;
+                }
+            }                        
+        }
+        &.dev-page-loaded{
+            .dev-page-container{
+                .dev-page-sidebar{
+                    display: block;
+                }
+            }
+        }
+        
+        &.dev-page-sidebar-collapsed{
+            .dev-page-container{
+                .dev-page-sidebar{
+                    display: none;
+                }
+            } 
+        }        
+        .dev-page-sidebar-minimize{display: none !important;}
+    }
+    
+    .dev-page-boxed{
+        .dev-page{
+            width: 100%;
+            float: left;
+            margin: 0px;
+        }
+    }
+    
+}

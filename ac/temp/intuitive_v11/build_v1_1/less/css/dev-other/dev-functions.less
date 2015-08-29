@@ -1,0 +1,122 @@
+/* default dev functions */
+
+    /* default shadow */
+    .box-shadow(@s){
+        -moz-box-shadow: @s;
+        -webkit-box-shadow: @s;
+        box-shadow: @s;
+    }
+    /* ./default shadow */
+    
+    /* multiple shadow */
+    .box-multiple-shadow(...) {
+        @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+        -webkit-box-shadow: @props;
+        -moz-box-shadow: @props;
+        box-shadow: @props;
+    }
+    /* ./multiple shadow */
+    
+    /* blur */
+    .box-blur(@b){
+        -webkit-filter: blur(@b);
+        -moz-filter: blur(@b);
+        -o-filter: blur(@b);
+        -ms-filter: blur(@b);
+        filter: blur(@b);
+    }
+    /* ./blur */
+    
+    /* border radius */
+    .border-radius(@r){
+        -moz-border-radius: @r;
+        -webkit-border-radius: @r;
+        border-radius: @r;
+    }
+    /* ./border-radius */
+    
+    /* box transition mixin */
+    .box-transition(@it: all, @s: 200ms, @t: ease){
+        -webkit-transition: @it @s @t;
+        -moz-transition: @it @s @t;     
+        -ms-transition: @it @s @t;
+        -o-transition: @it @s @t;
+        transition: @it @s @t;
+    }
+    .box-transition2(...){
+        @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+        -webkit-transition: @props;
+        -moz-transition: @props;     
+        -ms-transition: @props;
+        -o-transition: @props;
+        transition: @props;
+    }
+    /* ./box transition mixin */
+    
+    /* box transition all */
+    .box-transition-all(@s: 200ms, @t: ease){
+        -webkit-transition: all @s @t;
+        -moz-transition: all @s @t;     
+        -ms-transition: all @s @t;
+        -o-transition: all @s @t;
+        transition: all @s @t;
+    }
+    /* ./box transition all */
+    
+    /* box transition opacity */
+    .box-transition-opacity(@s){
+        -webkit-transition: opacity @s ease-in-out;
+        -moz-transition: opacity @s ease-in-out;
+        -ms-transition: opacity @s ease-in-out;
+        -o-transition: opacity @s ease-in-out;
+        transition: opacity @s ease-in-out;    
+    }
+    /* ./box transition opacity */
+    
+    /* box transition color */
+    .box-transition-color(@s){
+        -webkit-transition: color @s ease;
+        -moz-transition: color @s ease;     
+        -ms-transition: color @s ease;
+        -o-transition: color @s ease;    
+        transition: color @s ease;
+    }
+    /* ./box transition color */
+    
+    /* box transition background color */
+    .box-transition-background-color(@s){
+        -webkit-transition: background-color @s linear;
+        -moz-transition: background-color @s linear;
+        -o-transition: background-color @s linear;
+        -ms-transition: background-color @s linear;
+        transition: background-color @s linear;
+    }
+    /* ./box transition background color */
+
+    /* box opacity */
+    .opacity(@o){
+        opacity: @o;
+        filter: e("alpha(opacity = @{o}*100)");
+    }
+    /* ./box opacity */
+    
+    /* box gradiend */
+    .box-gradient(@startColor: #FFF, @endColor: #F5F5F5) {
+        background-color: @startColor;
+	background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+	background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+	background-image: -moz-linear-gradient(left, @startColor, @endColor);
+	background-image: -ms-linear-gradient(left, @startColor, @endColor);
+	background-image: -o-linear-gradient(left, @startColor, @endColor);
+    }
+    /* ./box gradiend */
+    
+    /* rotate */
+    .box-rotate(@deg){
+        -ms-transform: rotate(@deg);
+        -webkit-transform: rotate(@deg);
+        transform: rotate(@deg);
+    }
+    /* ./rotate */
+
+/* ./default dev functions */

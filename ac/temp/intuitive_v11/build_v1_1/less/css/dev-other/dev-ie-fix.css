@@ -1,0 +1,7 @@
+/* ie 9 and lower fix */
+
+    .dev-page-loading,.dev-loader-default, .dev-loader-circle{
+        display: none !important;
+    }
+    
+/* ./ie 9 and lower fix */

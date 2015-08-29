@@ -1,0 +1,49 @@
+    /* pagination */
+    .pagination{
+        margin: @dev-unit * 4 0px;
+        
+        > li{
+            a,span{                
+                line-height: @dev-unit * 5 - 2;
+                padding: @dev-unit @dev-unit * 3;
+                font-size: @dev-button-font-size;
+                .box-transition-all(200ms);
+                font-weight: 400;
+                border-color: @dev-button-default-border-color;
+                background: @dev-button-default-background;
+                margin-right: 5px;
+                color: @dev-default-font-color;                
+                .border-radius(@dev-unit);
+            }
+            
+            &.active{
+                > a, > span{
+                    background: @dev-button-primary-background;
+                    border-color: @dev-button-primary-border-color;                        
+                    
+                    &:hover,&:focus{
+                        background: @dev-button-primary-background;
+                        border-color: @dev-button-primary-border-color;
+                    }
+                }
+            }
+        }
+        
+        &.pagination-sm{
+            > li{
+                a,span{
+                    padding: @dev-unit @dev-unit * 2;
+                    line-height: @dev-unit * 4 - 2;
+                }
+            }            
+        }
+        &.pagination-lg{
+            > li{
+                a,span{
+                    padding: @dev-unit * 2 @dev-unit * 3;
+                    font-size: @dev-button-font-size + 6px;
+                }
+            }            
+        }
+    }
+    /* ./pagination */

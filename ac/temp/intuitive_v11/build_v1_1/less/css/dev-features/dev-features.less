@@ -1,0 +1,36 @@
+/* dev table */
+.dev-table{
+    display: table;         
+    width: 100%;    
+
+    .dev-row{
+        display: table-row;
+        width: auto;
+        clear: both;
+    }
+    .dev-col{        
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+@media all and (max-width: @screen-mobile) {
+    .dev-table{
+        display: block;
+        float: left;
+        
+        .dev-row{
+            display: block;
+            float: left;            
+            width: 100%;
+        }
+        
+        .dev-col{
+            display: block;
+            float: left;
+            width: 100%;
+        }
+    }
+}
+/* ./dev table */
+

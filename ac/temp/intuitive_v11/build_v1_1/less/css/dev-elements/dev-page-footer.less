@@ -1,0 +1,281 @@
+.dev-page-footer{    
+    
+    .dev-page-footer-controls{
+        float: left;
+        width: @dev-layout-sidebar-width;
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+        
+        > li{
+            float: left;
+            position: relative;
+            
+            > a{
+                display: block;
+                float: left;
+                min-width: @dev-layout-footer-height - 6;
+                line-height: @dev-layout-footer-height - 6;
+                text-align: center;
+                color: @dev-layout-footer-color;
+                font-size: @dev-default-font-size;
+                background: darken(@dev-layout-footer-background,2%);
+                text-decoration: none;                
+                .box-transition-background-color(200ms);
+                cursor: pointer;
+                margin: 3px;       
+                margin-right: 0px;
+                .border-radius(@dev-default-border-radius);
+                
+                .fa,.glyphicon{
+                    font-size: 14px;
+                }
+                
+                &:hover{
+                    background: darken(@dev-layout-footer-background,4%);
+                }
+                &:focus{
+                    .box-shadow(inset 0px 1px 2px 0px rgba(0,0,0,0.26));
+                }
+                
+                &.dev-page-footer-control-stuck{                    
+                    top: 0px;                    
+                    background: transparent;
+                }
+                &.dev-page-footer-fix{
+                    .fa{
+                        .box-transition-all(200ms);
+                        .box-rotate(45deg);
+                    }
+                }               
+                
+            }
+        }
+                
+        &.dev-page-footer-controls-auto{
+            width: auto;
+        }
+    }
+    
+    .dev-page-footer-buttons{
+        position: absolute;
+        z-index: 4;
+        height: @dev-layout-footer-height + @dev-unit * 2;
+        background: @dev-layout-footer-background;
+        .border-radius(@dev-default-border-radius @dev-default-border-radius 0px 0px);        
+        list-style: none;
+        padding: @dev-unit;        
+        left: 50%;       
+        top: -@dev-unit * 2;        
+        .opacity(0);        
+        
+        > li{
+            float: left;
+            
+            > a{
+                display: block;
+                float: left;
+                min-width: @dev-layout-footer-height;
+                line-height: @dev-layout-footer-height;
+                text-align: center;
+                color: @dev-layout-footer-color;
+                font-size: @dev-default-font-size;
+                background: darken(@dev-layout-footer-background,2%);
+                .box-transition-background-color(200ms);
+                text-decoration: none;
+                margin-right: @dev-unit;
+                cursor: pointer;        
+                .border-radius(@dev-default-border-radius);                
+                
+                .fa,.glyphicon{
+                    font-size: 14px;
+                }
+                
+                &:hover{
+                    background: darken(@dev-layout-footer-background,4%);
+                }                
+                &:focus{
+                    .box-shadow(inset 0px 1px 2px 0px rgba(0,0,0,0.26));
+                }
+                
+                &.active{
+                    background: @dev-theme-background;
+                    color: @dev-theme-color;
+                }
+            }
+            
+            &:last-child > a{
+                margin-right: 0px;
+            }
+        }
+        
+        &.dev-page-footer-buttons-effect{            
+            .opacity(1);
+        }
+    }
+    
+    .dev-page-footer-container{
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        top: -@dev-layout-footer-container-height;
+        background: @dev-layout-footer-container-background;
+        color: @dev-layout-footer-container-color;
+        width: 100%;
+        height: @dev-layout-footer-container-height;
+        display: none;        
+        .box-shadow(0px -2px 5px 0px rgba(0, 0, 0, 0.26));
+        
+        .dev-page-footer-container-content{            
+            float: left; 
+            width: 100%;
+            display: none;
+        }
+        
+        .dev-page-footer-container-layer{
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 3;
+            width: 100%;
+            height: @dev-layout-footer-container-height;
+            //background: rgba(0,0,0,0.1);
+            display: none;
+            .opacity(0);            
+            
+            .dev-page-footer-container-layer-button{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                display: block;
+                width: @dev-unit * 6;
+                height: @dev-unit * 6;                
+                margin-top: -@dev-unit * 3;
+                margin-left: -@dev-unit * 3;
+                background: @dev-theme-background;
+                -webkit-animation: lodaer_spin 1s infinite linear;
+                animation: lodaer_spin 1s infinite linear;
+                
+                
+                &:before,&:after{
+                    content: " ";
+                    position: absolute;
+                    left: 0px;
+                    top: 0px;
+                    width: 3px;
+                    height: @dev-unit * 6;
+                    background: @dev-theme-background;
+                }
+                &:after{
+                    left: auto;
+                    right: 0px;
+                }
+            }
+            
+            
+            &.dev-page-footer-container-layer-opened{
+                display: block;
+                .opacity(1);               
+                -webkit-animation: appear 400ms;
+                animation: appear 400ms;
+            }
+            
+            &.dev-page-footer-container-layer-close{                
+                width: @dev-unit * 6;
+                height: @dev-unit * 6;
+                display: block;
+                .opacity(1);
+                .box-transition-all(400ms);
+                
+                .dev-page-footer-container-layer-button{
+                    background: transparent;
+                    -webkit-animation: none;
+                    animation: none;
+                    .box-transition-all(200ms);
+                    
+                    &:before,&:after{
+                        top: @dev-unit * 2;
+                        height: @dev-unit * 2;                       
+                    }
+                    
+                    &:before{
+                        .box-rotate(45deg);
+                        left: @dev-unit * 3 - 1;
+                    }
+                    &:after{
+                        .box-rotate(-45deg);
+                        right: @dev-unit * 3 - 2;
+                    }
+                    
+                    &:hover{
+                        &:before,&:after{
+                            background: darken(@dev-theme-background,5%);
+                        }
+                    }
+                }
+                
+            }
+        }
+
+        &.dev-page-footer-container-opened{
+            display: block;            
+            -webkit-animation: fadeIn 100ms;
+            animation: fadeIn 100ms;
+        }
+    }
+    
+    &.dev-page-footer-collapsed{
+        bottom: -@dev-layout-footer-height;        
+        
+        .dev-page-footer-controls{
+            > li > a{
+                &.dev-page-footer-control-stuck{
+                    position: absolute;
+                    top: -@dev-layout-footer-height;
+                    background: transparent;
+                    color: @dev-default-font-color;
+                    .box-transition(none);
+                    -webkit-animation: dpf_controls 300ms;
+                    animation-duration: dpf_controls 300ms;                                     
+                }
+            }
+        }
+        
+        .dev-page-footer-buttons{
+            top: 0px;
+        }        
+    }
+    
+    &.dev-page-footer-effect{
+        .box-transition(bottom,100ms,linear);                
+    }
+    
+    &.dev-page-footer-closed{
+        bottom: -@dev-layout-footer-height;
+        
+        .dev-page-footer-buttons{
+            top: 0px;
+        }
+    }
+    
+    &.dev-page-footer-fixed{
+        position: fixed;
+        
+        .dev-page-footer-controls{
+            > li > a.dev-page-footer-fix{
+                .fa{
+                    .box-rotate(0deg);
+                }
+            }
+        }
+    }
+}
+
+.dev-page{
+    &.dev-page-rightbar-open{
+        .dev-page-footer.dev-page-footer-fixed{
+            left: -@dev-layout-rightbar-width;
+            .box-transition-all(100ms);
+        }
+    }
+}

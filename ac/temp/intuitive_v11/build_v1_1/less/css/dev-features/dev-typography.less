@@ -1,0 +1,257 @@
+h1,h2,h3,h4,h5,h6{
+    font-weight: 400;
+    padding: 0px;
+    
+    span{
+        color: @dev-default-font-sub-color;
+        font-weight: 300;
+    }
+}
+
+h1{
+    font-size: @dev-default-font-size + 10;     
+    line-height: @dev-unit * 6;
+    margin: 0px 0px @dev-unit * 5;    
+}
+h2{
+    font-size: @dev-default-font-size + 8;
+    line-height: @dev-unit * 6;
+    margin: 0px 0px @dev-unit * 4; 
+}
+h3{
+    font-size: @dev-default-font-size + 6;
+    line-height: @dev-unit * 5;
+    margin: 0px 0px @dev-unit * 3; 
+}
+h4{
+    font-size: @dev-default-font-size + 4;
+    line-height: @dev-unit * 4;
+    margin: 0px 0px @dev-unit * 3; 
+}
+h5{
+    font-size: @dev-default-font-size + 2;
+    line-height: @dev-unit * 4;
+    margin: 0px 0px @dev-unit * 2;
+    font-weight: 600;
+}
+h6{
+    font-size: @dev-default-font-size; 
+    line-height: @dev-unit * 4;
+    margin: 0px 0px @dev-unit * 2;
+    font-weight: 600;    
+}
+
+p{
+    font-size: @dev-default-font-size; 
+    line-height: @dev-unit * 2 + @dev-default-font-size;
+    margin-bottom: @dev-unit * 2;
+}
+
+a{
+    color: @dev-default-link-color;
+    
+    &:focus{
+        outline: none;
+    }
+}
+
+.text-primary{
+    color: @dev-default-font-primary-color;
+}
+.text-info{
+    color: @dev-default-font-info-color;
+}
+.text-success{
+    color: @dev-default-font-success-color;
+}
+.text-warning{
+    color: @dev-default-font-warning-color;
+}
+.text-danger{
+    color: @dev-default-font-danger-color;
+}
+
+.breadcrumb{
+    float: left;
+    width: 100%;
+    margin-bottom: @dev-unit * 4;
+    padding: 0px;
+    background: transparent;
+    
+    li{
+        line-height: 20px;
+        font-size: @dev-default-font-sub-size;
+        color: @dev-default-font-color;
+        
+        a{            
+            color: @dev-default-font-sub-color;
+        }
+        
+        & + li:before{
+            content: "\f105";
+            font-family: FontAwesome;            
+            padding: 0 8px 0 5px;
+        }
+    }
+}
+
+.page-title{
+    float: left;
+    width: 100%;
+    padding: @dev-unit * 4;
+    position: relative;
+    
+    h1{
+        padding: 0px;
+        margin: 0px;                
+    }
+    
+    p{
+        font-size: @dev-default-font-size;
+        color: @dev-default-font-sub-color;
+        margin-bottom: 0px;        
+    }
+    
+    .breadcrumb{
+        position: absolute;
+        right: @dev-unit * 4;
+        top: 50%;
+        margin-top: -@dev-unit * 2;
+        width: auto;
+        float: none;
+    }
+    
+}
+
+.page-subtitle{
+    float: left;
+    width: 100%;
+    padding: 0px;
+    margin-bottom: @dev-unit * 2;
+    
+    > .fa, > .glyphicon{
+        font-size: 56px;  
+        
+        &.pull-left{
+            margin-right: @dev-unit * 4;
+        }
+    }
+    
+    h2,h3,h4,h5{
+        padding: 0px;
+        margin: 0px; 
+        line-height: 32px;
+        
+        .fa, .glyphicon{
+            font-size: 20px;                        
+        }
+    }
+    h2{
+        text-transform: uppercase;
+        font-weight: normal;
+        float: left;
+        line-height: 35px;
+        font-size: 19px;
+    }
+    
+    .btn{margin-bottom: 0px;}
+    
+    p{
+        color: @dev-default-font-sub-color;
+        font-size: @dev-default-font-sub-size;
+        margin-bottom: @dev-unit * 2;
+        
+        &.text-danger{
+            color: @dev-default-font-danger-color;
+        }
+    }
+    
+    &.page-subtitle-centralized{
+        text-align: center;
+    }
+}
+
+
+.copyright{
+    float: left;
+    width: 100%;
+    border-top: 1px solid @dev-default-border-color;
+    padding: @dev-unit * 5 @dev-unit *4;
+    line-height: @dev-unit * 4;
+    font-size: @dev-default-font-sub-size;
+    color: @dev-default-font-sub-color;
+    
+    a{
+        margin: 0px 10px;    
+    }
+}
+
+code{
+    color: @dev-default-code-color;
+    background-color: @dev-default-code-background;
+    border: 1px solid @dev-default-code-border-color;
+}
+
+.badge{
+    &.badge-primary{
+        background: @dev-bg-primary;
+        color: #FFF;
+    }
+    &.badge-success{
+        background: @dev-bg-success;
+        color: #FFF;
+    }
+    &.badge-warning{
+        background: @dev-bg-warning;
+        color: #FFF;
+    }
+    &.badge-info{
+        background: @dev-bg-info;
+        color: #FFF;
+    }
+    &.badge-danger{
+        background: @dev-bg-danger;
+        color: #FFF;
+    }
+}
+
+.label{
+    font-size: inherit;
+    padding: 2px 5px;
+    
+    &.label-primary{
+        background: @dev-bg-primary;
+        color: #FFF;
+    }
+    &.label-success{
+        background: @dev-bg-success;
+        color: #FFF;
+    }
+    &.label-warning{
+        background: @dev-bg-warning;
+        color: #FFF;
+    }
+    &.label-info{
+        background: @dev-bg-info;
+        color: #FFF;
+    }
+    &.label-danger{
+        background: @dev-bg-danger;
+        color: #FFF;
+    }
+}
+
+@media all and (max-width: @screen-mobile) {
+    
+    .page-title{
+        .breadcrumb{
+            float: left;
+            position: relative;
+            margin: @dev-unit * 2 0px 0px;
+            top: auto;
+            right: auto;
+        }
+    }
+    
+}
+
